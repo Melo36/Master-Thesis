@@ -21,7 +21,7 @@ buses/default_bus_layout="uid://bptt1c21s3ge4"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/raytraced_audio/plugin.cfg")
+enabled=PackedStringArray("res://addons/raytraced_audio/plugin.cfg", "res://addons/stealth_plugin/plugin.cfg")
 
 [global_group]
 
@@ -30,6 +30,7 @@ CameraController=""
 Guard=""
 Light=""
 EnvironmentSounds=""
+ValueInput=""
 
 [input]
 

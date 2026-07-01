@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://v7doygmpx6g3"]
 
-[ext_resource type="Script" uid="uid://c8mjxcqoqnf4r" path="res://scenes/environmental_sounds.gd" id="1_ef8yp"]
+[ext_resource type="Script" uid="uid://c8mjxcqoqnf4r" path="res://scripts/environmental_sounds.gd" id="1_ef8yp"]
 [ext_resource type="AudioStream" uid="uid://bb42chqno7tjs" path="res://resources/diesel_sound.mp3" id="1_w5vnv"]
 [ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://addons/raytraced_audio/raytraced_audio_player_3d.gd" id="2_ef8yp"]
 

@@ -36,9 +36,10 @@ func set_state(new_state: State, target: Vector3 = Vector3.ZERO):
 		await get_tree().create_timer(1.0).timeout
 		
 	state = new_state
-
+	
 	if state == State.INVESTIGATE:
 		current_index = 0
+		
 		target_position = target
 		has_target = true
 

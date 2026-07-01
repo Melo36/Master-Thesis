@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://cfba4uwqcbg51"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vesua"]
+font_size = 32
+
+[node name="SetupWizard" type="VBoxContainer" unique_id=1095835459]
+anchors_preset = -1
+anchor_left = -0.16000001
+anchor_top = -1.108
+anchor_right = 0.48200002
+offset_left = 184.32
+offset_top = 717.984
+offset_right = -104.26404
+offset_bottom = 350.0
+size_flags_horizontal = 3
+
+[node name="Title" type="BoxContainer" parent="." unique_id=1599453823]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Title" unique_id=269942572]
+layout_mode = 2
+text = "Player Configurator"
+label_settings = SubResource("LabelSettings_vesua")
+
+[node name="MovementNoise" type="FoldableContainer" parent="." unique_id=814324212]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Movement Noise"
+
+[node name="GridContainer" type="GridContainer" parent="MovementNoise" unique_id=1968351446]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="WalkingNoise" type="Label" parent="MovementNoise/GridContainer" unique_id=1473947919]
+layout_mode = 2
+tooltip_text = "Noise the player character emits in decibels (dB) while walking. Value ranges from -80dB to 80dB."
+mouse_filter = 0
+text = "Walking Noise"
+
+[node name="WalkingNoiseInput" type="SpinBox" parent="MovementNoise/GridContainer" unique_id=335852804 groups=["ValueInput"]]
+layout_mode = 2
+min_value = -80.0
+max_value = 80.0
+suffix = "dB"
+
+[node name="SprintingNoise" type="Label" parent="MovementNoise/GridContainer" unique_id=2103026815]
+layout_mode = 2
+tooltip_text = "Noise the player character emits in decibels (dB) while sprinting. Value ranges from -80dB to 80dB."
+mouse_filter = 0
+text = "Sprinting Noise"
+
+[node name="SprintingNoiseInput" type="SpinBox" parent="MovementNoise/GridContainer" unique_id=1429585090 groups=["ValueInput"]]
+layout_mode = 2
+min_value = -80.0
+max_value = 80.0
+value = 5.0
+suffix = "dB"
+
+[node name="CrouchedNoise" type="Label" parent="MovementNoise/GridContainer" unique_id=1371088982]
+layout_mode = 2
+tooltip_text = "Noise the player character emits in decibels (dB) while crouching. Value ranges from -80dB to 80dB."
+mouse_filter = 0
+text = "Crouched Noise"
+
+[node name="CrouchedNoiseInput" type="SpinBox" parent="MovementNoise/GridContainer" unique_id=1300906032 groups=["ValueInput"]]
+layout_mode = 2
+min_value = -80.0
+max_value = 80.0
+value = -10.0
+suffix = "dB"
+
+[node name="CrawlingNoise" type="Label" parent="MovementNoise/GridContainer" unique_id=510562986]
+layout_mode = 2
+tooltip_text = "Noise the player character emits in decibels (dB) while crawling. Value ranges from -80dB to 80dB."
+mouse_filter = 0
+text = "Crawling Noise"
+
+[node name="CrawlingNoiseInput" type="SpinBox" parent="MovementNoise/GridContainer" unique_id=889972734 groups=["ValueInput"]]
+layout_mode = 2
+min_value = -80.0
+max_value = 80.0
+value = -20.0
+suffix = "dB"
+
+[node name="MovementSpeed" type="FoldableContainer" parent="." unique_id=1392575558]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Movement Speed"
+
+[node name="GridContainer" type="GridContainer" parent="MovementSpeed" unique_id=1091124452]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="WalkingSpeed" type="Label" parent="MovementSpeed/GridContainer" unique_id=863299474]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Walking Speed"
+
+[node name="WalkingSpeedInput" type="SpinBox" parent="MovementSpeed/GridContainer" unique_id=436236399 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 20.0
+step = 0.5
+value = 5.0
+
+[node name="SprintingSpeed" type="Label" parent="MovementSpeed/GridContainer" unique_id=1801691227]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while sprinting. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Sprinting Speed"
+
+[node name="SprintingSpeedInput" type="SpinBox" parent="MovementSpeed/GridContainer" unique_id=115496417 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 20.0
+step = 0.5
+value = 7.0
+
+[node name="CrouchedSpeed" type="Label" parent="MovementSpeed/GridContainer" unique_id=1117649155]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while crouching. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Crouched Speed"
+
+[node name="CrouchedSpeedInput" type="SpinBox" parent="MovementSpeed/GridContainer" unique_id=248304569 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 20.0
+step = 0.5
+value = 2.5
+
+[node name="CrawlingSpeed" type="Label" parent="MovementSpeed/GridContainer" unique_id=715828613]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while crawling. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Crawling Speed"
+
+[node name="CrawlingSpeedInput" type="SpinBox" parent="MovementSpeed/GridContainer" unique_id=384076248 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 20.0
+step = 0.5
+value = 1.5
+
+[node name="Throw Distraction" type="FoldableContainer" parent="." unique_id=345854359]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Throw Distraction"
+
+[node name="GridContainer" type="GridContainer" parent="Throw Distraction" unique_id=1784788512]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="ChargeSpeed" type="Label" parent="Throw Distraction/GridContainer" unique_id=666447834]
+layout_mode = 2
+tooltip_text = "The speed with which the throwing object is charged. Value ranges from 0 to 10."
+mouse_filter = 0
+text = "Charge Speed"
+
+[node name="ChargeSpeedInput" type="SpinBox" parent="Throw Distraction/GridContainer" unique_id=674970070 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+value = 1.5
+
+[node name="MaxCharge" type="Label" parent="Throw Distraction/GridContainer" unique_id=242648007]
+layout_mode = 2
+tooltip_text = "Maximum value the throwing object can be charged to. Value ranges from 0 to 10."
+mouse_filter = 0
+text = "Maximum Charge"
+
+[node name="MaxChargeInput" type="SpinBox" parent="Throw Distraction/GridContainer" unique_id=1749360306 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+value = 2.0
