@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cfba4uwqcbg51"]
 
+[ext_resource type="Script" uid="uid://bfsa34s15yf06" path="res://addons/stealth_plugin/model_selection.gd" id="1_fmwjj"]
 [ext_resource type="Script" uid="uid://csphp5aun2l44" path="res://scripts/input_button.gd" id="1_gb3gx"]
 [ext_resource type="Script" uid="uid://cb7fu2yco78wo" path="res://addons/stealth_plugin/add_new_input.gd" id="2_v105p"]
 
@@ -71,6 +72,85 @@ layout_mode = 2
 text = "Player Configurator"
 label_settings = SubResource("LabelSettings_vesua")
 
+[node name="Combat" type="FoldableContainer" parent="VBoxContainer" unique_id=2073023408]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Combat"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Combat" unique_id=1420376439]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Combat/MarginContainer" unique_id=1093722390]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="HealthLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=1528000275]
+layout_mode = 2
+tooltip_text = "Amount of health the player character has."
+mouse_filter = 0
+text = "Health"
+
+[node name="health" type="SpinBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=986516154 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 1000.0
+value = 100.0
+
+[node name="ShurikenLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=893880167]
+layout_mode = 2
+tooltip_text = "Number of throwable weapons the player character starts with."
+mouse_filter = 0
+text = "Number of Throwables"
+
+[node name="shuriken" type="SpinBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=1754981510 groups=["ValueInput"]]
+layout_mode = 2
+value = 3.0
+
+[node name="MeeleLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=329581974]
+layout_mode = 2
+tooltip_text = "Defines whether the player character has a meele attack."
+mouse_filter = 0
+text = "Meele Attack"
+
+[node name="meele_enabled" type="CheckBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=535550847 groups=["ValueInput"]]
+layout_mode = 2
+button_pressed = true
+
+[node name="Cosmetic" type="FoldableContainer" parent="VBoxContainer" unique_id=410102604]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Cosmetic"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Cosmetic" unique_id=817877467]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="ModelSelection" type="GridContainer" parent="VBoxContainer/Cosmetic/MarginContainer" unique_id=684222690]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+script = ExtResource("1_fmwjj")
+
+[node name="3DModelLabel" type="Label" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1228930354]
+layout_mode = 2
+tooltip_text = "Amount of health the player character has."
+mouse_filter = 0
+text = "3D Model"
+
+[node name="AssignButton" type="Button" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1796844957]
+layout_mode = 2
+text = "Assign 3D Model"
+
+[node name="ModelFileDialog" type="FileDialog" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=222069450]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.fbx", "*.glb", "*.tscn")
+
 [node name="MovementNoise" type="FoldableContainer" parent="VBoxContainer" unique_id=814324212]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -86,51 +166,51 @@ theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 2
 
-[node name="WalkingNoise" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1473947919]
+[node name="WalkingNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1473947919]
 layout_mode = 2
 tooltip_text = "Noise the player character emits in decibels (dB) while walking. Value ranges from -80dB to 80dB."
 mouse_filter = 0
 text = "Walking Noise"
 
-[node name="WalkingNoiseInput" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=335852804 groups=["ValueInput"]]
+[node name="walking_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=335852804 groups=["ValueInput"]]
 layout_mode = 2
 min_value = -80.0
 max_value = 80.0
 suffix = "dB"
 
-[node name="SprintingNoise" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=2103026815]
+[node name="SprintingNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=2103026815]
 layout_mode = 2
 tooltip_text = "Noise the player character emits in decibels (dB) while sprinting. Value ranges from -80dB to 80dB."
 mouse_filter = 0
 text = "Sprinting Noise"
 
-[node name="SprintingNoiseInput" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1429585090 groups=["ValueInput"]]
+[node name="sprinting_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1429585090 groups=["ValueInput"]]
 layout_mode = 2
 min_value = -80.0
 max_value = 80.0
 value = 5.0
 suffix = "dB"
 
-[node name="CrouchedNoise" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1371088982]
+[node name="CrouchedNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1371088982]
 layout_mode = 2
 tooltip_text = "Noise the player character emits in decibels (dB) while crouching. Value ranges from -80dB to 80dB."
 mouse_filter = 0
 text = "Crouched Noise"
 
-[node name="CrouchedNoiseInput" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1300906032 groups=["ValueInput"]]
+[node name="crouched_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1300906032 groups=["ValueInput"]]
 layout_mode = 2
 min_value = -80.0
 max_value = 80.0
 value = -10.0
 suffix = "dB"
 
-[node name="CrawlingNoise" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=510562986]
+[node name="CrawlingNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=510562986]
 layout_mode = 2
 tooltip_text = "Noise the player character emits in decibels (dB) while crawling. Value ranges from -80dB to 80dB."
 mouse_filter = 0
 text = "Crawling Noise"
 
-[node name="CrawlingNoiseInput" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=889972734 groups=["ValueInput"]]
+[node name="crawling_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=889972734 groups=["ValueInput"]]
 layout_mode = 2
 min_value = -80.0
 max_value = 80.0
@@ -152,49 +232,49 @@ theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 2
 
-[node name="WalkingSpeed" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=863299474]
+[node name="WalkingSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=863299474]
 layout_mode = 2
 tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
 mouse_filter = 0
 text = "Walking Speed"
 
-[node name="WalkingSpeedInput" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=436236399 groups=["ValueInput"]]
+[node name="walk_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=436236399 groups=["ValueInput"]]
 layout_mode = 2
 max_value = 20.0
 step = 0.5
 value = 5.0
 
-[node name="SprintingSpeed" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=1801691227]
+[node name="SprintingSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=1801691227]
 layout_mode = 2
 tooltip_text = "The speed with which the player moves while sprinting. Value ranges from 0 to 20."
 mouse_filter = 0
 text = "Sprinting Speed"
 
-[node name="SprintingSpeedInput" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=115496417 groups=["ValueInput"]]
+[node name="sprint_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=115496417 groups=["ValueInput"]]
 layout_mode = 2
 max_value = 20.0
 step = 0.5
 value = 7.0
 
-[node name="CrouchedSpeed" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=1117649155]
+[node name="CrouchedSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=1117649155]
 layout_mode = 2
 tooltip_text = "The speed with which the player moves while crouching. Value ranges from 0 to 20."
 mouse_filter = 0
 text = "Crouched Speed"
 
-[node name="CrouchedSpeedInput" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=248304569 groups=["ValueInput"]]
+[node name="crouch_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=248304569 groups=["ValueInput"]]
 layout_mode = 2
 max_value = 20.0
 step = 0.5
 value = 2.5
 
-[node name="CrawlingSpeed" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=715828613]
+[node name="CrawlingSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=715828613]
 layout_mode = 2
 tooltip_text = "The speed with which the player moves while crawling. Value ranges from 0 to 20."
 mouse_filter = 0
 text = "Crawling Speed"
 
-[node name="CrawlingSpeedInput" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=384076248 groups=["ValueInput"]]
+[node name="crawl_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=384076248 groups=["ValueInput"]]
 layout_mode = 2
 max_value = 20.0
 step = 0.5
@@ -215,29 +295,49 @@ theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 2
 
-[node name="ChargeSpeed" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=666447834]
+[node name="BellsLabel" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1283999250]
+layout_mode = 2
+tooltip_text = "The speed with which the throwing object is charged. Value ranges from 0 to 10."
+mouse_filter = 0
+text = "Number of Distractions"
+
+[node name="bells" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=643857856 groups=["ValueInput"]]
+layout_mode = 2
+rounded = true
+
+[node name="ChargeSpeedLabel" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=666447834]
 layout_mode = 2
 tooltip_text = "The speed with which the throwing object is charged. Value ranges from 0 to 10."
 mouse_filter = 0
 text = "Charge Speed"
 
-[node name="ChargeSpeedInput" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=674970070 groups=["ValueInput"]]
+[node name="charge_speed" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=674970070 groups=["ValueInput"]]
 layout_mode = 2
 max_value = 10.0
 step = 0.5
 value = 1.5
 
-[node name="MaxCharge" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=242648007]
+[node name="MaxChargeLabel" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=242648007]
 layout_mode = 2
 tooltip_text = "Maximum value the throwing object can be charged to. Value ranges from 0 to 10."
 mouse_filter = 0
 text = "Maximum Charge"
 
-[node name="MaxChargeInput" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1749360306 groups=["ValueInput"]]
+[node name="max_charge" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1749360306 groups=["ValueInput"]]
 layout_mode = 2
 max_value = 10.0
 step = 0.5
 value = 2.0
+
+[node name="ShowLinePreview" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1454270983]
+layout_mode = 2
+tooltip_text = "Enable or Disable Trajectory Preview."
+mouse_filter = 0
+text = "Show Trajectory Line"
+
+[node name="show_trajectory_line" type="CheckBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1074855287 groups=["ValueInput"]]
+layout_mode = 2
+button_pressed = true
 
 [node name="Controls" type="FoldableContainer" parent="VBoxContainer" unique_id=811492186]
 layout_mode = 2
@@ -263,7 +363,8 @@ expand_to_text_length = true
 
 [node name="ForwardButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=191317695]
 layout_mode = 2
-tooltip_text = "Press Button map new input"
+tooltip_text = "Press to map new input
+"
 text = "W"
 script = ExtResource("1_gb3gx")
 
@@ -276,7 +377,8 @@ expand_to_text_length = true
 
 [node name="LeftButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=920881803]
 layout_mode = 2
-tooltip_text = "Press Button map new input"
+tooltip_text = "Press to map new input
+"
 text = "A"
 script = ExtResource("1_gb3gx")
 
@@ -289,7 +391,8 @@ expand_to_text_length = true
 
 [node name="RightButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=807266871]
 layout_mode = 2
-tooltip_text = "Press Button map new input"
+tooltip_text = "Press to map new input
+"
 text = "D"
 script = ExtResource("1_gb3gx")
 
@@ -302,7 +405,8 @@ expand_to_text_length = true
 
 [node name="BackwardButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1045710133]
 layout_mode = 2
-tooltip_text = "Press Button map new input"
+tooltip_text = "Press to map new input
+"
 text = "S"
 script = ExtResource("1_gb3gx")
 
@@ -315,7 +419,8 @@ expand_to_text_length = true
 
 [node name="JumpButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=928226849]
 layout_mode = 2
-tooltip_text = "Press Button map new input"
+tooltip_text = "Press to map new input
+"
 text = "Space"
 script = ExtResource("1_gb3gx")
 
@@ -328,7 +433,8 @@ expand_to_text_length = true
 
 [node name="SprintButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=672267088]
 layout_mode = 2
-tooltip_text = "Press Button map new input"
+tooltip_text = "Press to map new input
+"
 text = "Shift"
 script = ExtResource("1_gb3gx")
 
@@ -341,7 +447,8 @@ expand_to_text_length = true
 
 [node name="CrouchButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=367287420]
 layout_mode = 2
-tooltip_text = "Press Button map new input"
+tooltip_text = "Press to map new input
+"
 text = "C"
 script = ExtResource("1_gb3gx")
 
@@ -354,7 +461,8 @@ expand_to_text_length = true
 
 [node name="PunchButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1159610251]
 layout_mode = 2
-tooltip_text = "Press Button map new input"
+tooltip_text = "Press to map new input
+"
 text = "E"
 script = ExtResource("1_gb3gx")
 
@@ -367,7 +475,8 @@ expand_to_text_length = true
 
 [node name="ThrowWeaponButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1107933300]
 layout_mode = 2
-tooltip_text = "Press Button map new input"
+tooltip_text = "Press to map new input
+"
 text = "Q"
 script = ExtResource("1_gb3gx")
 
@@ -380,7 +489,8 @@ expand_to_text_length = true
 
 [node name="ShootButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1342845967]
 layout_mode = 2
-tooltip_text = "Press Button map new input"
+tooltip_text = "Press to map new input
+"
 text = "Left Mouse"
 script = ExtResource("1_gb3gx")
 

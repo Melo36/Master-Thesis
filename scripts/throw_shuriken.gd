@@ -7,10 +7,13 @@ var current_target: Node3D = null
 var last_targeted_enemy: Node3D = null
 @onready var label: Label = $"../CanvasLayer/Label"
 
-@onready var inventory: Node3D = $"../Inventory"
+var player
+
+func _ready() -> void:
+	player = get_parent()
 
 func _process(_delta):
-	if inventory.shuriken == 0:
+	if player.shuriken == 0:
 		return
 	current_target = get_best_target()
 	
@@ -54,12 +57,12 @@ func has_clear_line_of_sight(target: Node3D) -> bool:
 	return false
 
 func _unhandled_input(event):
-	if event.is_action_pressed("throw_weapon") and current_target and inventory.shuriken > 0:
+	if event.is_action_pressed("throw_weapon") and current_target and player.shuriken > 0:
 		throw_shuriken()
 
 func throw_shuriken():
 	# Start the projectile at the spawn marker and pass the target reference
-	inventory.shuriken -= 1
+	player.shuriken -= 1
 	shuriken.visible = true
 	shuriken.global_position = projectile_spawn.global_position + Vector3.UP
 	shuriken.launch(current_target)

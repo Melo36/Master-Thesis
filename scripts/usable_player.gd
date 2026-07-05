@@ -12,7 +12,6 @@ var stance: Stance = Stance.STAND
 var crouch_pressed := false
 var crouch_press_time := 0.0
 @export var crawl_hold_threshold := 0.25
-@onready var inventory: Node3D = $Inventory
 
 # =========================
 # MOVEMENT / NOISE
@@ -70,6 +69,21 @@ var throw_cancelled := false
 var throw_strength := 0.0
 @export var charge_speed := 1.5 
 @export var max_charge := 2.0
+var show_trajectory_line := true
+var meele_enabled := true
+
+signal shuriken_changed(new_amount: int)
+signal bells_changed(new_amount: int)
+
+var shuriken: int = 3:
+	set(value):
+		shuriken = value
+		shuriken_changed.emit(shuriken)
+
+var bells: int = 3:
+	set(value):
+		bells = value
+		bells_changed.emit(bells)
 
 # =========================
 # LIGHT DETECTION
@@ -93,7 +107,6 @@ func _ready():
 	guards = get_tree().get_nodes_in_group("Guard")
 	state_machine = animationTree.get("parameters/playback")
 	sub_viewport.debug_draw = 2
-
 	
 	if trajectory_line:
 		# This is the magic line. It makes the line ignore the player's 
@@ -127,7 +140,7 @@ func _input(event):
 		elif stance == Stance.CRAWL: stance = Stance.CROUCH
 		crouch_pressed = false
 		
-	if event.is_action_pressed("punch"):
+	if meele_enabled && event.is_action_pressed("punch"):
 		state_machine.travel("hurricane")
 		var space_state = get_world_3d().direct_space_state
 	
@@ -145,11 +158,11 @@ func _input(event):
 	
 		if result && "Guard" in result.collider.name:
 			result.collider.die()
-	if inventory.bells > 0 && event.is_action_pressed("shoot"):
+	if bells > 0 && event.is_action_pressed("shoot"):
 		is_aiming = true
 		throw_cancelled = false
 		throw_strength = 0.0
-		if trajectory_line: trajectory_line.show()
+		if trajectory_line && show_trajectory_line: trajectory_line.show()
 
 	if event.is_action_released("shoot") and is_aiming:
 		if not throw_cancelled: spawn_projectile()
@@ -344,7 +357,7 @@ func spawn_projectile():
 		get_tree().current_scene.add_child(projectile)
 		projectile.global_position = global_position + Vector3.UP * 1.5
 		projectile.linear_velocity = get_throw_velocity()
-		inventory.bells -= 1
+		bells -= 1
 		
 func take_damage(damage):
 	health -= damage

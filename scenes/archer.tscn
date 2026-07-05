@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://citj32eiy4xax"]
+
+[ext_resource type="PackedScene" uid="uid://bnime8fac8jxd" path="res://models/archer.fbx" id="1_jggnj"]
+
+[node name="archer" unique_id=373335276 groups=["Model"] instance=ExtResource("1_jggnj")]
