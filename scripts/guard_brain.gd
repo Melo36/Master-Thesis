@@ -8,7 +8,7 @@ extends CharacterBody3D
 @onready var state_indicator: Label3D = $StateIndicator
 @onready var vision_cone: MeshInstance3D = $VisionCone
 @onready var shuriken_indicator: Sprite3D = $ShurikenIndicator
-@onready var player: CharacterBody3D = $"../../Player"
+@onready var player: CharacterBody3D
 @onready var muzzle_raycast: RayCast3D = $MuzzleRaycast
 @onready var gun_sound_player: RaytracedAudioPlayer3D = $GunSoundPlayer
 
@@ -57,6 +57,7 @@ var _fire_timer: float = 0.0
 func _ready() -> void:
 	# Defer one physics frame so the navigation map is fully synced.
 	await get_tree().physics_frame
+	player = get_tree().get_first_node_in_group("Player")
 	chase_solver.navigation_map = nav_agent.get_navigation_map()
 	chase_solver.chase_destination_ready.connect(_on_search_destination_ready)
 	chase_solver.chase_failed.connect(_on_search_failed)

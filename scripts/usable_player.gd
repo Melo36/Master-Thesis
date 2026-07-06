@@ -34,7 +34,6 @@ var crouch_press_time := 0.0
 # VISIBILITY
 # =========================
 
-@onready var sun_light: DirectionalLight3D = $"../SunLight"
 @export var base_ambient_light: float = 0.05 # The minimum brightness in total shadow
 var light_posts : Array[OmniLight3D] = []
 var visibility := 1.0
@@ -102,7 +101,7 @@ var bells: int = 3:
 # ==================================================
 func _ready():
 	lookat = get_tree().get_nodes_in_group("CameraController")[0].get_node("CameraLookAt")
-	animationTree = $hamster_character/AnimationTree
+	animationTree = find_child("AnimationTree", true)
 	audioPlayer = $RaytracedAudioPlayer3D
 	guards = get_tree().get_nodes_in_group("Guard")
 	state_machine = animationTree.get("parameters/playback")
