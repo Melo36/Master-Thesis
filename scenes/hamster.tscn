@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://bubkruqvhn4k7"]
 
-[ext_resource type="PackedScene" uid="uid://bjru4hnbbitmh" path="res://scenes/character_without_hitbox.tscn" id="1_ejryl"]
 [ext_resource type="Script" uid="uid://d0u21wkhrp7qu" path="res://scripts/usable_player.gd" id="1_vs5a8"]
 [ext_resource type="Script" uid="uid://bjpmu5sklv5h8" path="res://addons/raytraced_audio/raytraced_audio_listener.gd" id="2_apgft"]
 [ext_resource type="AudioStream" uid="uid://goyage7rxmg6" path="res://sounds/620340__marb7e__footsteps_sneakers_underbrush_walk04.wav" id="3_7vfxu"]
@@ -11,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cnyloppek8r84" path="res://resources/bell.png" id="8_qowr5"]
 [ext_resource type="Script" uid="uid://6cjxmevy1c0i" path="res://scripts/inventory.gd" id="10_p16ke"]
 [ext_resource type="Texture2D" uid="uid://dairqkv1rcfbp" path="res://scenes/light-yt/player/assets/light_meter_ui.svg" id="10_vs5a8"]
+[ext_resource type="Script" uid="uid://dwhisyu7pd11j" path="res://scenes/model_handler.gd" id="11_vs5a8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_apgft"]
 
@@ -105,37 +105,6 @@ region = Rect2(0, 0, 256, 128)
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=527582928 groups=["Player"]]
 script = ExtResource("1_vs5a8")
-
-[node name="hamster_character" parent="." unique_id=324042045 groups=["Model"] instance=ExtResource("1_ejryl")]
-
-[node name="Skeleton3D" parent="hamster_character" index="2" unique_id=1560551287]
-bones/0/position = Vector3(0.017719585, 0.15770221, 0.005367011)
-bones/0/rotation = Quaternion(0.017692022, 0.22209817, 0.0043680295, 0.974854)
-bones/1/rotation = Quaternion(-0.03273705, -0.17062296, 0.0037826947, 0.98478514)
-bones/2/rotation = Quaternion(0.0058169398, -0.02740012, 0.00092197245, 0.9996072)
-bones/3/rotation = Quaternion(0.0058169384, -0.02740013, 0.0009219721, 0.9996072)
-bones/4/rotation = Quaternion(0.043922782, 0.0117006395, -0.023931634, 0.99867976)
-bones/5/rotation = Quaternion(0.0048527466, 0.0054191127, 0.02997709, 0.9995241)
-bones/7/rotation = Quaternion(-0.66106915, -0.34084046, 0.50670505, -0.4359649)
-bones/8/rotation = Quaternion(0.24658738, 0.60780966, 0.23628266, 0.71689093)
-bones/9/rotation = Quaternion(0.34393275, -0.7882123, 0.34060755, -0.3800238)
-bones/10/rotation = Quaternion(0.103689045, 0.09763902, -0.012963877, 0.9897208)
-bones/11/rotation = Quaternion(-0.27637488, -0.74592173, 0.12203325, 0.59357023)
-bones/12/rotation = Quaternion(0.36818972, 0.28242278, 0.41424373, 0.78299165)
-bones/15/rotation = Quaternion(0.6195477, -0.37678882, 0.5785832, 0.37340653)
-bones/16/rotation = Quaternion(0.4221792, -0.04147506, 0.25335455, 0.8693999)
-bones/17/rotation = Quaternion(0.044334445, -0.20018682, -0.16926117, 0.96400756)
-bones/18/rotation = Quaternion(-0.0016976371, 0.40926367, -0.029034402, 0.9119525)
-bones/19/rotation = Quaternion(-0.2620743, 0.95420676, 0.12031256, -0.07957068)
-bones/20/rotation = Quaternion(0.12727816, -0.13709547, -0.36561695, 0.9117727)
-bones/23/rotation = Quaternion(0.040461726, -0.5355009, 0.7275269, -0.4269734)
-bones/24/rotation = Quaternion(-0.04874432, -0.96062285, 0.27278936, 0.020343766)
-bones/25/rotation = Quaternion(0.7972723, -0.3306926, 0.5029247, -0.045453504)
-bones/26/rotation = Quaternion(0.35137886, 0.3504678, -0.28761005, 0.8191372)
-bones/28/rotation = Quaternion(-0.115937345, 0.663271, 0.674569, 0.30263332)
-bones/29/rotation = Quaternion(-0.08800511, -0.03636761, 0.093697935, 0.9910364)
-bones/30/rotation = Quaternion(0.10135907, 0.88527465, 0.05571556, 0.45045626)
-bones/31/rotation = Quaternion(0.26128104, -0.583684, 0.2799871, 0.7159975)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1083905860]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9204389, -0.10208094)
@@ -340,6 +309,7 @@ texture_under = SubResource("AtlasTexture_b6co6")
 texture_progress = SubResource("AtlasTexture_lkxso")
 tint_under = Color(1, 1, 1, 0.752941)
 
-[connection signal="body_entered" from="Shuriken" to="Shuriken" method="_on_body_entered"]
+[node name="ModelHandler" type="Node3D" parent="." unique_id=1661138218]
+script = ExtResource("11_vs5a8")
 
-[editable path="hamster_character"]
+[connection signal="body_entered" from="Shuriken" to="Shuriken" method="_on_body_entered"]

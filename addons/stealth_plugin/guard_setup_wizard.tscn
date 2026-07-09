@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://bjkxkas6lvj5q"]
+
+[ext_resource type="Script" uid="uid://bfsa34s15yf06" path="res://addons/stealth_plugin/model_selection.gd" id="1_47hjw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kcgiy"]
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0s8i"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.38431373, 0.38431373, 0.38431373, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpcx7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.3310191, 0.33101887, 0.3310189, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="GuardSetupWizard" type="ScrollContainer" unique_id=579057488]
+anchors_preset = -1
+anchor_right = 0.65900004
+anchor_bottom = 1.1370001
+offset_right = -308.16803
+offset_bottom = 462.22394
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=611390065]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Title" type="BoxContainer" parent="VBoxContainer" unique_id=710120754]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer/Title" unique_id=1874858486]
+layout_mode = 2
+text = "Guard Configurator"
+label_settings = SubResource("LabelSettings_kcgiy")
+
+[node name="Combat" type="FoldableContainer" parent="VBoxContainer" unique_id=2144026021]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Combat"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Combat" unique_id=741960477]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Combat/MarginContainer" unique_id=2120040244]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="HealthLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=2048678001]
+layout_mode = 2
+tooltip_text = "Amount of health the player character has."
+mouse_filter = 0
+text = "Health"
+
+[node name="health" type="SpinBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=1435017260 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 1000.0
+value = 100.0
+
+[node name="Cosmetic" type="FoldableContainer" parent="VBoxContainer" unique_id=1277403366]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Cosmetic"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Cosmetic" unique_id=890872978]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="ModelSelection" type="GridContainer" parent="VBoxContainer/Cosmetic/MarginContainer" unique_id=628685816]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+script = ExtResource("1_47hjw")
+
+[node name="3DModelLabel" type="Label" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1794324202]
+layout_mode = 2
+tooltip_text = "Amount of health the player character has."
+mouse_filter = 0
+text = "3D Model"
+
+[node name="AssignButton" type="Button" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1437765789]
+layout_mode = 2
+text = "Assign 3D Model"
+
+[node name="ModelFileDialog" type="FileDialog" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=702657820]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.fbx", "*.glb", "*.tscn")
+
+[node name="MovementSpeed" type="FoldableContainer" parent="VBoxContainer" unique_id=1782888615]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Movement Speed"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MovementSpeed" unique_id=97859946]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MovementSpeed/MarginContainer" unique_id=635904320]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="WalkingSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=331727210]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Walking Speed"
+
+[node name="walk_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=589941195 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 20.0
+step = 0.5
+value = 5.0
+
+[node name="ApplyButton" type="Button" parent="VBoxContainer" unique_id=1186990833]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_d0s8i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dpcx7")
+text = "Apply
+"

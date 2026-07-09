@@ -4,7 +4,6 @@ extends EditorPlugin
 @onready var apply_button: Button
 var model_selection: GridContainer
 
-
 func _enter_tree() -> void:
 	var wizard = preload("res://addons/stealth_plugin/setup_wizard.tscn").instantiate()
 
@@ -40,7 +39,7 @@ func _get_or_create_single_player(scene: Node) -> Node:
 	# If multiple exist → destroy extras (prevents duplication permanently)
 	if players.size() > 1:
 		for i in range(1, players.size()):
-			players[i].queue_free()
+			players[i].free()
 
 	# If one exists → reuse it
 	if players.size() == 1:
@@ -84,23 +83,11 @@ func _apply_inputs_to_player(player: Node) -> void:
 # ------------------------------------------------------------
 
 func _replace_model(player: Node, owner: Node) -> void:
-	var model_root := player.get_node_or_null("Model")
-
-	if model_root == null:
-		model_root = Node3D.new()
-		model_root.name = "Model"
-		player.add_child(model_root)
-		model_root.owner = owner
-
-	# Clear existing model safely
-	for c in model_root.get_children():
-		c.queue_free()
-
-	# Add new model
-	var instance : Node = load(model_selection.modelPath).instantiate()
-	model_root.add_child(instance)
-
-	_set_owner_recursive(instance, owner)
+	# Simply pass the path string to the player. 
+	# The player's setter script will handle the heavy lifting!
+	var model_handler = player.find_child("ModelHandler")
+	if model_handler:
+		model_handler.custom_model_path = model_selection.modelPath
 
 
 # ------------------------------------------------------------

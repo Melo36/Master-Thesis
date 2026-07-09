@@ -101,10 +101,13 @@ var bells: int = 3:
 # ==================================================
 func _ready():
 	lookat = get_tree().get_nodes_in_group("CameraController")[0].get_node("CameraLookAt")
+	for child in get_children():
+		print(child.name)
 	animationTree = find_child("AnimationTree", true)
 	audioPlayer = $RaytracedAudioPlayer3D
 	guards = get_tree().get_nodes_in_group("Guard")
-	state_machine = animationTree.get("parameters/playback")
+	if animationTree:
+		state_machine = animationTree.get("parameters/playback")
 	sub_viewport.debug_draw = 2
 	
 	if trajectory_line:
@@ -139,7 +142,7 @@ func _input(event):
 		elif stance == Stance.CRAWL: stance = Stance.CROUCH
 		crouch_pressed = false
 		
-	if meele_enabled && event.is_action_pressed("punch"):
+	if meele_enabled && state_machine && event.is_action_pressed("punch"):
 		state_machine.travel("hurricane")
 		var space_state = get_world_3d().direct_space_state
 	
@@ -198,9 +201,9 @@ func _physics_process(delta):
 	handle_movement(direction, get_speed())
 	update_animation(input_dir)
 
-	if stance == Stance.CRAWL:
+	if stance == Stance.CRAWL && animationTree:
 		animationTree.set("parameters/playback_speed", 1.0 if direction != Vector3.ZERO else 0.0)
-	else:
+	elif animationTree:
 		animationTree.set("parameters/playback_speed", 1.0)
 	
 	if direction != Vector3.ZERO: emit_footsteps()
@@ -325,6 +328,8 @@ func handle_movement(direction: Vector3, speed: float):
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 func update_animation(input_dir: Vector2):
+	if !animationTree:
+		return
 	var on_floor = is_on_floor()
 	animationTree.set("parameters/conditions/idle", input_dir == Vector2.ZERO and on_floor)
 	animationTree.set("parameters/conditions/falling", not on_floor)
