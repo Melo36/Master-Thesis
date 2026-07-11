@@ -66,49 +66,121 @@ theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 2
 
-[node name="HealthLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=2048678001]
+[node name="AttackRangeLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=2048678001]
 layout_mode = 2
 tooltip_text = "Amount of health the player character has."
 mouse_filter = 0
-text = "Health"
+text = "Attack Range"
 
-[node name="health" type="SpinBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=1435017260 groups=["ValueInput"]]
+[node name="attack_range" type="SpinBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=1435017260 groups=["ValueInput"]]
 layout_mode = 2
-max_value = 1000.0
-value = 100.0
+value = 15.0
+suffix = "m"
 
-[node name="Cosmetic" type="FoldableContainer" parent="VBoxContainer" unique_id=1277403366]
+[node name="FireRateLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=556122210]
+layout_mode = 2
+tooltip_text = "Amount of health the player character has."
+mouse_filter = 0
+text = "Fire Rate"
+
+[node name="fire_rate" type="SpinBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=1773986018 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+value = 1.5
+
+[node name="AimingWindupLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=743890935]
+layout_mode = 2
+tooltip_text = "Amount of health the player character has."
+mouse_filter = 0
+text = "Aiming Windup"
+
+[node name="aiming_windup" type="SpinBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=114131733 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+value = 0.5
+suffix = "s"
+
+[node name="Search" type="FoldableContainer" parent="VBoxContainer" unique_id=1277403366]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-title = "Cosmetic"
+title = "Search"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Cosmetic" unique_id=890872978]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Search" unique_id=890872978]
 layout_mode = 2
 theme_override_constants/margin_left = 18
 
-[node name="ModelSelection" type="GridContainer" parent="VBoxContainer/Cosmetic/MarginContainer" unique_id=628685816]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Search/MarginContainer" unique_id=628685816]
 layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 2
 script = ExtResource("1_47hjw")
 
-[node name="3DModelLabel" type="Label" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1794324202]
+[node name="SearchArrivalToleranceLabel" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=1482830447]
 layout_mode = 2
 tooltip_text = "Amount of health the player character has."
 mouse_filter = 0
-text = "3D Model"
+text = "Search Arrival Tolerance"
 
-[node name="AssignButton" type="Button" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1437765789]
+[node name="search_arrival_tolerance" type="SpinBox" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=716571188 groups=["ValueInput"]]
 layout_mode = 2
-text = "Assign 3D Model"
+max_value = 10.0
+value = 1.0
+suffix = "m"
 
-[node name="ModelFileDialog" type="FileDialog" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=702657820]
-oversampling_override = 1.0
-title = "Open a File"
-position = Vector2i(0, 36)
-file_mode = 0
-filters = PackedStringArray("*.fbx", "*.glb", "*.tscn")
+[node name="InvestigateArrivalToleranceLabel2" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=1952443874]
+layout_mode = 2
+tooltip_text = "Amount of health the player character has."
+mouse_filter = 0
+text = "Investigate Arrival Tolerance"
+
+[node name="investigate_arrival_tolerance" type="SpinBox" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=883718160 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 10.0
+value = 1.0
+suffix = "m"
+
+[node name="NoiseInteruptLabel" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=214747593]
+layout_mode = 2
+tooltip_text = "Amount of health the player character has."
+mouse_filter = 0
+text = "Search Noise Interrupt"
+
+[node name="search_noise_interrupt" type="SpinBox" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=800814658 groups=["ValueInput"]]
+layout_mode = 2
+min_value = -10.0
+max_value = 10.0
+step = 0.5
+value = 1.5
+suffix = "m"
+
+[node name="MinSearchLabel" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=1736392532]
+layout_mode = 2
+tooltip_text = "Amount of health the player character has."
+mouse_filter = 0
+text = "Minimum Search Duration"
+
+[node name="min_search_duration" type="SpinBox" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=945718075 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 50.0
+step = 0.5
+value = 5.0
+suffix = "s"
+
+[node name="WallHacksLabel" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=608540060]
+layout_mode = 2
+tooltip_text = "Amount of health the player character has."
+mouse_filter = 0
+text = "Search Wall Hacks"
+
+[node name="wall_hacks" type="SpinBox" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=510602869 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+value = 3.0
+suffix = "s"
 
 [node name="MovementSpeed" type="FoldableContainer" parent="VBoxContainer" unique_id=1782888615]
 layout_mode = 2
@@ -131,11 +203,195 @@ tooltip_text = "The speed with which the player moves while walking. Value range
 mouse_filter = 0
 text = "Walking Speed"
 
-[node name="walk_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=589941195 groups=["ValueInput"]]
+[node name="speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=589941195 groups=["ValueInput"]]
 layout_mode = 2
 max_value = 20.0
 step = 0.5
 value = 5.0
+
+[node name="ChaseSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=2018991263]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Chase Speed Multiplier"
+
+[node name="chase_speed_multiplier" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=1336532143 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+value = 1.5
+
+[node name="Noise" type="FoldableContainer" parent="VBoxContainer" unique_id=866872778]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Noise"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Noise" unique_id=297642499]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Noise/MarginContainer" unique_id=2102302448]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="MaxSoundLabel" type="Label" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=834523341]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Maximum Noise Perception"
+
+[node name="max_strength" type="SpinBox" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=1210714140 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="ChaseSpeedLabel" type="Label" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=1724257673]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Decay Rate"
+
+[node name="chase_speed_multiplier" type="SpinBox" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=1042045107 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 5.0
+step = 0.5
+value = 0.5
+
+[node name="Vision" type="FoldableContainer" parent="VBoxContainer" unique_id=734484888]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Vision"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Vision" unique_id=1908089359]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Vision/MarginContainer" unique_id=428153561]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="ViewDistanceLabel" type="Label" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=235335615]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Viewing Distance"
+
+[node name="view_distance" type="SpinBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=1571021010 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 50.0
+value = 1.0
+suffix = "m"
+
+[node name="ViewAngleLabel" type="Label" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=104008441]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Viewing Angle"
+
+[node name="view_angel_deg" type="SpinBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=518024755 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 360.0
+value = 60.0
+suffix = "°"
+
+[node name="DetectionSpeedLabel" type="Label" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=905038258]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Detection Speed"
+
+[node name="detection_speed" type="SpinBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=1697439631 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 20.0
+step = 0.5
+value = 2.5
+
+[node name="MemoryDurationLabel" type="Label" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=819231496]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Memory Duration"
+
+[node name="memory_duration" type="SpinBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=1147218355 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 50.0
+step = 0.5
+value = 2.0
+
+[node name="FalloffMinLabel" type="Label" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=485639770]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Detection Falloff Minimum"
+
+[node name="detection_falloff_min" type="SpinBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=1086639605 groups=["ValueInput"]]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.1
+
+[node name="DebugLabel" type="Label" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=1181900971]
+layout_mode = 2
+tooltip_text = "Defines whether the player character has a meele attack."
+mouse_filter = 0
+text = "Show Debug Cone"
+
+[node name="show_debug_cone" type="CheckBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=23515736 groups=["ValueInput"]]
+layout_mode = 2
+button_pressed = true
+
+[node name="State Indicator" type="FoldableContainer" parent="VBoxContainer" unique_id=1805796452]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "State Indicator"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/State Indicator" unique_id=126994471]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/State Indicator/MarginContainer" unique_id=286826441]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="ChaseColorLabel" type="Label" parent="VBoxContainer/State Indicator/MarginContainer/GridContainer" unique_id=1613782483]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Chase Color"
+
+[node name="color_chase" type="ColorPickerButton" parent="VBoxContainer/State Indicator/MarginContainer/GridContainer" unique_id=2091617398]
+layout_mode = 2
+text = "AA"
+color = Color(1, 0.15, 0.15, 1)
+
+[node name="InvestigateColorLabel" type="Label" parent="VBoxContainer/State Indicator/MarginContainer/GridContainer" unique_id=1909427515]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Investigate Color"
+
+[node name="color_investigate" type="ColorPickerButton" parent="VBoxContainer/State Indicator/MarginContainer/GridContainer" unique_id=179204247]
+layout_mode = 2
+text = "AA"
+color = Color(1, 0.9, 0.15, 1)
+
+[node name="DetectingColorLabel" type="Label" parent="VBoxContainer/State Indicator/MarginContainer/GridContainer" unique_id=1460176148]
+layout_mode = 2
+tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+mouse_filter = 0
+text = "Detecting Color"
+
+[node name="color_detecting" type="ColorPickerButton" parent="VBoxContainer/State Indicator/MarginContainer/GridContainer" unique_id=532448901]
+layout_mode = 2
+text = "AA"
+color = Color(1, 1, 1, 1)
 
 [node name="ApplyButton" type="Button" parent="VBoxContainer" unique_id=1186990833]
 layout_mode = 2

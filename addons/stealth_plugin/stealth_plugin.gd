@@ -6,6 +6,7 @@ var model_selection: GridContainer
 
 func _enter_tree() -> void:
 	var wizard = preload("res://addons/stealth_plugin/setup_wizard.tscn").instantiate()
+	var guardWizard = preload("res://addons/stealth_plugin/guard_setup_wizard.tscn").instantiate()
 
 	apply_button = wizard.find_children("ApplyButton", "", true)[0]
 	model_selection = wizard.find_children("ModelSelection", "", true)[0]
@@ -13,6 +14,7 @@ func _enter_tree() -> void:
 	apply_button.pressed.connect(_on_apply_button_pressed)
 
 	add_control_to_dock(DOCK_SLOT_LEFT_BL, wizard)
+	add_control_to_dock(DOCK_SLOT_LEFT_BL, guardWizard)
 
 
 func _on_apply_button_pressed() -> void:
