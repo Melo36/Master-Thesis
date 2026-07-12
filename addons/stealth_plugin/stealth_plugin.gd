@@ -2,20 +2,33 @@
 extends EditorPlugin
 
 @onready var apply_button: Button
+@onready var apply_button_guard: Button
 var model_selection: GridContainer
 
 func _enter_tree() -> void:
 	var wizard = preload("res://addons/stealth_plugin/setup_wizard.tscn").instantiate()
 	var guardWizard = preload("res://addons/stealth_plugin/guard_setup_wizard.tscn").instantiate()
 
-	apply_button = wizard.find_children("ApplyButton", "", true)[0]
+	apply_button = wizard.find_child("ApplyButton", true)
+	apply_button_guard = guardWizard.find_child("ApplyButton", true)
 	model_selection = wizard.find_children("ModelSelection", "", true)[0]
 
 	apply_button.pressed.connect(_on_apply_button_pressed)
+	apply_button_guard.pressed.connect(_on_apply_button_guard_pressed)
 
 	add_control_to_dock(DOCK_SLOT_LEFT_BL, wizard)
 	add_control_to_dock(DOCK_SLOT_LEFT_BL, guardWizard)
 
+
+func _on_apply_button_guard_pressed() -> void:
+	var scene := get_editor_interface().get_edited_scene_root()
+	if scene == null:
+		return
+		
+	var guard = _create_guard(scene)
+		
+	_apply_inputs_to_guard(guard)
+	
 
 func _on_apply_button_pressed() -> void:
 	var scene := get_editor_interface().get_edited_scene_root()
@@ -58,6 +71,30 @@ func _get_or_create_single_player(scene: Node) -> Node:
 	_set_owner_recursive(player, scene)
 
 	return player
+	
+	
+func _create_guard(scene: Node) -> Node:
+	var parent = Node3D.new()
+	parent.name = "Guard"
+	var patrolRoute = Node3D.new()
+	patrolRoute.name = "PatrolRoute"
+	parent.add_child(patrolRoute)
+
+	for i in range(5):
+		patrolRoute.add_child(Marker3D.new())
+	
+	var guard := preload("res://scenes/guard.tscn").instantiate()
+	guard.name = "Guard"
+	guard.add_to_group("Guard")
+	parent.add_child(guard)
+
+	scene.add_child(parent)
+
+	# IMPORTANT: ownership must be recursive for saving
+	_set_owner_recursive(parent, scene)
+
+	# Return this because we dont need the parent
+	return guard
 
 
 # ------------------------------------------------------------
@@ -76,6 +113,41 @@ func _apply_inputs_to_player(player: Node) -> void:
 			player.set(input.name, input.value)
 		elif input is CheckBox:
 			player.set(input.name, input.pressed)
+
+		index += 1
+
+
+func _apply_inputs_to_guard(guard: Node) -> void:
+	var inputs := get_tree().get_nodes_in_group("ValueInput")
+	var index := 0
+	var movement = guard.find_child("GuardMovement")
+	var noise = guard.find_child("NoiseSensor")
+	var vision = guard.find_child("VisionSensor")
+	var state_indicator = guard.find_child("StateIndicator")
+
+	for input in inputs:
+		if index >= 21:
+			break
+			
+		var parent = input.get_parent().get_parent().name
+		var script = guard
+		
+		if parent == "MovementSpeed":
+			script = movement
+		elif parent == "Noise":
+			script = noise
+		elif parent == "Vision":
+			script = vision
+		elif parent == "State Indicator":
+			script = state_indicator
+			
+
+		if input is SpinBox:
+			script.set(input.name, input.value)
+		elif input is CheckBox:
+			script.set(input.name, input.pressed)
+		elif input is ColorPickerButton:
+			script.set(input.name, input.color)
 
 		index += 1
 

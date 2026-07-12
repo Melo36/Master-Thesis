@@ -366,7 +366,7 @@ tooltip_text = "The speed with which the player moves while walking. Value range
 mouse_filter = 0
 text = "Chase Color"
 
-[node name="color_chase" type="ColorPickerButton" parent="VBoxContainer/State Indicator/MarginContainer/GridContainer" unique_id=2091617398]
+[node name="color_chase" type="ColorPickerButton" parent="VBoxContainer/State Indicator/MarginContainer/GridContainer" unique_id=2091617398 groups=["ValueInput"]]
 layout_mode = 2
 text = "AA"
 color = Color(1, 0.15, 0.15, 1)
@@ -377,7 +377,7 @@ tooltip_text = "The speed with which the player moves while walking. Value range
 mouse_filter = 0
 text = "Investigate Color"
 
-[node name="color_investigate" type="ColorPickerButton" parent="VBoxContainer/State Indicator/MarginContainer/GridContainer" unique_id=179204247]
+[node name="color_investigate" type="ColorPickerButton" parent="VBoxContainer/State Indicator/MarginContainer/GridContainer" unique_id=179204247 groups=["ValueInput"]]
 layout_mode = 2
 text = "AA"
 color = Color(1, 0.9, 0.15, 1)
@@ -388,7 +388,7 @@ tooltip_text = "The speed with which the player moves while walking. Value range
 mouse_filter = 0
 text = "Detecting Color"
 
-[node name="color_detecting" type="ColorPickerButton" parent="VBoxContainer/State Indicator/MarginContainer/GridContainer" unique_id=532448901]
+[node name="color_detecting" type="ColorPickerButton" parent="VBoxContainer/State Indicator/MarginContainer/GridContainer" unique_id=532448901 groups=["ValueInput"]]
 layout_mode = 2
 text = "AA"
 color = Color(1, 1, 1, 1)
