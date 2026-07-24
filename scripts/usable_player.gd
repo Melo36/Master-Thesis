@@ -103,7 +103,11 @@ func _ready():
 	lookat = get_tree().get_nodes_in_group("CameraController")[0].get_node("CameraLookAt")
 	for child in get_children():
 		print(child.name)
+		for child2 in child.get_children():
+			print("    - ", child2.name)
+			
 	animationTree = find_child("AnimationTree", true)
+	print("Ich habe das Kind ", animationTree)
 	audioPlayer = $RaytracedAudioPlayer3D
 	guards = get_tree().get_nodes_in_group("Guard")
 	if animationTree:

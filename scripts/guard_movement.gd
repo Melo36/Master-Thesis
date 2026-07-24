@@ -6,7 +6,7 @@ extends Node3D
 # Speed multiplier applied while CHASE-ing or SEARCH_LOST-ing (the brain
 # routes SEARCH_LOST through CHASE), to make the guard feel threatening.
 @export var chase_speed_multiplier: float = 1.5
-@onready var patrol_points = $"../../PatrolRoute".get_children()
+@onready var patrol_points = $"../../Path3D".curve
 @export var tolerance = 5
 
 var current_index := 0
@@ -81,8 +81,8 @@ func _physics_process(delta: float) -> void:
 		guard.velocity = Vector3.ZERO
 	
 func get_next_patrol_point() -> Vector3:
-	var point = patrol_points[current_index].global_position
-	current_index = (current_index + 1) % patrol_points.size()
+	var point = patrol_points.get_point_position(current_index)
+	current_index = (current_index + 1) % patrol_points.point_count
 	return point
 
 func move_along_nav(delta: float, move_speed: float = speed):

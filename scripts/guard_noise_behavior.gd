@@ -18,10 +18,8 @@ func register_sound(pos: Vector3, strength: float = 1.0):
 	last_sound_position = pos
 	
 	var env_sounds = get_environment_noise()
-	print("Env sounds, ", env_sounds)
 	# Accumulate instead of overwrite
 	sound_strength += strength - env_sounds
-	print("Sound strength", sound_strength)
 	sound_strength = clamp(sound_strength, 0.0, max_strength)
 	return sound_strength
 

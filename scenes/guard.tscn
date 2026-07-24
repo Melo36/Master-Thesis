@@ -13,7 +13,8 @@
 [ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://addons/raytraced_audio/raytraced_audio_player_3d.gd" id="11_17ufb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c4sgu"]
-height = 1.7612305
+radius = 1.0
+height = 2.844
 
 [sub_resource type="GDScript" id="GDScript_ci2qi"]
 script/source = "extends NavigationAgent3D
@@ -34,7 +35,7 @@ min_search_duration = 20.0
 transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, 0, -1.0735747, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=937642194]
-transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0.23876953, 0)
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.23876953, 0)
 shape = SubResource("CapsuleShape3D_c4sgu")
 
 [node name="RaytracedAudioListener" type="AudioListener3D" parent="." unique_id=955631534]

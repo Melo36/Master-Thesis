@@ -9,11 +9,10 @@ const DEFAULT_MODEL_PATH = "res://scenes/character_without_hitbox.tscn"
 		custom_model_path = value
 		if is_inside_tree():
 			_load_model()
-
+			
 func _ready() -> void:
-	# This runs BOTH in the editor when spawned, and at runtime when the game starts
-	print(DEFAULT_MODEL_PATH)
-	_load_model()
+	if !Engine.is_editor_hint():
+		_load_model()
 
 func _load_model() -> void:
 	var model_root := get_node_or_null("Model")
@@ -36,6 +35,9 @@ func _load_model() -> void:
 
 	if ResourceLoader.exists(path_to_load):
 		var instance = load(path_to_load).instantiate()
+		print("I am ", instance.name)
+		for child in instance.get_children():
+			print(child.name)
 		# Add AnimationTree to Model Node
 		if !instance.find_child("AnimationTree", true):
 			var animationTree = AnimationTree.new()

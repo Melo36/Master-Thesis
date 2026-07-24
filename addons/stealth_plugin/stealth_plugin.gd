@@ -40,8 +40,7 @@ func _on_apply_button_pressed() -> void:
 
 	_apply_inputs_to_player(player)
 
-	if model_selection.modelPath != "":
-		_replace_model(player, scene)
+	_replace_model(player, scene)
 
 
 # ------------------------------------------------------------
@@ -76,17 +75,15 @@ func _get_or_create_single_player(scene: Node) -> Node:
 func _create_guard(scene: Node) -> Node:
 	var parent = Node3D.new()
 	parent.name = "Guard"
-	var patrolRoute = Node3D.new()
+	var patrolRoute = Path3D.new()
 	patrolRoute.name = "PatrolRoute"
 	parent.add_child(patrolRoute)
-
-	for i in range(5):
-		patrolRoute.add_child(Marker3D.new())
 	
 	var guard := preload("res://scenes/guard.tscn").instantiate()
 	guard.name = "Guard"
 	guard.add_to_group("Guard")
 	parent.add_child(guard)
+	guard.global_position.y = 0.6
 
 	scene.add_child(parent)
 
