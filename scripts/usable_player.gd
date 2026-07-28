@@ -106,8 +106,7 @@ func _ready():
 		for child2 in child.get_children():
 			print("    - ", child2.name)
 			
-	animationTree = find_child("AnimationTree", true)
-	print("Ich habe das Kind ", animationTree)
+	animationTree = find_child("AnimationTree", true, false)
 	audioPlayer = $RaytracedAudioPlayer3D
 	guards = get_tree().get_nodes_in_group("Guard")
 	if animationTree:
@@ -335,6 +334,7 @@ func update_animation(input_dir: Vector2):
 	if !animationTree:
 		return
 	var on_floor = is_on_floor()
+	
 	animationTree.set("parameters/conditions/idle", input_dir == Vector2.ZERO and on_floor)
 	animationTree.set("parameters/conditions/falling", not on_floor)
 	animationTree.set("parameters/conditions/landed", on_floor)

@@ -2,4 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bnime8fac8jxd" path="res://models/archer.fbx" id="1_jggnj"]
 
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jggnj"]
+
 [node name="archer" unique_id=373335276 groups=["Model"] instance=ExtResource("1_jggnj")]
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=1842138018]
+tree_root = SubResource("AnimationNodeStateMachine_jggnj")
+anim_player = NodePath("../AnimationPlayer")

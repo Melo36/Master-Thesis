@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dairqkv1rcfbp" path="res://scenes/light-yt/player/assets/light_meter_ui.svg" id="10_vs5a8"]
 [ext_resource type="Script" uid="uid://dwhisyu7pd11j" path="res://scenes/model_handler.gd" id="11_vs5a8"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_apgft"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7nt27"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qvwhv"]
 radius = 0.02
@@ -95,11 +95,11 @@ height = 0.6
 radial_segments = 4
 rings = 1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b6co6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6f3i"]
 atlas = ExtResource("10_vs5a8")
 region = Rect2(0, 128, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lkxso"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdqt8"]
 atlas = ExtResource("10_vs5a8")
 region = Rect2(0, 0, 256, 128)
 
@@ -108,7 +108,7 @@ script = ExtResource("1_vs5a8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1083905860]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9204389, -0.10208094)
-shape = SubResource("CapsuleShape3D_apgft")
+shape = SubResource("CapsuleShape3D_7nt27")
 
 [node name="LookAt" type="Node3D" parent="." unique_id=1403502693]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2297807, -0.21631289)
@@ -305,8 +305,8 @@ max_value = 1.0
 step = 0.0
 value = 0.25
 fill_mode = 7
-texture_under = SubResource("AtlasTexture_b6co6")
-texture_progress = SubResource("AtlasTexture_lkxso")
+texture_under = SubResource("AtlasTexture_k6f3i")
+texture_progress = SubResource("AtlasTexture_xdqt8")
 tint_under = Color(1, 1, 1, 0.752941)
 
 [node name="ModelHandler" type="Node3D" parent="." unique_id=1661138218]
