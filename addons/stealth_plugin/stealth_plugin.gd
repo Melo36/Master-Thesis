@@ -5,30 +5,33 @@ extends EditorPlugin
 @onready var apply_button_guard: Button
 var model_selection: GridContainer
 
+var wizard: Control
+var guard_wizard: Control
+
 func _enter_tree() -> void:
-	var wizard = preload("res://addons/stealth_plugin/setup_wizard.tscn").instantiate()
-	var guardWizard = preload("res://addons/stealth_plugin/guard_setup_wizard.tscn").instantiate()
+	if wizard == null:
+		wizard = preload("res://addons/stealth_plugin/setup_wizard.tscn").instantiate()
+		add_control_to_dock(DOCK_SLOT_LEFT_BL, wizard)
+		
+	if guard_wizard == null:
+		guard_wizard = preload("res://addons/stealth_plugin/guard_setup_wizard.tscn").instantiate()
+		add_control_to_dock(DOCK_SLOT_LEFT_BL, guard_wizard)
 
 	apply_button = wizard.find_child("ApplyButton", true)
-	apply_button_guard = guardWizard.find_child("ApplyButton", true)
-	model_selection = wizard.find_children("ModelSelection", "", true)[0]
-
-	apply_button.pressed.connect(_on_apply_button_pressed)
+	apply_button_guard = guard_wizard.find_child("ApplyButton", true)
+	apply_button.pressed.connect(_on_apply_button_pressed) 
 	apply_button_guard.pressed.connect(_on_apply_button_guard_pressed)
-
-	add_control_to_dock(DOCK_SLOT_LEFT_BL, wizard)
-	add_control_to_dock(DOCK_SLOT_LEFT_BL, guardWizard)
-
-
-func _on_apply_button_guard_pressed() -> void:
-	var scene := get_editor_interface().get_edited_scene_root()
-	if scene == null:
-		return
-		
-	var guard = _create_guard(scene)
-		
-	_apply_inputs_to_guard(guard)
 	
+func _exit_tree() -> void:
+	if wizard:
+		remove_control_from_docks(wizard)
+		wizard.free()
+		wizard = null
+		
+	if guard_wizard:
+		remove_control_from_docks(guard_wizard)
+		guard_wizard.free()
+		guard_wizard = null
 
 func _on_apply_button_pressed() -> void:
 	var scene := get_editor_interface().get_edited_scene_root()
@@ -42,6 +45,15 @@ func _on_apply_button_pressed() -> void:
 
 	_replace_model(player, scene)
 
+func _on_apply_button_guard_pressed() -> void:
+	var scene := get_editor_interface().get_edited_scene_root()
+	if scene == null:
+		return
+		
+	var guard = _create_guard(scene)
+		
+	_apply_inputs_to_guard(guard)
+	
 
 # ------------------------------------------------------------
 # PLAYER (STRICT SINGLE INSTANCE GUARANTEE)
@@ -99,34 +111,30 @@ func _create_guard(scene: Node) -> Node:
 # ------------------------------------------------------------
 
 func _apply_inputs_to_player(player: Node) -> void:
-	var inputs := get_tree().get_nodes_in_group("ValueInput")
+	var inputs := get_tree().get_nodes_in_group("PlayerInput")
 	var index := 0
 
 	for input in inputs:
-		if index >= 15:
-			break
-
 		if input is SpinBox:
 			player.set(input.name, input.value)
 		elif input is CheckBox:
 			player.set(input.name, input.pressed)
 
 		index += 1
-
-
+		
 func _apply_inputs_to_guard(guard: Node) -> void:
-	var inputs := get_tree().get_nodes_in_group("ValueInput")
-	var index := 0
+	var inputs := get_tree().get_nodes_in_group("GuardInput")
+	var index = 0
 	var movement = guard.find_child("GuardMovement")
 	var noise = guard.find_child("NoiseSensor")
 	var vision = guard.find_child("VisionSensor")
+	var gadget_manager = guard.find_child("GadgetManager")
 	var state_indicator = guard.find_child("StateIndicator")
 
 	for input in inputs:
-		if index >= 21:
-			break
-			
-		var parent = input.get_parent().get_parent().name
+		if index > 22:
+			return
+		var parent = input.get_parent().get_parent().get_parent().name
 		var script = guard
 		
 		if parent == "MovementSpeed":
@@ -135,17 +143,20 @@ func _apply_inputs_to_guard(guard: Node) -> void:
 			script = noise
 		elif parent == "Vision":
 			script = vision
-		elif parent == "State Indicator":
+		elif parent == "StateIndicator":
 			script = state_indicator
-			
+		elif parent == "Gadgets":
+			script = gadget_manager
 
 		if input is SpinBox:
+			print(input.name, " ", input.value)
 			script.set(input.name, input.value)
 		elif input is CheckBox:
-			script.set(input.name, input.pressed)
+			print(input.name, " ", input.button_pressed)
+			script.set(input.name, input.button_pressed)
 		elif input is ColorPickerButton:
+			print(input.name, " ", input.color)
 			script.set(input.name, input.color)
-
 		index += 1
 
 
@@ -170,7 +181,3 @@ func _set_owner_recursive(node: Node, owner: Node) -> void:
 
 	for child in node.get_children():
 		_set_owner_recursive(child, owner)
-
-
-func _exit_tree() -> void:
-	pass

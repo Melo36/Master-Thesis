@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cnmpo1kw2n4xe"]
+
+[ext_resource type="PackedScene" uid="uid://dn4ywphfhromi" path="res://models/night_vision_goggles.glb" id="1_5ev4b"]
+
+[node name="Sketchfab_Scene" unique_id=686370974 instance=ExtResource("1_5ev4b")]

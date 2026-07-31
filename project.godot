@@ -32,6 +32,8 @@ Light=""
 EnvironmentSounds=""
 ValueInput=""
 Model=""
+PlayerInput=""
+GuardInput=""
 
 [input]
 

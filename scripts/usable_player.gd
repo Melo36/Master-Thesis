@@ -77,7 +77,6 @@ signal bells_changed(new_amount: int)
 var shuriken: int = 3:
 	set(value):
 		shuriken = value
-		shuriken_changed.emit(shuriken)
 
 var bells: int = 3:
 	set(value):
@@ -101,11 +100,7 @@ var bells: int = 3:
 # ==================================================
 func _ready():
 	lookat = get_tree().get_nodes_in_group("CameraController")[0].get_node("CameraLookAt")
-	for child in get_children():
-		print(child.name)
-		for child2 in child.get_children():
-			print("    - ", child2.name)
-			
+	
 	animationTree = find_child("AnimationTree", true, false)
 	audioPlayer = $RaytracedAudioPlayer3D
 	guards = get_tree().get_nodes_in_group("Guard")

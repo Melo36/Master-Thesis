@@ -93,7 +93,7 @@ tooltip_text = "Amount of health the player character has."
 mouse_filter = 0
 text = "Health"
 
-[node name="health" type="SpinBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=986516154 groups=["ValueInput"]]
+[node name="health" type="SpinBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=986516154 groups=["PlayerInput"]]
 layout_mode = 2
 max_value = 1000.0
 value = 100.0
@@ -104,7 +104,7 @@ tooltip_text = "Number of throwable weapons the player character starts with."
 mouse_filter = 0
 text = "Number of Throwables"
 
-[node name="shuriken" type="SpinBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=1754981510 groups=["ValueInput"]]
+[node name="shuriken" type="SpinBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=1754981510 groups=["PlayerInput"]]
 layout_mode = 2
 value = 3.0
 
@@ -114,7 +114,7 @@ tooltip_text = "Defines whether the player character has a meele attack."
 mouse_filter = 0
 text = "Meele Attack"
 
-[node name="meele_enabled" type="CheckBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=535550847 groups=["ValueInput"]]
+[node name="meele_enabled" type="CheckBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=535550847 groups=["PlayerInput"]]
 layout_mode = 2
 button_pressed = true
 
@@ -172,7 +172,7 @@ tooltip_text = "Noise the player character emits in decibels (dB) while walking.
 mouse_filter = 0
 text = "Walking Noise"
 
-[node name="walking_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=335852804 groups=["ValueInput"]]
+[node name="walking_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=335852804 groups=["PlayerInput"]]
 layout_mode = 2
 min_value = -80.0
 max_value = 80.0
@@ -184,7 +184,7 @@ tooltip_text = "Noise the player character emits in decibels (dB) while sprintin
 mouse_filter = 0
 text = "Sprinting Noise"
 
-[node name="sprinting_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1429585090 groups=["ValueInput"]]
+[node name="sprinting_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1429585090 groups=["PlayerInput"]]
 layout_mode = 2
 min_value = -80.0
 max_value = 80.0
@@ -197,7 +197,7 @@ tooltip_text = "Noise the player character emits in decibels (dB) while crouchin
 mouse_filter = 0
 text = "Crouched Noise"
 
-[node name="crouched_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1300906032 groups=["ValueInput"]]
+[node name="crouched_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1300906032 groups=["PlayerInput"]]
 layout_mode = 2
 min_value = -80.0
 max_value = 80.0
@@ -210,7 +210,7 @@ tooltip_text = "Noise the player character emits in decibels (dB) while crawling
 mouse_filter = 0
 text = "Crawling Noise"
 
-[node name="crawling_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=889972734 groups=["ValueInput"]]
+[node name="crawling_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=889972734 groups=["PlayerInput"]]
 layout_mode = 2
 min_value = -80.0
 max_value = 80.0
@@ -238,7 +238,7 @@ tooltip_text = "The speed with which the player moves while walking. Value range
 mouse_filter = 0
 text = "Walking Speed"
 
-[node name="walk_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=436236399 groups=["ValueInput"]]
+[node name="walk_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=436236399 groups=["PlayerInput"]]
 layout_mode = 2
 max_value = 20.0
 step = 0.5
@@ -250,7 +250,7 @@ tooltip_text = "The speed with which the player moves while sprinting. Value ran
 mouse_filter = 0
 text = "Sprinting Speed"
 
-[node name="sprint_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=115496417 groups=["ValueInput"]]
+[node name="sprint_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=115496417 groups=["PlayerInput"]]
 layout_mode = 2
 max_value = 20.0
 step = 0.5
@@ -262,7 +262,7 @@ tooltip_text = "The speed with which the player moves while crouching. Value ran
 mouse_filter = 0
 text = "Crouched Speed"
 
-[node name="crouch_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=248304569 groups=["ValueInput"]]
+[node name="crouch_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=248304569 groups=["PlayerInput"]]
 layout_mode = 2
 max_value = 20.0
 step = 0.5
@@ -274,7 +274,7 @@ tooltip_text = "The speed with which the player moves while crawling. Value rang
 mouse_filter = 0
 text = "Crawling Speed"
 
-[node name="crawl_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=384076248 groups=["ValueInput"]]
+[node name="crawl_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=384076248 groups=["PlayerInput"]]
 layout_mode = 2
 max_value = 20.0
 step = 0.5
@@ -301,7 +301,7 @@ tooltip_text = "The speed with which the throwing object is charged. Value range
 mouse_filter = 0
 text = "Number of Distractions"
 
-[node name="bells" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=643857856 groups=["ValueInput"]]
+[node name="bells" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=643857856 groups=["PlayerInput"]]
 layout_mode = 2
 rounded = true
 
@@ -311,7 +311,7 @@ tooltip_text = "The speed with which the throwing object is charged. Value range
 mouse_filter = 0
 text = "Charge Speed"
 
-[node name="charge_speed" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=674970070 groups=["ValueInput"]]
+[node name="charge_speed" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=674970070 groups=["PlayerInput"]]
 layout_mode = 2
 max_value = 10.0
 step = 0.5
@@ -323,7 +323,7 @@ tooltip_text = "Maximum value the throwing object can be charged to. Value range
 mouse_filter = 0
 text = "Maximum Charge"
 
-[node name="max_charge" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1749360306 groups=["ValueInput"]]
+[node name="max_charge" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1749360306 groups=["PlayerInput"]]
 layout_mode = 2
 max_value = 10.0
 step = 0.5
@@ -335,7 +335,7 @@ tooltip_text = "Enable or Disable Trajectory Preview."
 mouse_filter = 0
 text = "Show Trajectory Line"
 
-[node name="show_trajectory_line" type="CheckBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1074855287 groups=["ValueInput"]]
+[node name="show_trajectory_line" type="CheckBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1074855287 groups=["PlayerInput"]]
 layout_mode = 2
 button_pressed = true
 

@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 @export var cone_mesh_instance: MeshInstance3D
@@ -28,6 +29,9 @@ var _has_previous_position: bool = false
 
 @onready var guard: CharacterBody3D = get_parent()
 
+# Night Vision Multiplier
+var night_vision_multiplier : float = 1
+
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
@@ -45,7 +49,7 @@ func _physics_process(delta):
 		var dist: float = guard.global_position.distance_to(player.global_position)
 		var t: float = clamp(dist / view_distance, 0.0, 1.0)
 		var dist_factor: float = lerp(1.0, detection_falloff_min, t)
-		detection_strength += detection_speed * dist_factor * player.get_visibility() * delta
+		detection_strength += detection_speed * dist_factor * player.get_visibility() * night_vision_multiplier * delta
 		last_seen_time = now
 		# Estimate player velocity from successive sightings
 		if _has_previous_position and delta > 0.0:

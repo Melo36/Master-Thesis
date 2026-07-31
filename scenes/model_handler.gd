@@ -26,7 +26,11 @@ func _load_model() -> void:
 
 	# 2. Clear existing child models safely
 	for c in model_root.get_children():
-		c.free() if Engine.is_editor_hint() else c.queue_free()
+		if Engine.is_editor_hint():
+			c.free()
+		else: 
+			c.queue_free()
+			
 
 	# 3. Determine resource path to load
 	var path_to_load = custom_model_path if custom_model_path != "" else DEFAULT_MODEL_PATH

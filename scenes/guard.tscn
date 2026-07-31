@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dpsoct00lvvod" path="res://resources/blade.png" id="9_rmy4q"]
 [ext_resource type="AudioStream" uid="uid://yr7nlygrsaem" path="res://sounds/gun_shot.mp3" id="10_lpkwa"]
 [ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://addons/raytraced_audio/raytraced_audio_player_3d.gd" id="11_17ufb"]
+[ext_resource type="Script" uid="uid://df0g5mycw1xv3" path="res://addons/stealth_plugin/GadgetManager.gd" id="12_17ufb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c4sgu"]
 radius = 1.0
@@ -103,3 +104,6 @@ max_db = 2.0
 pitch_scale = 2.0
 script = ExtResource("11_17ufb")
 metadata/_custom_type_script = "uid://dkb8ltjc6067n"
+
+[node name="GadgetManager" type="Node3D" parent="." unique_id=646820054]
+script = ExtResource("12_17ufb")

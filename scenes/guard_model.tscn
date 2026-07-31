@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://1y57q75bqm6" path="res://models/guard.fbx" id="1_c22s3"]
 [ext_resource type="Animation" uid="uid://bv4dngmdffjx0" path="res://animations/clips/alerted_walking.tres" id="2_435jh"]
 [ext_resource type="PackedScene" uid="uid://uwh0oya8cqll" path="res://models/gun_model.fbx" id="2_srqkm"]
+[ext_resource type="PackedScene" uid="uid://cnmpo1kw2n4xe" path="res://scenes/night_vision_goggles.tscn" id="3_j0ode"]
 [ext_resource type="Animation" uid="uid://dus7ggng77tdp" path="res://animations/clips/guard_death.tres" id="3_ycvn0"]
 [ext_resource type="Animation" uid="uid://bh554gp342qtv" path="res://animations/clips/guard_shooting.tres" id="4_bm0th"]
 [ext_resource type="Animation" uid="uid://b1inovds8oc" path="res://animations/clips/guard_idle.tres" id="4_ycvn0"]
@@ -193,6 +194,27 @@ bone_idx = 34
 
 [node name="gun" parent="Skeleton3D/BoneAttachment3D" index="0" unique_id=1858501248 instance=ExtResource("2_srqkm")]
 transform = Transform3D(-7.6494935e-08, 1.7499999, 7.649493e-08, 0, -7.649493e-08, 1.75, 1.7500001, 7.649493e-08, 3.3436996e-15, -0.02218151, 0.17506129, 0.05046612)
+
+[node name="HeadAttachment" type="BoneAttachment3D" parent="Skeleton3D" index="3" unique_id=2091243096]
+transform = Transform3D(0.9953475, -0.0113240685, -0.09568034, -0.004926024, 0.985789, -0.16791594, 0.09622212, 0.16760603, 0.98114693, 0.03611061, 1.5612866, 0.008778814)
+bone_name = "mixamorig_Head"
+bone_idx = 5
+
+[node name="NightVisionGoggles" parent="Skeleton3D/HeadAttachment" index="0" unique_id=686370974 instance=ExtResource("3_j0ode")]
+transform = Transform3D(-3.7252903e-08, 9.313226e-10, 0.90000004, 2.9802322e-08, 0.90000004, 9.313226e-10, -0.90000004, 4.4703484e-08, -4.4703484e-08, 0.004585011, 0.035731077, 0.11967857)
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Skeleton3D/HeadAttachment/NightVisionGoggles" index="2" unique_id=1943757034]
+transform = Transform3D(1.1111112, -1.3411045e-07, -1.3411045e-07, 7.4505806e-08, 1.1111109, 1.3038516e-08, 1.1920929e-07, -2.0489097e-08, 1.1111113, -0.07185331, 0.021680593, 0.09133279)
+light_color = Color(0, 1.353256, 0.19639485, 1)
+light_energy = 0.2
+omni_range = 0.075
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Skeleton3D/HeadAttachment/NightVisionGoggles" index="3" unique_id=763647722]
+transform = Transform3D(1.1111112, -1.3411045e-07, -1.4156103e-07, 7.4505806e-08, 1.1111109, 1.6763806e-08, 1.2665987e-07, -2.2351742e-08, 1.1111113, -0.08688897, 0.02346015, -0.06508088)
+light_color = Color(0, 1.353256, 0.19639485, 1)
+light_energy = 0.2
+omni_range = 0.075
 
 [node name="AnimationPlayer" parent="." index="1" unique_id=203577603]
 libraries/Custom = SubResource("AnimationLibrary_n73en")
