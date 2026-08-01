@@ -6,8 +6,7 @@ const DEFAULT_MODEL_PATH = "res://scenes/character_without_hitbox.tscn"
 @export_file("*.tscn") var custom_model_path: String = "":
 	set(value):
 		custom_model_path = value
-		if is_node_ready() and is_inside_tree():
-			_load_model()
+		_load_model()
 
 func _load_model() -> void:
 	var parent_node := get_parent()

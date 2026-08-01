@@ -5,7 +5,7 @@ extends CharacterBody3D
 @onready var guard_movement: Node3D = $GuardMovement
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var chase_solver: ChaseInfluenceMap = $ChaseInfluenceMap
-@onready var state_indicator: Label3D = $StateIndicator
+@onready var state_indicator: Node3D = $StateIndicator
 @onready var vision_cone: MeshInstance3D = $VisionCone
 @onready var shuriken_indicator: Sprite3D = $ShurikenIndicator
 @onready var player: CharacterBody3D

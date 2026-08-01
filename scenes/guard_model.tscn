@@ -187,12 +187,12 @@ bones/61/rotation = Quaternion(-0.25581497, 0.033466663, -0.019537384, 0.9659488
 bones/62/rotation = Quaternion(0.61320025, 0.046738774, 0.0215058, 0.78825027)
 bones/63/rotation = Quaternion(0.22790408, 0.032119393, 0.015253872, 0.97303414)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skeleton3D" index="2" unique_id=1021664695]
+[node name="HandAttachment" type="BoneAttachment3D" parent="Skeleton3D" index="2" unique_id=1021664695]
 transform = Transform3D(0.51059353, -0.16316675, 0.8441983, 0.19163415, -0.93553734, -0.2967263, 0.8381946, 0.3132838, -0.44641086, -0.26448277, 0.91315866, 0.11450775)
 bone_name = "mixamorig_RightHand"
 bone_idx = 34
 
-[node name="gun" parent="Skeleton3D/BoneAttachment3D" index="0" unique_id=1858501248 instance=ExtResource("2_srqkm")]
+[node name="gun" parent="Skeleton3D/HandAttachment" index="0" unique_id=1858501248 instance=ExtResource("2_srqkm")]
 transform = Transform3D(-7.6494935e-08, 1.7499999, 7.649493e-08, 0, -7.649493e-08, 1.75, 1.7500001, 7.649493e-08, 3.3436996e-15, -0.02218151, 0.17506129, 0.05046612)
 
 [node name="HeadAttachment" type="BoneAttachment3D" parent="Skeleton3D" index="3" unique_id=2091243096]

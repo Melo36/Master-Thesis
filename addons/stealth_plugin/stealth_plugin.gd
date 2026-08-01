@@ -43,7 +43,8 @@ func _on_apply_button_pressed() -> void:
 
 	_apply_inputs_to_player(player)
 
-	_replace_model(player, scene)
+	model_selection = wizard.find_child("ModelSelection", true)
+	_replace_model(player)
 
 func _on_apply_button_guard_pressed() -> void:
 	var scene := get_editor_interface().get_edited_scene_root()
@@ -53,6 +54,9 @@ func _on_apply_button_guard_pressed() -> void:
 	var guard = _create_guard(scene)
 		
 	_apply_inputs_to_guard(guard)
+
+	model_selection = guard_wizard.find_child("ImageSelection", true)
+	_replace_indicator_image(guard)
 	
 
 # ------------------------------------------------------------
@@ -88,7 +92,7 @@ func _create_guard(scene: Node) -> Node:
 	var parent = Node3D.new()
 	parent.name = "Guard"
 	var patrolRoute = Path3D.new()
-	patrolRoute.name = "PatrolRoute"
+	patrolRoute.name = "Path3D"
 	parent.add_child(patrolRoute)
 	
 	var guard := preload("res://scenes/guard.tscn").instantiate()
@@ -100,7 +104,10 @@ func _create_guard(scene: Node) -> Node:
 	scene.add_child(parent)
 
 	# IMPORTANT: ownership must be recursive for saving
-	_set_owner_recursive(parent, scene)
+	parent.owner = scene
+	guard.owner = scene
+	patrolRoute.owner = scene
+	#_set_owner_recursive(parent, scene)
 
 	# Return this because we dont need the parent
 	return guard
@@ -164,14 +171,19 @@ func _apply_inputs_to_guard(guard: Node) -> void:
 # MODEL REPLACEMENT (SAFE + NO DUPLICATES)
 # ------------------------------------------------------------
 
-func _replace_model(player: Node, owner: Node) -> void:
+func _replace_model(player: Node) -> void:
 	# Simply pass the path string to the player. 
 	# The player's setter script will handle the heavy lifting!
 	var model_handler = player.find_child("ModelHandler")
 	if model_handler:
 		model_handler.custom_model_path = model_selection.modelPath
 
-
+func _replace_indicator_image(guard: Node) -> void:
+	# Simply pass the path string to the player. 
+	# The player's setter script will handle the heavy lifting!
+	var state_indicator = guard.find_child("StateIndicator")
+	if state_indicator:
+		state_indicator.assign_image(model_selection.modelPath)
 # ------------------------------------------------------------
 # OWNER HELPERS
 # ------------------------------------------------------------

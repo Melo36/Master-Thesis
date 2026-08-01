@@ -1,4 +1,5 @@
-extends Label3D
+@tool
+extends Node3D
 # Floating "!" above the guard. Color/opacity reflect the brain's current state:
 #   - CHASE / SEARCH_LOST → red (solid)
 #   - INVESTIGATE         → yellow (solid)
@@ -10,19 +11,32 @@ extends Label3D
 
 @onready var brain: Node = get_parent()
 @onready var vision: Node = brain.get_node("VisionSensor")
+@onready var text_indicator: Label3D = $TextIndicator
+@onready var image_indicator: Sprite3D = $ImageIndicator
 
 
 func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+	if text_indicator:
+		change_color(text_indicator)
+	if image_indicator:
+		change_color(image_indicator)
+		
+func change_color(indicator: Node):
 	var s: int = brain.current_state
 	if s == brain.State.CHASE or s == brain.State.SEARCH_LOST:
-		modulate = color_chase
-		visible = true
+		indicator.modulate = color_chase
+		indicator.visible = true
 	elif s == brain.State.INVESTIGATE:
-		modulate = color_investigate
-		visible = true
+		indicator.modulate = color_investigate
+		indicator.visible = true
 	else:
 		var det: float = vision.get_detection_strength()
 		var c: Color = color_detecting
 		c.a = det
-		modulate = c
-		visible = det > 0.01
+		indicator.modulate = c
+		indicator.visible = det > 0.01
+
+func assign_image(path: String):
+	image_indicator.texture = load(path)

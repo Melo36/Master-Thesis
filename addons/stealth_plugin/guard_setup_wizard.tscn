@@ -68,7 +68,7 @@ columns = 2
 
 [node name="AttackRangeLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=2048678001]
 layout_mode = 2
-tooltip_text = "Amount of health the player character has."
+tooltip_text = "The maximum range (in meters) from where the guard will attack from."
 mouse_filter = 0
 text = "Attack Range"
 
@@ -79,7 +79,7 @@ suffix = "m"
 
 [node name="FireRateLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=556122210]
 layout_mode = 2
-tooltip_text = "Amount of health the player character has."
+tooltip_text = "The fire rate with which the guard will shoot."
 mouse_filter = 0
 text = "Fire Rate"
 
@@ -91,7 +91,7 @@ value = 1.5
 
 [node name="AimingWindupLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=743890935]
 layout_mode = 2
-tooltip_text = "Amount of health the player character has."
+tooltip_text = "Delay before the guard starts shooting."
 mouse_filter = 0
 text = "Aiming Windup"
 
@@ -119,12 +119,25 @@ columns = 2
 
 [node name="NightVisionLabel" type="Label" parent="VBoxContainer/Gadgets/MarginContainer/GridContainer" unique_id=134996995]
 layout_mode = 2
-tooltip_text = "Amount of health the player character has."
+tooltip_text = "This Gadget allows guards to spot the player quicker and in darker places."
 mouse_filter = 0
 text = "Night Vision Goggles"
 
 [node name="night_vision_enabled" type="CheckBox" parent="VBoxContainer/Gadgets/MarginContainer/GridContainer" unique_id=1774503744 groups=["GuardInput"]]
 layout_mode = 2
+
+[node name="MultiplierLabel" type="Label" parent="VBoxContainer/Gadgets/MarginContainer/GridContainer" unique_id=1104117402]
+layout_mode = 2
+tooltip_text = "Determines how much faster detection happens."
+mouse_filter = 0
+text = "Night Vision Multiplier"
+
+[node name="night_vision_multiplier" type="SpinBox" parent="VBoxContainer/Gadgets/MarginContainer/GridContainer" unique_id=368498146 groups=["GuardInput"]]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+step = 0.1
+value = 1.5
 
 [node name="Search" type="FoldableContainer" parent="VBoxContainer" unique_id=1277403366]
 layout_mode = 2
@@ -144,7 +157,7 @@ script = ExtResource("1_47hjw")
 
 [node name="SearchArrivalToleranceLabel" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=1482830447]
 layout_mode = 2
-tooltip_text = "Amount of health the player character has."
+tooltip_text = "How close the guard must be to its Search destination to consider the search done"
 mouse_filter = 0
 text = "Search Arrival Tolerance"
 
@@ -156,7 +169,7 @@ suffix = "m"
 
 [node name="InvestigateArrivalToleranceLabel2" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=1952443874]
 layout_mode = 2
-tooltip_text = "Amount of health the player character has."
+tooltip_text = "How close the guard must be to its Investigate destination to consider the search done"
 mouse_filter = 0
 text = "Investigate Arrival Tolerance"
 
@@ -168,7 +181,7 @@ suffix = "m"
 
 [node name="NoiseInteruptLabel" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=214747593]
 layout_mode = 2
-tooltip_text = "Amount of health the player character has."
+tooltip_text = "A noise this loud will interrupt SEARCH_LOST and switch to INVESTIGATE."
 mouse_filter = 0
 text = "Search Noise Interrupt"
 
@@ -178,11 +191,11 @@ min_value = -10.0
 max_value = 10.0
 step = 0.5
 value = 1.5
-suffix = "m"
+suffix = "dB"
 
 [node name="MinSearchLabel" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=1736392532]
 layout_mode = 2
-tooltip_text = "Amount of health the player character has."
+tooltip_text = "Minimum time to commit to SEARCH_LOST before any exit path is allowed."
 mouse_filter = 0
 text = "Minimum Search Duration"
 
@@ -195,7 +208,7 @@ suffix = "s"
 
 [node name="WallHacksLabel" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=608540060]
 layout_mode = 2
-tooltip_text = "Amount of health the player character has."
+tooltip_text = "Determines how long the guard remembers the player's exact position after losing sight of them. Once this time expires, the guard begins searching, resulting in more natural behavior."
 mouse_filter = 0
 text = "Search Wall Hacks"
 
@@ -262,7 +275,7 @@ columns = 2
 
 [node name="MaxSoundLabel" type="Label" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=834523341]
 layout_mode = 2
-tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+tooltip_text = "The maximum sound strength the guard can accumulate. Higher values allow multiple sounds to build up before reaching the limit."
 mouse_filter = 0
 text = "Maximum Noise Perception"
 
@@ -274,7 +287,7 @@ value = 1.0
 
 [node name="ChaseSpeedLabel" type="Label" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=1724257673]
 layout_mode = 2
-tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+tooltip_text = "The amount of sound strength lost per second. Higher values make the guard forget sounds more quickly, while lower values keep sound interest active for longer."
 mouse_filter = 0
 text = "Decay Rate"
 
@@ -308,7 +321,7 @@ text = "Viewing Distance"
 [node name="view_distance" type="SpinBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=1571021010 groups=["GuardInput"]]
 layout_mode = 2
 max_value = 50.0
-value = 1.0
+value = 12.0
 suffix = "m"
 
 [node name="ViewAngleLabel" type="Label" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=104008441]
@@ -320,7 +333,7 @@ text = "Viewing Angle"
 [node name="view_angle_deg" type="SpinBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=518024755 groups=["GuardInput"]]
 layout_mode = 2
 max_value = 360.0
-value = 60.0
+value = 165.0
 suffix = "°"
 
 [node name="DetectionSpeedLabel" type="Label" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=905038258]
@@ -378,41 +391,59 @@ title = "State Indicator"
 layout_mode = 2
 theme_override_constants/margin_left = 18
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/StateIndicator/MarginContainer" unique_id=286826441]
+[node name="ImageSelection" type="GridContainer" parent="VBoxContainer/StateIndicator/MarginContainer" unique_id=286826441]
 layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 2
+script = ExtResource("1_47hjw")
 
-[node name="ChaseColorLabel" type="Label" parent="VBoxContainer/StateIndicator/MarginContainer/GridContainer" unique_id=1613782483]
+[node name="3DModelLabel" type="Label" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1560769248]
 layout_mode = 2
-tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+tooltip_text = "Amount of health the player character has."
+mouse_filter = 0
+text = "Indicator Image"
+
+[node name="AssignButton" type="Button" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1731270850]
+layout_mode = 2
+text = "Assign Image"
+
+[node name="ModelFileDialog" type="FileDialog" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=329880753]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.jpeg", "*.jpg", "*.png")
+
+[node name="ChaseColorLabel" type="Label" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1613782483]
+layout_mode = 2
+tooltip_text = "The color of the label while chasing the player."
 mouse_filter = 0
 text = "Chase Color"
 
-[node name="color_chase" type="ColorPickerButton" parent="VBoxContainer/StateIndicator/MarginContainer/GridContainer" unique_id=2091617398 groups=["GuardInput"]]
+[node name="color_chase" type="ColorPickerButton" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=2091617398 groups=["GuardInput"]]
 layout_mode = 2
 text = "AA"
 color = Color(1, 0.15, 0.15, 1)
 
-[node name="InvestigateColorLabel" type="Label" parent="VBoxContainer/StateIndicator/MarginContainer/GridContainer" unique_id=1909427515]
+[node name="InvestigateColorLabel" type="Label" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1909427515]
 layout_mode = 2
-tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+tooltip_text = "The color of the label while investigating player actions."
 mouse_filter = 0
 text = "Investigate Color"
 
-[node name="color_investigate" type="ColorPickerButton" parent="VBoxContainer/StateIndicator/MarginContainer/GridContainer" unique_id=179204247 groups=["GuardInput"]]
+[node name="color_investigate" type="ColorPickerButton" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=179204247 groups=["GuardInput"]]
 layout_mode = 2
 text = "AA"
 color = Color(1, 0.9, 0.15, 1)
 
-[node name="DetectingColorLabel" type="Label" parent="VBoxContainer/StateIndicator/MarginContainer/GridContainer" unique_id=1460176148]
+[node name="DetectingColorLabel" type="Label" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1460176148]
 layout_mode = 2
-tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+tooltip_text = "The color of the label while detecting the player."
 mouse_filter = 0
 text = "Detecting Color"
 
-[node name="color_detecting" type="ColorPickerButton" parent="VBoxContainer/StateIndicator/MarginContainer/GridContainer" unique_id=532448901 groups=["GuardInput"]]
+[node name="color_detecting" type="ColorPickerButton" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=532448901 groups=["GuardInput"]]
 layout_mode = 2
 text = "AA"
 color = Color(1, 1, 1, 1)

@@ -16,7 +16,6 @@ func _physics_process(delta):
 # -------------------------
 func register_sound(pos: Vector3, strength: float = 1.0):
 	last_sound_position = pos
-	
 	var env_sounds = get_environment_noise()
 	# Accumulate instead of overwrite
 	sound_strength += strength - env_sounds
