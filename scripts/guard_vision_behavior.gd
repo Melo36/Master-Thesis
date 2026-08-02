@@ -38,6 +38,8 @@ func _ready():
 
 
 func _physics_process(delta):
+	if Engine.is_editor_hint():
+		return
 	var seen_now = _can_see_player()
 	var now = Time.get_ticks_msec() / 1000.0
 

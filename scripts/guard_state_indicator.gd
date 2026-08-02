@@ -40,3 +40,6 @@ func change_color(indicator: Node):
 
 func assign_image(path: String):
 	image_indicator.texture = load(path)
+	
+func assign_text(text: String):
+	text_indicator.text = text

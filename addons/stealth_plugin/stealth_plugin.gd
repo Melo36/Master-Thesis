@@ -139,7 +139,7 @@ func _apply_inputs_to_guard(guard: Node) -> void:
 	var state_indicator = guard.find_child("StateIndicator")
 
 	for input in inputs:
-		if index > 22:
+		if index > 23:
 			return
 		var parent = input.get_parent().get_parent().get_parent().name
 		var script = guard
@@ -164,6 +164,14 @@ func _apply_inputs_to_guard(guard: Node) -> void:
 		elif input is ColorPickerButton:
 			print(input.name, " ", input.color)
 			script.set(input.name, input.color)
+		elif input is LineEdit:
+			var scene := get_editor_interface().get_edited_scene_root()
+			if scene == null:
+				break
+			state_indicator.owner = scene
+			state_indicator.text_indicator.owner = scene
+			state_indicator.image_indicator.owner = scene
+			script.assign_text(input.text)
 		index += 1
 
 

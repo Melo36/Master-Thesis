@@ -81,6 +81,8 @@ func _physics_process(delta: float) -> void:
 		guard.velocity = Vector3.ZERO
 	
 func get_next_patrol_point() -> Vector3:
+	if !patrol_points:
+		return Vector3.ZERO
 	var point = patrol_points.get_point_position(current_index)
 	current_index = (current_index + 1) % patrol_points.point_count
 	return point
