@@ -8,6 +8,10 @@ var model_selection: GridContainer
 var wizard: Control
 var guard_wizard: Control
 
+var assign_3D_button
+var assign_ill_image_button
+var assign_state_ind_button
+
 func _enter_tree() -> void:
 	if wizard == null:
 		wizard = preload("res://addons/stealth_plugin/setup_wizard.tscn").instantiate()
@@ -21,6 +25,10 @@ func _enter_tree() -> void:
 	apply_button_guard = guard_wizard.find_child("ApplyButton", true)
 	apply_button.pressed.connect(_on_apply_button_pressed) 
 	apply_button_guard.pressed.connect(_on_apply_button_guard_pressed)
+	
+	assign_3D_button = wizard.find_child("3DModelAssignButton", true)
+	assign_ill_image_button = wizard.find_child("AssignIllImageButton", true)
+	assign_state_ind_button = guard_wizard.find_child("AssignStateIndButton", true)
 	
 func _exit_tree() -> void:
 	if wizard:
@@ -45,6 +53,7 @@ func _on_apply_button_pressed() -> void:
 
 	model_selection = wizard.find_child("ModelSelection", true)
 	_replace_model(player)
+	_replace_indicator_image(player, "LightLevel", assign_ill_image_button)
 
 func _on_apply_button_guard_pressed() -> void:
 	var scene := get_editor_interface().get_edited_scene_root()
@@ -56,7 +65,7 @@ func _on_apply_button_guard_pressed() -> void:
 	_apply_inputs_to_guard(guard)
 
 	model_selection = guard_wizard.find_child("ImageSelection", true)
-	_replace_indicator_image(guard)
+	_replace_indicator_image(guard, "ImageIndicator", assign_state_ind_button)
 	
 
 # ------------------------------------------------------------
@@ -183,15 +192,17 @@ func _replace_model(player: Node) -> void:
 	# Simply pass the path string to the player. 
 	# The player's setter script will handle the heavy lifting!
 	var model_handler = player.find_child("ModelHandler")
-	if model_handler:
-		model_handler.custom_model_path = model_selection.modelPath
+	var resourcePath = assign_3D_button.resourcePath
+	if model_handler && resourcePath:
+		model_handler.custom_model_path = resourcePath
 
-func _replace_indicator_image(guard: Node) -> void:
+func _replace_indicator_image(agent: Node, child: String, button: Button) -> void:
 	# Simply pass the path string to the player. 
 	# The player's setter script will handle the heavy lifting!
-	var state_indicator = guard.find_child("StateIndicator")
-	if state_indicator:
-		state_indicator.assign_image(model_selection.modelPath)
+	var state_indicator = agent.find_child(child)
+	var resourcePath = button.resourcePath
+	if state_indicator && resourcePath:
+		state_indicator.texture = load(resourcePath)
 # ------------------------------------------------------------
 # OWNER HELPERS
 # ------------------------------------------------------------

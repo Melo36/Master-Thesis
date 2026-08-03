@@ -153,7 +153,6 @@ layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 2
-script = ExtResource("1_47hjw")
 
 [node name="SearchArrivalToleranceLabel" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=1482830447]
 layout_mode = 2
@@ -396,7 +395,6 @@ layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 2
-script = ExtResource("1_47hjw")
 
 [node name="AssignImageLabel" type="Label" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1560769248]
 layout_mode = 2
@@ -404,14 +402,16 @@ tooltip_text = "Image that appears to represent a guards state. This is empty by
 mouse_filter = 0
 text = "Indicator Image"
 
-[node name="AssignButton" type="Button" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1731270850]
+[node name="AssignStateIndButton" type="Button" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1731270850]
 layout_mode = 2
 text = "Assign Image"
+script = ExtResource("1_47hjw")
 
 [node name="ModelFileDialog" type="FileDialog" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=329880753]
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+visible = true
 file_mode = 0
 filters = PackedStringArray("*.jpeg", "*.jpg", "*.png")
 
