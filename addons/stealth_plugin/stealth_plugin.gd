@@ -12,6 +12,9 @@ var assign_3D_button
 var assign_ill_image_button
 var assign_state_ind_button
 
+var wizard_elements: int = 15
+var guard_wizard_elements: int = 23
+
 func _enter_tree() -> void:
 	if wizard == null:
 		wizard = preload("res://addons/stealth_plugin/setup_wizard.tscn").instantiate()
@@ -30,6 +33,9 @@ func _enter_tree() -> void:
 	assign_ill_image_button = wizard.find_child("AssignIllImageButton", true)
 	assign_state_ind_button = guard_wizard.find_child("AssignStateIndButton", true)
 	
+	var selection := get_editor_interface().get_selection()
+	selection.selection_changed.connect(_on_selection_changed)
+	
 func _exit_tree() -> void:
 	if wizard:
 		remove_control_from_docks(wizard)
@@ -40,6 +46,10 @@ func _exit_tree() -> void:
 		remove_control_from_docks(guard_wizard)
 		guard_wizard.free()
 		guard_wizard = null
+		
+	var selection := get_editor_interface().get_selection()
+	if selection.selection_changed.is_connected(_on_selection_changed):
+		selection.selection_changed.disconnect(_on_selection_changed)
 
 func _on_apply_button_pressed() -> void:
 	var scene := get_editor_interface().get_edited_scene_root()
@@ -116,7 +126,7 @@ func _create_guard(scene: Node) -> Node:
 	parent.owner = scene
 	guard.owner = scene
 	patrolRoute.owner = scene
-	#_set_owner_recursive(parent, scene)
+	_set_owner_recursive(parent, scene, 3)
 
 	# Return this because we dont need the parent
 	return guard
@@ -131,10 +141,12 @@ func _apply_inputs_to_player(player: Node) -> void:
 	var index := 0
 
 	for input in inputs:
+		if index > wizard_elements:
+			return
 		if input is SpinBox:
 			player.set(input.name, input.value)
 		elif input is CheckBox:
-			player.set(input.name, input.pressed)
+			player.set(input.name, input.button_pressed)
 
 		index += 1
 		
@@ -148,7 +160,7 @@ func _apply_inputs_to_guard(guard: Node) -> void:
 	var state_indicator = guard.find_child("StateIndicator")
 
 	for input in inputs:
-		if index > 23:
+		if index > guard_wizard_elements:
 			return
 		var parent = input.get_parent().get_parent().get_parent().name
 		var script = guard
@@ -165,13 +177,10 @@ func _apply_inputs_to_guard(guard: Node) -> void:
 			script = gadget_manager
 
 		if input is SpinBox:
-			print(input.name, " ", input.value)
 			script.set(input.name, input.value)
 		elif input is CheckBox:
-			print(input.name, " ", input.button_pressed)
 			script.set(input.name, input.button_pressed)
 		elif input is ColorPickerButton:
-			print(input.name, " ", input.color)
 			script.set(input.name, input.color)
 		elif input is LineEdit:
 			var scene := get_editor_interface().get_edited_scene_root()
@@ -203,12 +212,83 @@ func _replace_indicator_image(agent: Node, child: String, button: Button) -> voi
 	var resourcePath = button.resourcePath
 	if state_indicator && resourcePath:
 		state_indicator.texture = load(resourcePath)
+		
+
+func _on_selection_changed():
+	var selected := get_editor_interface().get_selection().get_selected_nodes()
+	var length = len(selected)
+	if length > 1 || length == 0:
+		return
+		
+	var agent = selected[0]
+	if agent.is_in_group("Player"):
+		update_player_wizard(agent)
+	elif agent.is_in_group("Guard"):
+		update_guard_wizard(agent)
+		
+func update_player_wizard(player: Node):
+	var inputs := get_tree().get_nodes_in_group("PlayerInput")
+	var index := 0
+	for input in inputs:
+		if index > wizard_elements:
+			return
+		if input is SpinBox:
+			print(input.name)
+			input.value = player.get(input.name)
+		elif input is CheckBox:
+			print(input.name)
+			input.button_pressed = player.get(input.name)
+			
+		index += 1
+	
+func update_guard_wizard(guard: Node):
+	var inputs := get_tree().get_nodes_in_group("GuardInput")
+	var index = 0
+	var movement = guard.find_child("GuardMovement")
+	var noise = guard.find_child("NoiseSensor")
+	var vision = guard.find_child("VisionSensor")
+	var gadget_manager = guard.find_child("GadgetManager")
+	var state_indicator = guard.find_child("StateIndicator")
+
+	for input in inputs:
+		if index > guard_wizard_elements:
+			return
+		var parent = input.get_parent().get_parent().get_parent().name
+		var script = guard
+		
+		if parent == "MovementSpeed":
+			script = movement
+		elif parent == "Noise":
+			script = noise
+		elif parent == "Vision":
+			script = vision
+		elif parent == "StateIndicator":
+			script = state_indicator
+		elif parent == "Gadgets":
+			script = gadget_manager
+
+		if input is SpinBox:
+			print(input.name)
+			input.value = script.get(input.name)
+		elif input is CheckBox:
+			print(input.name)
+			input.button_pressed = script.get(input.name)
+		elif input is ColorPickerButton:
+			print(input.name)
+			input.color = script.get(input.name)
+		elif input is LineEdit:
+			print(input.name)
+			input.text = script.text_indicator.text
+		index += 1
+		
 # ------------------------------------------------------------
 # OWNER HELPERS
 # ------------------------------------------------------------
 
-func _set_owner_recursive(node: Node, owner: Node) -> void:
+func _set_owner_recursive(node: Node, owner: Node, level: int = -1) -> void:
+	if level == 0:
+		return
 	node.owner = owner
 
 	for child in node.get_children():
-		_set_owner_recursive(child, owner)
+		_set_owner_recursive(child, owner, level - 1)

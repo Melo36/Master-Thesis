@@ -57,7 +57,7 @@ var audioPlayer
 var guards = []
 var state_machine
 
-var health = 100
+@export var health = 100
 
 
 # =========================
@@ -68,17 +68,17 @@ var throw_cancelled := false
 var throw_strength := 0.0
 @export var charge_speed := 1.5 
 @export var max_charge := 2.0
-var show_trajectory_line := true
-var meele_enabled := true
+@export var show_trajectory_line := true
+@export var meele_enabled := true
 
 signal shuriken_changed(new_amount: int)
 signal bells_changed(new_amount: int)
 
-var shuriken: int = 3:
+@export var shuriken: int = 3:
 	set(value):
 		shuriken = value
 
-var bells: int = 3:
+@export var bells: int = 3:
 	set(value):
 		bells = value
 		bells_changed.emit(bells)
