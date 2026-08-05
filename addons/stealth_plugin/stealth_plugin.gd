@@ -225,6 +225,9 @@ func _on_selection_changed():
 		update_player_wizard(agent)
 	elif agent.is_in_group("Guard"):
 		update_guard_wizard(agent)
+	var child = agent.find_child("Guard")
+	if child && child.is_in_group("Guard"):
+		update_guard_wizard(child)
 		
 func update_player_wizard(player: Node):
 	var inputs := get_tree().get_nodes_in_group("PlayerInput")
