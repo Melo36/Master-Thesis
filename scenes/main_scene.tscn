@@ -261,6 +261,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8270254, 0.5157385, 1.7008
 visible = false
 
 [node name="Player" parent="." unique_id=527582928 instance=ExtResource("8_k6f3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45.083633)
 walking_noise = 20
 crawl_speed = 1.5
 
@@ -358,6 +359,7 @@ custom_model_path = "res://models/archer.fbx"
 [node name="archer" parent="Player/Model" unique_id=373335276 instance=ExtResource("20_kkokr")]
 
 [node name="Guard" type="Node3D" parent="." unique_id=1607287087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.144405)
 
 [node name="Path3D" type="Path3D" parent="Guard" unique_id=59126185]
 
@@ -436,6 +438,7 @@ script = ExtResource("26_iav3h")
 script = ExtResource("27_womr8")
 
 [node name="@Node3D@40688" type="Node3D" parent="." unique_id=2099754976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.543498, 0, 5.6383557)
 
 [node name="Path3D" type="Path3D" parent="@Node3D@40688" unique_id=1904265991]
 

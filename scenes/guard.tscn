@@ -13,17 +13,16 @@
 [ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://addons/raytraced_audio/raytraced_audio_player_3d.gd" id="11_17ufb"]
 [ext_resource type="Script" uid="uid://df0g5mycw1xv3" path="res://addons/stealth_plugin/GadgetManager.gd" id="12_17ufb"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c4sgu"]
-radius = 1.0
-height = 2.844
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_17ufb"]
+height = 2.8
 
-[sub_resource type="GDScript" id="GDScript_ci2qi"]
+[sub_resource type="GDScript" id="GDScript_k3g67"]
 script/source = "extends NavigationAgent3D
 "
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_gn8tx"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_4bgka"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gn8tx"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02d50"]
 transparency = 1
 shading_mode = 0
 
@@ -36,8 +35,8 @@ min_search_duration = 20.0
 transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, 0, -1.0735747, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=937642194]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.23876953, 0)
-shape = SubResource("CapsuleShape3D_c4sgu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23876953, 0)
+shape = SubResource("CapsuleShape3D_17ufb")
 
 [node name="RaytracedAudioListener" type="AudioListener3D" parent="." unique_id=955631534]
 script = ExtResource("1_m4fl1")
@@ -45,7 +44,7 @@ metadata/_custom_type_script = "uid://bjpmu5sklv5h8"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=823578958]
 debug_enabled = true
-script = SubResource("GDScript_ci2qi")
+script = SubResource("GDScript_k3g67")
 
 [node name="NoiseSensor" type="Node3D" parent="." unique_id=115091329]
 script = ExtResource("1_ci2qi")
@@ -69,8 +68,8 @@ tolerance = 2
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -2.887258)
 visible = false
 layers = 2
-mesh = SubResource("CylinderMesh_gn8tx")
-surface_material_override/0 = SubResource("StandardMaterial3D_gn8tx")
+mesh = SubResource("CylinderMesh_4bgka")
+surface_material_override/0 = SubResource("StandardMaterial3D_02d50")
 
 [node name="ChaseInfluenceMap" type="Node" parent="." unique_id=2057481093]
 script = ExtResource("7_chasemap")
