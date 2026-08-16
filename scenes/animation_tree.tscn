@@ -1,6 +1,4 @@
-[gd_scene format=3 uid="uid://citj32eiy4xax"]
-
-[ext_resource type="PackedScene" uid="uid://bnime8fac8jxd" path="res://models/archer.fbx" id="1_jggnj"]
+[gd_scene format=3 uid="uid://dnwuisyfcxppo"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_34gjw"]
 animation = &"Custom/crawl_idle"
@@ -334,14 +332,13 @@ reset = false
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_b0l3x"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_o8bff"]
 states/Crawl_Idle/node = SubResource("AnimationNodeAnimation_34gjw")
 states/Crawl_Idle/position = Vector2(708.8623, 181.56313)
 states/Crawling/node = SubResource("AnimationNodeAnimation_pgysb")
 states/Crawling/position = Vector2(707.7998, 289.9411)
 states/Crouching/node = SubResource("AnimationNodeStateMachine_34gjw")
 states/Crouching/position = Vector2(490.92813, 181.35)
-states/End/position = Vector2(959.5, 65)
 states/Idle/node = SubResource("AnimationNodeAnimation_o8bff")
 states/Idle/position = Vector2(241.5, 27.5)
 states/Jump/node = SubResource("AnimationNodeStateMachine_cr4th")
@@ -354,16 +351,10 @@ states/Walking/position = Vector2(489.53534, 26.75)
 states/hurricane/node = SubResource("AnimationNodeAnimation_aginp")
 states/hurricane/position = Vector2(247.49042, -93.15042)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_rd2ci"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_ayuge"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_o8bff"), "Walking", "Crouching", SubResource("AnimationNodeStateMachineTransition_pgysb"), "Idle", "Crouching", SubResource("AnimationNodeStateMachineTransition_h3b6s"), "Crouching", "Walking", SubResource("AnimationNodeStateMachineTransition_iu26k"), "Crouching", "Idle", SubResource("AnimationNodeStateMachineTransition_pe8is"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_hyaxk"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_joq1o"), "Walking", "Jump", SubResource("AnimationNodeStateMachineTransition_wb7fw"), "Jump", "Walking", SubResource("AnimationNodeStateMachineTransition_klptk"), "Jump", "Crouching", SubResource("AnimationNodeStateMachineTransition_cr4th"), "Crouching", "Jump", SubResource("AnimationNodeStateMachineTransition_qil8a"), "Walking", "Sprinting", SubResource("AnimationNodeStateMachineTransition_m4v7x"), "Sprinting", "Walking", SubResource("AnimationNodeStateMachineTransition_63via"), "Crouching", "Sprinting", SubResource("AnimationNodeStateMachineTransition_pt8r8"), "Sprinting", "Crouching", SubResource("AnimationNodeStateMachineTransition_p4453"), "Crouching", "Crawling", SubResource("AnimationNodeStateMachineTransition_sj6nh"), "Crawling", "Crouching", SubResource("AnimationNodeStateMachineTransition_lwyly"), "Crouching", "Crawl_Idle", SubResource("AnimationNodeStateMachineTransition_udnd2"), "Crawl_Idle", "Crouching", SubResource("AnimationNodeStateMachineTransition_ljj6e"), "Crawl_Idle", "Crawling", SubResource("AnimationNodeStateMachineTransition_eww57"), "Crawling", "Crawl_Idle", SubResource("AnimationNodeStateMachineTransition_gqmek"), "hurricane", "Idle", SubResource("AnimationNodeStateMachineTransition_n3iwf")]
-graph_offset = Vector2(-90.59959, -161.77684)
+graph_offset = Vector2(-27.439182, -155.81137)
 
-[node name="archer" unique_id=373335276 groups=["Model"] instance=ExtResource("1_jggnj")]
-
-[node name="Skeleton3D" parent="." index="0" unique_id=149004184]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-
-[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=462754861]
-tree_root = SubResource("AnimationNodeStateMachine_b0l3x")
-anim_player = NodePath("../AnimationPlayer")
+[node name="AnimationTree" type="AnimationTree" unique_id=862536454]
+tree_root = SubResource("AnimationNodeStateMachine_o8bff")
 parameters/conditions/crawling = false
 parameters/conditions/crouched = false
 parameters/conditions/falling = false

@@ -112,11 +112,324 @@ value = 3.0
 layout_mode = 2
 tooltip_text = "Defines whether the player character has a meele attack."
 mouse_filter = 0
-text = "Meele Attack"
+text = "Melee Attack"
 
 [node name="meele_enabled" type="CheckBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=535550847 groups=["PlayerInput"]]
 layout_mode = 2
 button_pressed = true
+
+[node name="Animations" type="FoldableContainer" parent="VBoxContainer" unique_id=1307598262]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Animations"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Animations" unique_id=1725511204]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="ModelSelection" type="GridContainer" parent="VBoxContainer/Animations/MarginContainer" unique_id=309706664]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="3DModelLabel" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=55952731]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is walking."
+mouse_filter = 0
+text = "Walk"
+
+[node name="walk" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1606177075 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1721174242]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label2" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1238218935]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is idle."
+mouse_filter = 0
+text = "Idle"
+
+[node name="idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1665096016 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog3" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1212019593]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label3" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=740923503]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is walking while crouched."
+mouse_filter = 0
+text = "Crouched Walking"
+
+[node name="crouched_walking" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=214632691 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog2" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=624960986]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label4" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1704538337]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is idle while crouched."
+mouse_filter = 0
+text = "Crouched Idle"
+
+[node name="crouched_idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1266983687 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog5" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=160327671]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label5" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1361504980]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is sprinting."
+mouse_filter = 0
+text = "Sprint"
+
+[node name="sprint" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=366998239 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog4" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1227425293]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label6" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1312484908]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is crawling."
+mouse_filter = 0
+text = "Crawl"
+
+[node name="low_crawl" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1966698724 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog6" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=572896939]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label7" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1444855694]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is idle while crawling."
+mouse_filter = 0
+text = "Crawl Idle"
+
+[node name="crawl_idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=221615236 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog8" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1620766659]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label8" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1046897191]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character uses their melee attack."
+mouse_filter = 0
+text = "Melee"
+
+[node name="melee" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=868938322 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog11" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=588296603]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label9" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1158590781]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is jumping (in the air)."
+mouse_filter = 0
+text = "Jump"
+
+[node name="falling" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=166390917 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog16" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1537494791]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1387007205]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58707833, 0.58707833, 0.58707833, 1)
+theme_override_font_sizes/font_size = 19
+text = "Optional"
+
+[node name="Placeholder" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1787282210]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+
+[node name="Label10" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1818516365]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is walking left."
+mouse_filter = 0
+text = "Left Strafe Walking"
+
+[node name="left_strafe_walking" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=941356477 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog7" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=550512559]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label11" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1103950930]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is walking right."
+mouse_filter = 0
+text = "Right Strafe Walking"
+
+[node name="right_strafe_walking" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1315051744 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog9" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=10079622]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label12" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1863328515]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is walking backwards."
+mouse_filter = 0
+text = "Walking Backwards"
+
+[node name="walking_backwards" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=804703456 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog10" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=281686013]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label13" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=799432690]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is walking left while being crouched."
+mouse_filter = 0
+text = "Crouched Walk Strafe Left"
+
+[node name="crouched_walk_strafe_left" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1631752707 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog12" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1548229624]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label14" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=782805911]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is walking right while being crouched."
+mouse_filter = 0
+text = "Crouched Walk Strafe Right"
+
+[node name="crouched_walk_strafe_right" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=424706785 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog13" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=375592559]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label15" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=928678860]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is walking backwards while being crouched."
+mouse_filter = 0
+text = "Crouching Backwards"
+
+[node name="crouching_backwards" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1908758973 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog14" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1159285077]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label16" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=2021069649]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character lands on the ground after a jump."
+mouse_filter = 0
+text = "Landing"
+
+[node name="landing" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=771941160 groups=["PlayerAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog15" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=500524229]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
 
 [node name="Cosmetic" type="FoldableContainer" parent="VBoxContainer" unique_id=410102604]
 layout_mode = 2
@@ -523,5 +836,5 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_v105p")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_fmwjj")
-text = "Apply
+text = "Create Player
 "

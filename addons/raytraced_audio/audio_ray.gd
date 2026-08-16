@@ -61,6 +61,7 @@ func update():
 	var normal: Vector3 = get_collision_normal()
 	global_position = hit_pos + normal * 0.1
 	target_position = target_position.bounce(normal)
+	
 	has_bounced_this_tick = true
 
 	# Muffle ray: Check for line of sight with audio players

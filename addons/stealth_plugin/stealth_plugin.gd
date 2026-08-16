@@ -12,6 +12,8 @@ var assign_3D_button
 var assign_ill_image_button
 var assign_state_ind_button
 
+var animationButtonList = []
+
 var wizard_elements: int = 15
 var guard_wizard_elements: int = 23
 
@@ -23,6 +25,10 @@ func _enter_tree() -> void:
 	if guard_wizard == null:
 		guard_wizard = preload("res://addons/stealth_plugin/guard_setup_wizard.tscn").instantiate()
 		add_control_to_dock(DOCK_SLOT_LEFT_BL, guard_wizard)
+		
+	animationButtonList = get_tree().get_nodes_in_group("PlayerAnimation")
+	#var animLen = len(animationButtonList)
+	#animationButtonList = animationButtonList.slice(animLen - 16, animLen - 1)
 
 	apply_button = wizard.find_child("ApplyButton", true)
 	apply_button_guard = guard_wizard.find_child("ApplyButton", true)
@@ -64,6 +70,7 @@ func _on_apply_button_pressed() -> void:
 	model_selection = wizard.find_child("ModelSelection", true)
 	_replace_model(player)
 	_replace_indicator_image(player, "LightLevel", assign_ill_image_button)
+	_replace_animations(player)
 
 func _on_apply_button_guard_pressed() -> void:
 	var scene := get_editor_interface().get_edited_scene_root()
@@ -213,6 +220,38 @@ func _replace_indicator_image(agent: Node, child: String, button: Button) -> voi
 	if state_indicator && resourcePath:
 		state_indicator.texture = load(resourcePath)
 		
+func _replace_animations(agent: Node):
+	var lib_name : String = "Custom"
+	var animationTree = agent.find_child("AnimationTree", true)
+	var animationPlayer : AnimationPlayer = agent.find_child("AnimationPlayer", true)
+	animationTree.anim_player = animationPlayer.get_path()
+	var state_machine = animationTree.tree_root
+	
+	var library := AnimationLibrary.new()
+
+	print("Length, ",len(animationButtonList))
+	for button in animationButtonList:
+		if button.resourcePath:
+			var node = find_state(state_machine, button.name)
+			print("ButtonName: ", button.name, ", Path: ", button.resourcePath)
+			node.animation = lib_name + "/" + button.name
+			var animation: Animation = load(button.resourcePath)
+			library.add_animation(button.name, animation)
+			
+	animationPlayer.add_animation_library(lib_name, library)
+			
+func find_state(machine: AnimationNodeStateMachine, state_name: String) -> AnimationNodeAnimation:
+	var state = machine.get_node(state_name)
+	if state:
+		return state
+	for node_name in machine.get_node_list():
+		print(node_name)
+		var node = machine.get_node(node_name)
+		if node is AnimationNodeStateMachine:
+			var result = find_state(node, state_name)
+			if result:
+				return result
+	return null
 
 func _on_selection_changed():
 	var selected := get_editor_interface().get_selection().get_selected_nodes()
@@ -222,12 +261,21 @@ func _on_selection_changed():
 		
 	var agent = selected[0]
 	if agent.is_in_group("Player"):
+		apply_button.text = "Apply Changes"
+		apply_button_guard.text = "Create Guard"
 		update_player_wizard(agent)
+		return
 	elif agent.is_in_group("Guard"):
+		apply_button_guard.text = "Apply Changes"
 		update_guard_wizard(agent)
+		return
 	var child = agent.find_child("Guard")
 	if child && child.is_in_group("Guard"):
+		apply_button_guard.text = "Apply Changes"
 		update_guard_wizard(child)
+		return
+		
+	apply_button_guard.text = "Create Guard"
 		
 func update_player_wizard(player: Node):
 	var inputs := get_tree().get_nodes_in_group("PlayerInput")
@@ -236,10 +284,8 @@ func update_player_wizard(player: Node):
 		if index > wizard_elements:
 			return
 		if input is SpinBox:
-			print(input.name)
 			input.value = player.get(input.name)
 		elif input is CheckBox:
-			print(input.name)
 			input.button_pressed = player.get(input.name)
 			
 		index += 1
@@ -271,16 +317,12 @@ func update_guard_wizard(guard: Node):
 			script = gadget_manager
 
 		if input is SpinBox:
-			print(input.name)
 			input.value = script.get(input.name)
 		elif input is CheckBox:
-			print(input.name)
 			input.button_pressed = script.get(input.name)
 		elif input is ColorPickerButton:
-			print(input.name)
 			input.color = script.get(input.name)
 		elif input is LineEdit:
-			print(input.name)
 			input.text = script.text_indicator.text
 		index += 1
 		

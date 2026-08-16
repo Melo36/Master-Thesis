@@ -462,5 +462,5 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_d0s8i")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dpcx7")
-text = "Apply
+text = "Create Guard
 "

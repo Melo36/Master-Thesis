@@ -179,19 +179,15 @@ func _update_state():
 func _execute_state(delta: float):
 	match current_state:
 		State.PATROL:
-			#print("Patrol")
 			guard_movement.set_state(guard_movement.State.PATROL)
 
 		State.INVESTIGATE:
-			#print("Investigate")
 			guard_movement.set_state(guard_movement.State.INVESTIGATE, noise_sensor.get_last_sound_position())
 
 		State.CHASE:
-			#print("Chase")
 			guard_movement.set_state(guard_movement.State.CHASE, vision_sensor.get_last_known_position())
 
 		State.SHOOT:
-			#print("Shoot")
 			# Keep the guard planted on the ground, rotating continuously to look directly at the player
 			guard_movement.set_state(guard_movement.State.DEFAULT, player.global_position)
 			
@@ -202,7 +198,6 @@ func _execute_state(delta: float):
 				_fire_timer = fire_rate # Reset weapon cooldown
 
 		State.SEARCH_LOST:
-			#print("Seach Lost")
 			if _has_search_destination:
 				guard_movement.set_state(guard_movement.State.CHASE, _search_destination)
 

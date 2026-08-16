@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://n82ixnapfms5"
-path="res://.godot/imported/guard_run.fbx-f7a4a46235ab747e029e11fcb3d46e76.scn"
+uid="uid://dl1sefjt1alxr"
+path="res://.godot/imported/archer_walk.fbx-c7b74a3e6581cb6637ba2e0906557787.scn"
 
 [deps]
 
-source_file="res://animations/guard_run.fbx"
-dest_files=["res://.godot/imported/guard_run.fbx-f7a4a46235ab747e029e11fcb3d46e76.scn"]
+source_file="res://animations/archer_walk.fbx"
+dest_files=["res://.godot/imported/archer_walk.fbx-c7b74a3e6581cb6637ba2e0906557787.scn"]
 
 [params]
 
@@ -41,9 +41,9 @@ _subresources={
 "animations": {
 "mixamo_com": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://animations/clips/guard_run.tres",
+"save_to_file/fallback_path": "res://animations/archer_clips/archer_walk.tres",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://nbdpxfesk6u1",
+"save_to_file/path": "uid://cq6hlqynkvied",
 "settings/loop_mode": 1,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,

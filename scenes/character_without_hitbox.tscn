@@ -25,6 +25,7 @@
 [ext_resource type="Animation" uid="uid://cxl8ol4bepoks" path="res://animations/clips/vault_over_box.res" id="23_r5f8v"]
 [ext_resource type="Animation" uid="uid://bkhu08rmk3vr6" path="res://animations/clips/walking.res" id="24_wrj3d"]
 [ext_resource type="Animation" uid="uid://b6copq7ytgfa3" path="res://animations/clips/walking_backwards.res" id="25_acdx1"]
+[ext_resource type="PackedScene" uid="uid://dnwuisyfcxppo" path="res://scenes/animation_tree.tscn" id="26_hyaxk"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fnxfk"]
 _data = {
@@ -54,359 +55,6 @@ _data = {
 &"walking_backwards": ExtResource("25_acdx1")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_34gjw"]
-animation = &"Custom/crawl_idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pgysb"]
-animation = &"Custom/low_crawl"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6555i"]
-animation = &"Custom/crouch_walk_strafe_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2jwc5"]
-animation = &"Custom/crouch_idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x1mcr"]
-animation = &"Custom/crouch_walk_strafe_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q503i"]
-animation = &"Custom/crouched_walking"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_irid3"]
-xfade_time = 0.2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_34gjw"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "get(\"parameters/conditions/walking\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5wtnk"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "get(\"parameters/conditions/idle\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r5f8v"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "get(\"parameters/Walking/conditions/strafeLeft\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wrj3d"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "!get(\"parameters/Walking/conditions/strafeLeft\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_acdx1"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "get(\"parameters/Walking/conditions/strafeRight\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bhafs"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "!get(\"parameters/Walking/conditions/strafeRight\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7x1yu"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "get(\"parameters/Walking/conditions/strafeRight\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_en8v6"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "get(\"parameters/Walking/conditions/strafeLeft\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xav6i"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "!get(\"parameters/Walking/conditions/strafeRight\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0slwj"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "get(\"parameters/Walking/conditions/strafeRight\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yws1p"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "!get(\"parameters/Walking/conditions/strafeLeft\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2l0de"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "get(\"parameters/Walking/conditions/strafeLeft\")"
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_34gjw"]
-states/Custom_crouch_walk_strafe_right/node = SubResource("AnimationNodeAnimation_6555i")
-states/Custom_crouch_walk_strafe_right/position = Vector2(648.63, 298.8375)
-states/Start/position = Vector2(192.5, 100.375)
-states/crouch_idle/node = SubResource("AnimationNodeAnimation_2jwc5")
-states/crouch_idle/position = Vector2(334.5, 99.875)
-states/crouch_walk_strafe_left/node = SubResource("AnimationNodeAnimation_x1mcr")
-states/crouch_walk_strafe_left/position = Vector2(291.63, 297.5875)
-states/crouched_walking/node = SubResource("AnimationNodeAnimation_q503i")
-states/crouched_walking/position = Vector2(624, 99.75)
-transitions = ["Start", "crouch_idle", SubResource("AnimationNodeStateMachineTransition_irid3"), "crouch_idle", "crouched_walking", SubResource("AnimationNodeStateMachineTransition_34gjw"), "crouched_walking", "crouch_idle", SubResource("AnimationNodeStateMachineTransition_5wtnk"), "crouch_idle", "crouch_walk_strafe_left", SubResource("AnimationNodeStateMachineTransition_r5f8v"), "crouch_walk_strafe_left", "crouch_idle", SubResource("AnimationNodeStateMachineTransition_wrj3d"), "crouched_walking", "Custom_crouch_walk_strafe_right", SubResource("AnimationNodeStateMachineTransition_acdx1"), "Custom_crouch_walk_strafe_right", "crouched_walking", SubResource("AnimationNodeStateMachineTransition_bhafs"), "crouch_walk_strafe_left", "Custom_crouch_walk_strafe_right", SubResource("AnimationNodeStateMachineTransition_7x1yu"), "Custom_crouch_walk_strafe_right", "crouch_walk_strafe_left", SubResource("AnimationNodeStateMachineTransition_en8v6"), "Custom_crouch_walk_strafe_right", "crouch_idle", SubResource("AnimationNodeStateMachineTransition_xav6i"), "crouch_idle", "Custom_crouch_walk_strafe_right", SubResource("AnimationNodeStateMachineTransition_0slwj"), "crouch_walk_strafe_left", "crouched_walking", SubResource("AnimationNodeStateMachineTransition_yws1p"), "crouched_walking", "crouch_walk_strafe_left", SubResource("AnimationNodeStateMachineTransition_2l0de")]
-graph_offset = Vector2(24.180109, 30.18008)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o8bff"]
-animation = &"Custom/idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v0qw6"]
-animation = &"Custom/falling"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sgepu"]
-animation = &"Custom/landing"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ekh4"]
-xfade_time = 0.2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vm7nk"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"landed"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7vkx8"]
-xfade_time = 0.2
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cr4th"]
-states/End/position = Vector2(672, 99.234375)
-states/Falling/node = SubResource("AnimationNodeAnimation_v0qw6")
-states/Falling/position = Vector2(347.5, 100.1875)
-states/Landed/node = SubResource("AnimationNodeAnimation_sgepu")
-states/Landed/position = Vector2(514, 100.375)
-states/Start/position = Vector2(171.5, 98.28125)
-transitions = ["Start", "Falling", SubResource("AnimationNodeStateMachineTransition_3ekh4"), "Falling", "Landed", SubResource("AnimationNodeStateMachineTransition_vm7nk"), "Landed", "End", SubResource("AnimationNodeStateMachineTransition_7vkx8")]
-graph_offset = Vector2(177.12, 18.8625)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_irid3"]
-animation = &"Custom/sprint"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pjq3a"]
-reset = false
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lwyly"]
-states/End/position = Vector2(652.5, 100.875)
-states/Sprint/node = SubResource("AnimationNodeAnimation_irid3")
-states/Sprint/position = Vector2(431, 100.65625)
-states/Start/position = Vector2(200.5, 100.4375)
-transitions = ["Start", "Sprint", SubResource("AnimationNodeStateMachineTransition_pjq3a")]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hyaxk"]
-animation = &"Custom/left_strafe_walking"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_joq1o"]
-animation = &"Custom/right_strafe_walking"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7vkx8"]
-animation = &"Custom/walking"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wb7fw"]
-animation = &"Custom/walking_backwards"
-play_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2jwc5"]
-xfade_time = 0.2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6555i"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"strafeRight"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x1mcr"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"strafeLeft"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q503i"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "get(\"parameters/conditions/walkBackwards\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v0qw6"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "!get(\"parameters/Walking/conditions/strafeRight\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sgepu"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "!get(\"parameters/Walking/conditions/strafeLeft\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aginp"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"walking"
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_h3b6s"]
-states/End/position = Vector2(421.5, 115.5)
-states/Start/position = Vector2(166.28125, 100.25)
-states/left_strafe_walking/node = SubResource("AnimationNodeAnimation_hyaxk")
-states/left_strafe_walking/position = Vector2(455.9375, 344.5)
-states/right_strafe_walking/node = SubResource("AnimationNodeAnimation_joq1o")
-states/right_strafe_walking/position = Vector2(534.0625, 225.4375)
-states/walking/node = SubResource("AnimationNodeAnimation_7vkx8")
-states/walking/position = Vector2(166.47656, 225.92188)
-states/walking_backwards/node = SubResource("AnimationNodeAnimation_wb7fw")
-states/walking_backwards/position = Vector2(166.3789, 355.5)
-transitions = ["Start", "walking", SubResource("AnimationNodeStateMachineTransition_2jwc5"), "walking", "right_strafe_walking", SubResource("AnimationNodeStateMachineTransition_6555i"), "walking", "left_strafe_walking", SubResource("AnimationNodeStateMachineTransition_x1mcr"), "walking", "walking_backwards", SubResource("AnimationNodeStateMachineTransition_q503i"), "right_strafe_walking", "walking", SubResource("AnimationNodeStateMachineTransition_v0qw6"), "left_strafe_walking", "walking", SubResource("AnimationNodeStateMachineTransition_sgepu"), "walking_backwards", "walking", SubResource("AnimationNodeStateMachineTransition_aginp")]
-graph_offset = Vector2(75.44999, 3.772451)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aginp"]
-animation = &"Custom/hurricane_kick"
-use_custom_timeline = true
-timeline_length = 0.5
-stretch_time_scale = false
-start_offset = 0.0
-loop_mode = 0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rd2ci"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ayuge"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "get(\"parameters/Walking/conditions/strafeLeft\") || get(\"parameters/Walking/conditions/strafeRight\") || get(\"parameters/conditions/walking\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o8bff"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pgysb"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"crouched"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h3b6s"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"crouched"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iu26k"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"walking"
-advance_expression = "get(\"parameters/conditions/walking\") && !get(\"parameters/conditions/crouched\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pe8is"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"idle"
-advance_expression = "get(\"parameters/conditions/idle\") && !get(\"parameters/conditions/crouched\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hyaxk"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"falling"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_joq1o"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"landed"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wb7fw"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"falling"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_klptk"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"landed"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cr4th"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"landed"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qil8a"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"falling"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m4v7x"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"sprinting"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_63via"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "!get(\"parameters/conditions/sprinting\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pt8r8"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"sprinting"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p4453"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "!get(\"parameters/conditions/sprinting\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sj6nh"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"crawling"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lwyly"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "!get(\"parameters/conditions/crawling\")"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_udnd2"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "get(\"parameters/conditions/idle\") && get(\"parameters/conditions/crawling\") "
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ljj6e"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "!get(\"parameters/conditions/crawling\") "
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eww57"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"walking"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gqmek"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n3iwf"]
-xfade_time = 0.2
-reset = false
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_o8bff"]
-states/Crawl_Idle/node = SubResource("AnimationNodeAnimation_34gjw")
-states/Crawl_Idle/position = Vector2(708.8623, 181.56313)
-states/Crawling/node = SubResource("AnimationNodeAnimation_pgysb")
-states/Crawling/position = Vector2(707.7998, 289.9411)
-states/Crouching/node = SubResource("AnimationNodeStateMachine_34gjw")
-states/Crouching/position = Vector2(490.92813, 181.35)
-states/Idle/node = SubResource("AnimationNodeAnimation_o8bff")
-states/Idle/position = Vector2(241.5, 27.5)
-states/Jump/node = SubResource("AnimationNodeStateMachine_cr4th")
-states/Jump/position = Vector2(242.46002, 181.2025)
-states/Sprinting/node = SubResource("AnimationNodeStateMachine_lwyly")
-states/Sprinting/position = Vector2(740.5498, 27.125)
-states/Start/position = Vector2(61.5, 27.625)
-states/Walking/node = SubResource("AnimationNodeStateMachine_h3b6s")
-states/Walking/position = Vector2(489.53534, 26.75)
-states/hurricane/node = SubResource("AnimationNodeAnimation_aginp")
-states/hurricane/position = Vector2(247.49042, -93.15042)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_rd2ci"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_ayuge"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_o8bff"), "Walking", "Crouching", SubResource("AnimationNodeStateMachineTransition_pgysb"), "Idle", "Crouching", SubResource("AnimationNodeStateMachineTransition_h3b6s"), "Crouching", "Walking", SubResource("AnimationNodeStateMachineTransition_iu26k"), "Crouching", "Idle", SubResource("AnimationNodeStateMachineTransition_pe8is"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_hyaxk"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_joq1o"), "Walking", "Jump", SubResource("AnimationNodeStateMachineTransition_wb7fw"), "Jump", "Walking", SubResource("AnimationNodeStateMachineTransition_klptk"), "Jump", "Crouching", SubResource("AnimationNodeStateMachineTransition_cr4th"), "Crouching", "Jump", SubResource("AnimationNodeStateMachineTransition_qil8a"), "Walking", "Sprinting", SubResource("AnimationNodeStateMachineTransition_m4v7x"), "Sprinting", "Walking", SubResource("AnimationNodeStateMachineTransition_63via"), "Crouching", "Sprinting", SubResource("AnimationNodeStateMachineTransition_pt8r8"), "Sprinting", "Crouching", SubResource("AnimationNodeStateMachineTransition_p4453"), "Crouching", "Crawling", SubResource("AnimationNodeStateMachineTransition_sj6nh"), "Crawling", "Crouching", SubResource("AnimationNodeStateMachineTransition_lwyly"), "Crouching", "Crawl_Idle", SubResource("AnimationNodeStateMachineTransition_udnd2"), "Crawl_Idle", "Crouching", SubResource("AnimationNodeStateMachineTransition_ljj6e"), "Crawl_Idle", "Crawling", SubResource("AnimationNodeStateMachineTransition_eww57"), "Crawling", "Crawl_Idle", SubResource("AnimationNodeStateMachineTransition_gqmek"), "hurricane", "Idle", SubResource("AnimationNodeStateMachineTransition_n3iwf")]
-graph_offset = Vector2(-90.59959, -162.83292)
-
 [node name="hamster_character" unique_id=324042045 instance=ExtResource("1_d0cny")]
 
 [node name="Light" parent="." index="1" unique_id=1213300348]
@@ -419,50 +67,37 @@ shadow_enabled = false
 
 [node name="Skeleton3D" parent="." index="2" unique_id=1560551287]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-bones/0/position = Vector3(0.022614755, 0.18841177, -0.042292297)
-bones/0/rotation = Quaternion(0.008386616, 0.0082403235, -0.01691797, 0.9997878)
-bones/1/rotation = Quaternion(-0.03384648, 0.0070917713, 0.003720442, 0.99939495)
-bones/2/rotation = Quaternion(0.004359304, 0.013209144, 0.0017634397, 0.9999017)
-bones/3/rotation = Quaternion(0.004359305, 0.013209155, 0.0017634371, 0.9999017)
-bones/4/rotation = Quaternion(0.040880192, -0.006009299, -0.0014617587, 0.999145)
-bones/5/rotation = Quaternion(0.019315341, -0.02523873, 0.011113273, 0.9994331)
-bones/7/rotation = Quaternion(-0.6441102, -0.36232254, 0.5253358, -0.4217427)
-bones/8/rotation = Quaternion(0.35661694, 0.5903184, 0.20960382, 0.6931197)
-bones/9/rotation = Quaternion(0.22054656, -0.88128763, 0.14904696, -0.39048213)
-bones/10/rotation = Quaternion(0.12540595, 0.17933483, -0.06946031, 0.973287)
-bones/11/rotation = Quaternion(-0.31183648, -0.73666734, 0.16256233, 0.57762694)
-bones/12/rotation = Quaternion(0.3292238, 0.31531215, 0.47438943, 0.75309014)
+bones/0/position = Vector3(0.017736439, 0.15780735, 0.004850894)
+bones/0/rotation = Quaternion(0.017773964, 0.22235902, 0.0045020473, 0.9747925)
+bones/1/rotation = Quaternion(-0.032779787, -0.17081735, 0.0035970411, 0.9847508)
+bones/2/rotation = Quaternion(0.0057417247, -0.027440377, 0.00097045355, 0.99960655)
+bones/3/rotation = Quaternion(0.0057417233, -0.02744039, 0.00097045326, 0.99960655)
+bones/4/rotation = Quaternion(0.04381613, 0.011699376, -0.023956181, 0.9986838)
+bones/5/rotation = Quaternion(0.0049436684, 0.0053985734, 0.029890444, 0.99952644)
+bones/7/rotation = Quaternion(-0.6611293, -0.3407569, 0.506705, -0.43593925)
+bones/8/rotation = Quaternion(0.24646294, 0.60777754, 0.23612282, 0.71701366)
+bones/9/rotation = Quaternion(0.34398565, -0.788185, 0.34063128, -0.38001123)
+bones/10/rotation = Quaternion(0.10439093, 0.09767006, -0.013204944, 0.9896408)
+bones/11/rotation = Quaternion(-0.27639985, -0.7459197, 0.12208085, 0.5935514)
+bones/12/rotation = Quaternion(0.3680981, 0.28250572, 0.4143935, 0.78292555)
 bones/13/rotation = Quaternion(-1.3986208e-17, 1.3877788e-17, -2.6020852e-18, 1)
-bones/15/rotation = Quaternion(0.6320842, -0.3691737, 0.5436738, 0.41060823)
-bones/16/rotation = Quaternion(0.3934018, 0.12999834, 0.18344334, 0.89145046)
-bones/17/rotation = Quaternion(0.15609625, -0.107941665, -0.2876334, 0.938749)
-bones/18/rotation = Quaternion(-0.04987429, 0.2652981, -0.0016148005, 0.9628743)
-bones/19/rotation = Quaternion(-0.32079935, 0.9303767, 0.1578682, -0.08102246)
-bones/20/rotation = Quaternion(0.09148817, -0.15054224, -0.40877295, 0.8954729)
+bones/15/rotation = Quaternion(0.61949223, -0.37684375, 0.57864076, 0.3733538)
+bones/16/rotation = Quaternion(0.42211992, -0.04165511, 0.25378716, 0.8692938)
+bones/17/rotation = Quaternion(0.044281766, -0.20033851, -0.16957521, 0.96392316)
+bones/18/rotation = Quaternion(-0.0017266981, 0.40914944, -0.028136533, 0.9120319)
+bones/19/rotation = Quaternion(-0.26210544, 0.954193, 0.1203531, -0.07957245)
+bones/20/rotation = Quaternion(0.1273632, -0.13705999, -0.3655135, 0.91180766)
 bones/21/rotation = Quaternion(1.3877788e-17, -7.70372e-34, -3.469447e-18, 1)
-bones/23/rotation = Quaternion(0.016179636, -0.34932768, 0.86825675, 0.35190716)
-bones/24/rotation = Quaternion(-0.79308325, 0.5583018, -0.18898177, 0.15363547)
-bones/25/rotation = Quaternion(0.28920645, 0.7317092, 0.43847588, -0.43439642)
-bones/26/rotation = Quaternion(0.25497013, 0.44881642, -0.15861762, 0.8416618)
-bones/28/rotation = Quaternion(-0.077540964, -0.15207832, 0.98156404, -0.08597479)
-bones/29/rotation = Quaternion(-0.9326822, -0.00995198, -0.36056188, -0.00040584808)
-bones/30/rotation = Quaternion(0.2969389, -0.289486, 0.73776084, -0.5326671)
-bones/31/rotation = Quaternion(0.2408266, -0.60728425, 0.22573021, 0.7226717)
+bones/23/rotation = Quaternion(0.040408704, -0.5356247, 0.7270265, -0.42767474)
+bones/24/rotation = Quaternion(-0.04869795, -0.9606301, 0.27278227, 0.020203397)
+bones/25/rotation = Quaternion(0.7971762, -0.3315517, 0.50249034, -0.045683634)
+bones/26/rotation = Quaternion(0.3514139, 0.35030633, -0.2878032, 0.8191233)
+bones/28/rotation = Quaternion(-0.11623074, 0.6628506, 0.67486423, 0.30278328)
+bones/29/rotation = Quaternion(-0.08825274, -0.036608472, 0.09396857, 0.9909799)
+bones/30/rotation = Quaternion(0.10104695, 0.885345, 0.055937678, 0.45036066)
+bones/31/rotation = Quaternion(0.2612592, -0.5836735, 0.27997875, 0.71601737)
 
 [node name="AnimationPlayer" parent="." index="3" unique_id=1415520409]
 libraries/Custom = SubResource("AnimationLibrary_fnxfk")
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="4" unique_id=1519222991]
-tree_root = SubResource("AnimationNodeStateMachine_o8bff")
-anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/crawling = false
-parameters/conditions/crouched = false
-parameters/conditions/falling = false
-parameters/conditions/idle = false
-parameters/conditions/landed = false
-parameters/conditions/sprinting = false
-parameters/conditions/walking = true
-parameters/Jump/conditions/landed = false
-parameters/Walking/conditions/strafeLeft = false
-parameters/Walking/conditions/strafeRight = false
-parameters/Walking/conditions/walking = false
+[node name="AnimationTree" parent="." index="4" unique_id=862536454 instance=ExtResource("26_hyaxk")]
