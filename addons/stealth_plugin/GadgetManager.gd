@@ -12,11 +12,10 @@ var night_vision_multiplier: float = 1.5
 func night_vision_for_guards(value: bool):
 	var vision_sensor: Node3D = get_parent().find_child("VisionSensor")
 	var goggles = get_parent().find_child("NightVisionGoggles", true, false)
-	print("Goggles ", goggles)
+	goggles.visible = value
 	if value:
 		vision_sensor.night_vision_multiplier = night_vision_multiplier
-		goggles.visible = true
 	else:
 		vision_sensor.night_vision_multiplier = 1.0
-		goggles.visible = false
 	
+# Add more gadgets here

@@ -202,7 +202,6 @@ bone_idx = 5
 
 [node name="NightVisionGoggles" parent="Skeleton3D/HeadAttachment" index="0" unique_id=686370974 instance=ExtResource("3_j0ode")]
 transform = Transform3D(-3.7252903e-08, 9.313226e-10, 0.90000004, 2.9802322e-08, 0.90000004, 9.313226e-10, -0.90000004, 4.4703484e-08, -4.4703484e-08, 0.004585011, 0.035731077, 0.11967857)
-visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Skeleton3D/HeadAttachment/NightVisionGoggles" index="2" unique_id=1943757034]
 transform = Transform3D(1.1111112, -1.3411045e-07, -1.3411045e-07, 7.4505806e-08, 1.1111109, 1.3038516e-08, 1.1920929e-07, -2.0489097e-08, 1.1111113, -0.07185331, 0.021680593, 0.09133279)

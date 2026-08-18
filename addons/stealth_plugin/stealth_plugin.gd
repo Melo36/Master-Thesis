@@ -115,6 +115,17 @@ func _get_or_create_single_player(scene: Node) -> Node:
 	
 	
 func _create_guard(scene: Node) -> Node:
+	var selected := get_editor_interface().get_selection().get_selected_nodes()
+	var length = len(selected)
+	var agent = selected[0]
+	var child = agent.find_child("Guard")
+	if length > 1 || length == 0:
+		pass
+	elif agent.is_in_group("Guard"):
+		return agent
+	elif child && child.is_in_group("Guard"):
+		return child
+
 	var parent = Node3D.new()
 	parent.name = "Guard"
 	var patrolRoute = Path3D.new()
