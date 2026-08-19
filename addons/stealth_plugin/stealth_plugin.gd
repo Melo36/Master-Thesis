@@ -9,10 +9,9 @@ var wizard: Control
 var guard_wizard: Control
 
 var assign_3D_button
+var assign_3D_button_guard
 var assign_ill_image_button
 var assign_state_ind_button
-
-var animationButtonList = []
 
 var wizard_elements: int = 15
 var guard_wizard_elements: int = 23
@@ -26,7 +25,6 @@ func _enter_tree() -> void:
 		guard_wizard = preload("res://addons/stealth_plugin/guard_setup_wizard.tscn").instantiate()
 		add_control_to_dock(DOCK_SLOT_LEFT_BL, guard_wizard)
 		
-	animationButtonList = get_tree().get_nodes_in_group("PlayerAnimation")
 	#var animLen = len(animationButtonList)
 	#animationButtonList = animationButtonList.slice(animLen - 16, animLen - 1)
 
@@ -36,6 +34,7 @@ func _enter_tree() -> void:
 	apply_button_guard.pressed.connect(_on_apply_button_guard_pressed)
 	
 	assign_3D_button = wizard.find_child("3DModelAssignButton", true)
+	assign_3D_button_guard = guard_wizard.find_child("3DModelAssignButton", true)
 	assign_ill_image_button = wizard.find_child("AssignIllImageButton", true)
 	assign_state_ind_button = guard_wizard.find_child("AssignStateIndButton", true)
 	
@@ -68,9 +67,11 @@ func _on_apply_button_pressed() -> void:
 	_apply_inputs_to_player(player)
 
 	model_selection = wizard.find_child("ModelSelection", true)
-	_replace_model(player)
+	_replace_model(player, assign_3D_button)
 	_replace_indicator_image(player, "LightLevel", assign_ill_image_button)
-	_replace_animations(player)
+	
+	var animationButtonList = get_tree().get_nodes_in_group("PlayerAnimation")
+	_replace_animations(player, animationButtonList)
 
 func _on_apply_button_guard_pressed() -> void:
 	var scene := get_editor_interface().get_edited_scene_root()
@@ -83,6 +84,10 @@ func _on_apply_button_guard_pressed() -> void:
 
 	model_selection = guard_wizard.find_child("ImageSelection", true)
 	_replace_indicator_image(guard, "ImageIndicator", assign_state_ind_button)
+	_replace_model(guard, assign_3D_button_guard)
+	
+	var guardAnimationButtonList = get_tree().get_nodes_in_group("GuardAnimation")
+	_replace_animations(guard, guardAnimationButtonList)
 	
 
 # ------------------------------------------------------------
@@ -102,7 +107,7 @@ func _get_or_create_single_player(scene: Node) -> Node:
 		return players[0]
 
 	# Otherwise create new ONE
-	var player := preload("res://scenes/hamster.tscn").instantiate()
+	var player := preload("res://scenes/player.tscn").instantiate()
 	player.name = "Player"
 	player.add_to_group("Player")
 
@@ -117,14 +122,13 @@ func _get_or_create_single_player(scene: Node) -> Node:
 func _create_guard(scene: Node) -> Node:
 	var selected := get_editor_interface().get_selection().get_selected_nodes()
 	var length = len(selected)
-	var agent = selected[0]
-	var child = agent.find_child("Guard")
-	if length > 1 || length == 0:
-		pass
-	elif agent.is_in_group("Guard"):
-		return agent
-	elif child && child.is_in_group("Guard"):
-		return child
+	if length == 1:
+		var agent = selected[0]
+		if agent.is_in_group("Guard"):
+			return agent
+		var child = agent.find_child("Guard")
+		if child && child.is_in_group("Guard"):
+			return child
 
 	var parent = Node3D.new()
 	parent.name = "Guard"
@@ -215,13 +219,14 @@ func _apply_inputs_to_guard(guard: Node) -> void:
 # MODEL REPLACEMENT (SAFE + NO DUPLICATES)
 # ------------------------------------------------------------
 
-func _replace_model(player: Node) -> void:
+func _replace_model(agent: Node, button: Button) -> void:
 	# Simply pass the path string to the player. 
 	# The player's setter script will handle the heavy lifting!
-	var model_handler = player.find_child("ModelHandler")
-	var resourcePath = assign_3D_button.resourcePath
+	var model_handler = agent.find_child("ModelHandler")
+	var resourcePath = button.resourcePath
 	if model_handler && resourcePath:
 		model_handler.custom_model_path = resourcePath
+	model_handler._load_model()
 
 func _replace_indicator_image(agent: Node, child: String, button: Button) -> void:
 	# Simply pass the path string to the player. 
@@ -231,7 +236,7 @@ func _replace_indicator_image(agent: Node, child: String, button: Button) -> voi
 	if state_indicator && resourcePath:
 		state_indicator.texture = load(resourcePath)
 		
-func _replace_animations(agent: Node):
+func _replace_animations(agent: Node, animationList: Array):
 	var lib_name : String = "Custom"
 	var animationTree = agent.find_child("AnimationTree", true)
 	var animationPlayer : AnimationPlayer = agent.find_child("AnimationPlayer", true)
@@ -239,29 +244,31 @@ func _replace_animations(agent: Node):
 	var state_machine = animationTree.tree_root
 	
 	var library := AnimationLibrary.new()
-
-	print("Length, ",len(animationButtonList))
-	for button in animationButtonList:
+	print("Length ", len(animationList))
+	
+	for button in animationList:
 		if button.resourcePath:
 			var node = find_state(state_machine, button.name)
-			print("ButtonName: ", button.name, ", Path: ", button.resourcePath)
 			node.animation = lib_name + "/" + button.name
 			var animation: Animation = load(button.resourcePath)
 			library.add_animation(button.name, animation)
 			
 	animationPlayer.add_animation_library(lib_name, library)
 			
-func find_state(machine: AnimationNodeStateMachine, state_name: String) -> AnimationNodeAnimation:
-	var state = machine.get_node(state_name)
-	if state:
-		return state
+func find_state(machine: AnimationNodeStateMachine,state_name: String) -> AnimationNodeAnimation:
+	if machine.has_node(state_name):
+		var state := machine.get_node(state_name)
+		if state is AnimationNodeAnimation:
+			return state
+
 	for node_name in machine.get_node_list():
-		print(node_name)
-		var node = machine.get_node(node_name)
+		var node := machine.get_node(node_name)
+
 		if node is AnimationNodeStateMachine:
-			var result = find_state(node, state_name)
+			var result := find_state(node, state_name)
 			if result:
 				return result
+
 	return null
 
 func _on_selection_changed():

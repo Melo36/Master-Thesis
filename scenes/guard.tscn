@@ -6,12 +6,12 @@
 [ext_resource type="Script" uid="uid://bpajbi2wk1nxv" path="res://scripts/guard_vision_behavior.gd" id="5_gn8tx"]
 [ext_resource type="Script" uid="uid://4dkpyhsv7o23" path="res://scripts/guard_movement.gd" id="6_5dfqo"]
 [ext_resource type="Script" uid="uid://bw366snicme0g" path="res://scripts/chase_influence_map.gd" id="7_chasemap"]
-[ext_resource type="PackedScene" uid="uid://d3elvbasyc0b" path="res://scenes/guard_model.tscn" id="8_c4sgu"]
 [ext_resource type="Script" uid="uid://b1qirgxs5mc4t" path="res://scripts/guard_state_indicator.gd" id="8_indicator"]
 [ext_resource type="Texture2D" uid="uid://dpsoct00lvvod" path="res://resources/blade.png" id="9_rmy4q"]
 [ext_resource type="AudioStream" uid="uid://yr7nlygrsaem" path="res://sounds/gun_shot.mp3" id="10_lpkwa"]
 [ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://addons/raytraced_audio/raytraced_audio_player_3d.gd" id="11_17ufb"]
 [ext_resource type="Script" uid="uid://df0g5mycw1xv3" path="res://addons/stealth_plugin/GadgetManager.gd" id="12_17ufb"]
+[ext_resource type="Script" uid="uid://dwhisyu7pd11j" path="res://scenes/model_handler.gd" id="13_nflhy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_17ufb"]
 radius = 0.42626953
@@ -31,9 +31,6 @@ shading_mode = 0
 script = ExtResource("1_k0dx2")
 search_noise_interrupt = 0.8
 min_search_duration = 20.0
-
-[node name="model" parent="." unique_id=904658031 instance=ExtResource("8_c4sgu")]
-transform = Transform3D(-1.2, 0, -1.8119498e-07, 0, 1.2, 0, 1.8119498e-07, 0, -1.2, 0, -0.62004143, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=937642194]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35690784, 0)
@@ -112,3 +109,6 @@ outline_size = 24
 
 [node name="ImageIndicator" type="Sprite3D" parent="StateIndicator" unique_id=1702826809]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 3.1441321, 0)
+
+[node name="ModelHandler" type="Node3D" parent="." unique_id=1999072873]
+script = ExtResource("13_nflhy")

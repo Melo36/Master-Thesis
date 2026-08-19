@@ -117,12 +117,6 @@ func _ready():
 		# Ensure the mesh is initialized
 		if trajectory_line.mesh == null:
 			trajectory_line.mesh = ImmediateMesh.new()
-			
-func register_local_light(light: Light3D):
-	light_posts.append(light)
-
-func unregister_local_light(light: Light3D):
-	light_posts.erase(light)
 
 # ==================================================
 # INPUT
@@ -327,6 +321,7 @@ func handle_movement(direction: Vector3, speed: float):
 
 func update_animation(input_dir: Vector2):
 	if !animationTree:
+		print("AnimationTree not found")
 		return
 	var on_floor = is_on_floor()
 	

@@ -139,7 +139,7 @@ tooltip_text = "Animation that plays when the character is walking."
 mouse_filter = 0
 text = "Walk"
 
-[node name="walk" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1606177075 groups=["PlayerAnimation"]]
+[node name="walking" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1606177075 groups=["PlayerAnimation"]]
 layout_mode = 2
 text = "Assign animation"
 script = ExtResource("1_fmwjj")
@@ -148,6 +148,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -157,7 +158,7 @@ tooltip_text = "Animation that plays when the character is idle."
 mouse_filter = 0
 text = "Idle"
 
-[node name="idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1665096016 groups=["PlayerAnimation"]]
+[node name="Idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1665096016 groups=["PlayerAnimation"]]
 layout_mode = 2
 text = "Assign animation"
 script = ExtResource("1_fmwjj")
@@ -166,6 +167,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -184,6 +186,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -202,6 +205,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -211,7 +215,7 @@ tooltip_text = "Animation that plays when the character is sprinting."
 mouse_filter = 0
 text = "Sprint"
 
-[node name="sprint" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=366998239 groups=["PlayerAnimation"]]
+[node name="sprinting" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=366998239 groups=["PlayerAnimation"]]
 layout_mode = 2
 text = "Assign animation"
 script = ExtResource("1_fmwjj")
@@ -220,6 +224,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -229,7 +234,7 @@ tooltip_text = "Animation that plays when the character is crawling."
 mouse_filter = 0
 text = "Crawl"
 
-[node name="low_crawl" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1966698724 groups=["PlayerAnimation"]]
+[node name="Crawling" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1966698724 groups=["PlayerAnimation"]]
 layout_mode = 2
 text = "Assign animation"
 script = ExtResource("1_fmwjj")
@@ -238,6 +243,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -247,7 +253,7 @@ tooltip_text = "Animation that plays when the character is idle while crawling."
 mouse_filter = 0
 text = "Crawl Idle"
 
-[node name="crawl_idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=221615236 groups=["PlayerAnimation"]]
+[node name="Crawl_Idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=221615236 groups=["PlayerAnimation"]]
 layout_mode = 2
 text = "Assign animation"
 script = ExtResource("1_fmwjj")
@@ -256,6 +262,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -274,6 +281,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -283,7 +291,7 @@ tooltip_text = "Animation that plays when the character is jumping (in the air).
 mouse_filter = 0
 text = "Jump"
 
-[node name="falling" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=166390917 groups=["PlayerAnimation"]]
+[node name="Falling" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=166390917 groups=["PlayerAnimation"]]
 layout_mode = 2
 text = "Assign animation"
 script = ExtResource("1_fmwjj")
@@ -292,6 +300,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -320,6 +329,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -338,6 +348,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -356,6 +367,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -374,6 +386,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -392,6 +405,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -410,6 +424,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -428,6 +443,7 @@ script = ExtResource("1_fmwjj")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -634,6 +650,7 @@ text = "Number of Distractions"
 
 [node name="bells" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=643857856 groups=["PlayerInput"]]
 layout_mode = 2
+value = 3.0
 rounded = true
 
 [node name="ChargeSpeedLabel" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=666447834]

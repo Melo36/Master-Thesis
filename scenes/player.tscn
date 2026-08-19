@@ -1,16 +1,16 @@
 [gd_scene format=4 uid="uid://bubkruqvhn4k7"]
 
-[ext_resource type="Script" uid="uid://d0u21wkhrp7qu" path="res://scripts/usable_player.gd" id="1_vs5a8"]
-[ext_resource type="Script" uid="uid://bjpmu5sklv5h8" path="res://addons/raytraced_audio/raytraced_audio_listener.gd" id="2_apgft"]
-[ext_resource type="AudioStream" uid="uid://goyage7rxmg6" path="res://sounds/620340__marb7e__footsteps_sneakers_underbrush_walk04.wav" id="3_7vfxu"]
-[ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://addons/raytraced_audio/raytraced_audio_player_3d.gd" id="3_tpwgc"]
-[ext_resource type="Script" uid="uid://cu3hxrght1n5" path="res://scripts/shuriken.gd" id="6_qopqs"]
-[ext_resource type="Script" uid="uid://bxjv0w2jkn1ph" path="res://scripts/throw_shuriken.gd" id="6_qvwhv"]
-[ext_resource type="Texture2D" uid="uid://dpsoct00lvvod" path="res://resources/blade.png" id="8_ls0pu"]
-[ext_resource type="Texture2D" uid="uid://cnyloppek8r84" path="res://resources/bell.png" id="8_qowr5"]
-[ext_resource type="Script" uid="uid://6cjxmevy1c0i" path="res://scripts/inventory.gd" id="10_p16ke"]
-[ext_resource type="Texture2D" uid="uid://dairqkv1rcfbp" path="res://scenes/light-yt/player/assets/light_meter_ui.svg" id="10_vs5a8"]
-[ext_resource type="Script" uid="uid://dwhisyu7pd11j" path="res://scenes/model_handler.gd" id="11_vs5a8"]
+[ext_resource type="Script" uid="uid://d0u21wkhrp7qu" path="res://scripts/usable_player.gd" id="1_d2wvv"]
+[ext_resource type="Script" uid="uid://bjpmu5sklv5h8" path="res://addons/raytraced_audio/raytraced_audio_listener.gd" id="2_3v2ag"]
+[ext_resource type="AudioStream" uid="uid://goyage7rxmg6" path="res://sounds/620340__marb7e__footsteps_sneakers_underbrush_walk04.wav" id="3_jej6c"]
+[ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://addons/raytraced_audio/raytraced_audio_player_3d.gd" id="4_f1ej7"]
+[ext_resource type="Script" uid="uid://cu3hxrght1n5" path="res://scripts/shuriken.gd" id="5_oprun"]
+[ext_resource type="Script" uid="uid://bxjv0w2jkn1ph" path="res://scripts/throw_shuriken.gd" id="6_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://dpsoct00lvvod" path="res://resources/blade.png" id="7_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://cnyloppek8r84" path="res://resources/bell.png" id="8_fulsm"]
+[ext_resource type="Script" uid="uid://6cjxmevy1c0i" path="res://scripts/inventory.gd" id="9_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://dairqkv1rcfbp" path="res://scenes/light-yt/player/assets/light_meter_ui.svg" id="10_60mlk"]
+[ext_resource type="Script" uid="uid://dwhisyu7pd11j" path="res://scenes/model_handler.gd" id="11_i4ail"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7nt27"]
 
@@ -96,15 +96,15 @@ radial_segments = 4
 rings = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k6f3i"]
-atlas = ExtResource("10_vs5a8")
+atlas = ExtResource("10_60mlk")
 region = Rect2(0, 128, 256, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xdqt8"]
-atlas = ExtResource("10_vs5a8")
+atlas = ExtResource("10_60mlk")
 region = Rect2(0, 0, 256, 128)
 
-[node name="CharacterBody3D" type="CharacterBody3D" unique_id=527582928 groups=["Player"]]
-script = ExtResource("1_vs5a8")
+[node name="Player" type="CharacterBody3D" unique_id=527582928 groups=["Player"]]
+script = ExtResource("1_d2wvv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1083905860]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9204389, -0.10208094)
@@ -114,12 +114,12 @@ shape = SubResource("CapsuleShape3D_7nt27")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2297807, -0.21631289)
 
 [node name="RaytracedAudioListener" type="AudioListener3D" parent="." unique_id=856202275]
-script = ExtResource("2_apgft")
+script = ExtResource("2_3v2ag")
 metadata/_custom_type_script = "uid://bjpmu5sklv5h8"
 
 [node name="RaytracedAudioPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1201174410]
-stream = ExtResource("3_7vfxu")
-script = ExtResource("3_tpwgc")
+stream = ExtResource("3_jej6c")
+script = ExtResource("4_f1ej7")
 metadata/_custom_type_script = "uid://dkb8ltjc6067n"
 
 [node name="FloorDetector" type="RayCast3D" parent="." unique_id=197028793]
@@ -128,7 +128,7 @@ metadata/_custom_type_script = "uid://dkb8ltjc6067n"
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.21563831, -9.004892, -0.98912734)
 collision_layer = 15
 collision_mask = 15
-script = ExtResource("6_qopqs")
+script = ExtResource("5_oprun")
 rotation_speed = 15.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shuriken" unique_id=1167303660]
@@ -141,7 +141,7 @@ mesh = SubResource("ArrayMesh_2tcm3")
 
 [node name="LockOnRadius" type="Area3D" parent="." unique_id=855010088]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.2623005)
-script = ExtResource("6_qvwhv")
+script = ExtResource("6_a8ls1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LockOnRadius" unique_id=1551862648]
 shape = SubResource("SphereShape3D_eh6ys")
@@ -183,7 +183,7 @@ grow_vertical = 0
 modulate = Color(0.5806464, 0.058837317, 0.24752238, 1)
 self_modulate = Color(0.174626, 0.17462596, 0.17462596, 1)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("8_ls0pu")
+texture = ExtResource("7_qfm1y")
 
 [node name="BellUI" type="Node3D" parent="CanvasLayer" unique_id=1502574217]
 
@@ -214,7 +214,7 @@ grow_vertical = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/BellUI/BellControl" unique_id=568258040]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("8_qowr5")
+texture = ExtResource("8_fulsm")
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1789180138]
 anchors_preset = 2
@@ -233,7 +233,7 @@ value = 100.0
 show_percentage = false
 
 [node name="Inventory" type="Node3D" parent="." unique_id=307835782]
-script = ExtResource("10_p16ke")
+script = ExtResource("9_4r5pv")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1266131454]
 handle_input_locally = false
@@ -310,6 +310,6 @@ texture_progress = SubResource("AtlasTexture_xdqt8")
 tint_under = Color(1, 1, 1, 0.752941)
 
 [node name="ModelHandler" type="Node3D" parent="." unique_id=1661138218]
-script = ExtResource("11_vs5a8")
+script = ExtResource("11_i4ail")
 
 [connection signal="body_entered" from="Shuriken" to="Shuriken" method="_on_body_entered"]
