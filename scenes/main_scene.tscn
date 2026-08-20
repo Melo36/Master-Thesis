@@ -29,15 +29,14 @@
 [ext_resource type="Script" uid="uid://b1qirgxs5mc4t" path="res://scripts/guard_state_indicator.gd" id="27_womr8"]
 [ext_resource type="PackedScene" uid="uid://bnime8fac8jxd" path="res://models/archer.fbx" id="28_womr8"]
 [ext_resource type="Animation" uid="uid://cq6hlqynkvied" path="res://animations/archer_clips/archer_walk.tres" id="29_02d50"]
-[ext_resource type="Animation" uid="uid://cc48oku8dlvvg" path="res://animations/archer_clips/crawling_idle.tres" id="29_xa0eo"]
-[ext_resource type="Animation" uid="uid://bm46wdu6uqkgl" path="res://animations/archer_clips/crawling.tres" id="30_3mjum"]
+[ext_resource type="Animation" uid="uid://coxvcojiwfjqe" path="res://animations/archer_clips/crawling_idle.tres" id="29_xa0eo"]
+[ext_resource type="Animation" uid="uid://tk454tan8gs7" path="res://animations/archer_clips/crawling.tres" id="30_3mjum"]
 [ext_resource type="PackedScene" uid="uid://dnwuisyfcxppo" path="res://scenes/animation_tree.tscn" id="30_pgk25"]
-[ext_resource type="Animation" uid="uid://46swlyytn8b5" path="res://animations/archer_clips/falling.tres" id="31_p27gv"]
-[ext_resource type="Animation" uid="uid://dmh210jqjyarq" path="res://animations/archer_clips/idle.tres" id="32_cn4eu"]
-[ext_resource type="Animation" uid="uid://didpt04s1om23" path="res://animations/archer_clips/idle_crouching.tres" id="33_0wyf6"]
-[ext_resource type="Animation" uid="uid://bvi7lod756pke" path="res://animations/archer_clips/crouched_walking.tres" id="34_xp01v"]
-[ext_resource type="Animation" uid="uid://dea1vi24n2wd3" path="res://animations/archer_clips/melee.tres" id="35_jix7a"]
-[ext_resource type="Animation" uid="uid://cvdk3cyaxh0ab" path="res://animations/archer_clips/sprinting.tres" id="36_segjr"]
+[ext_resource type="Animation" uid="uid://bnwgqy7a47054" path="res://animations/archer_clips/falling.tres" id="31_p27gv"]
+[ext_resource type="Animation" uid="uid://c81ch8v2liraq" path="res://animations/archer_clips/idle.tres" id="32_cn4eu"]
+[ext_resource type="Animation" uid="uid://d4bqrtw57gyuv" path="res://animations/archer_clips/idle_crouching.tres" id="33_0wyf6"]
+[ext_resource type="Animation" uid="uid://bh5i3haruuku2" path="res://animations/archer_clips/crouched_walking.tres" id="34_xp01v"]
+[ext_resource type="Animation" uid="uid://kilmyt74qas5" path="res://animations/archer_clips/sprinting.tres" id="36_segjr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rt2n2"]
 panorama = ExtResource("3_gubc5")
@@ -74,6 +73,14 @@ shading_mode = 0
 albedo_color = Color(0.13333334, 0.2, 0.42352942, 1)
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_6wevv"]
+
+[sub_resource type="Curve3D" id="Curve3D_onjth"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9.776123, -0.00024414063, 0.8806889, 0, 0, 0, 0, 0, 0, 9.655678, -0.0064697266, 8.729952, 0, 0, 0, 0, 0, 0, 1.959388, -0.006591797, 8.3698845),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_17ufb"]
 radius = 0.42626953
@@ -189,7 +196,7 @@ _data = {
 &"Take 001": SubResource("Animation_6hi2v")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xa0eo"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_onjth"]
 _data = {
 &"Crawl_Idle": ExtResource("29_xa0eo"),
 &"Crawling": ExtResource("30_3mjum"),
@@ -197,7 +204,6 @@ _data = {
 &"Idle": ExtResource("32_cn4eu"),
 &"crouched_idle": ExtResource("33_0wyf6"),
 &"crouched_walking": ExtResource("34_xp01v"),
-&"melee": ExtResource("35_jix7a"),
 &"sprinting": ExtResource("36_segjr"),
 &"walking": ExtResource("29_02d50")
 }
@@ -295,7 +301,7 @@ states/crouched_idle/position = Vector2(334.5, 99.875)
 states/crouched_walking/node = SubResource("AnimationNodeAnimation_q503i")
 states/crouched_walking/position = Vector2(624, 99.75)
 transitions = ["Start", "crouched_idle", SubResource("AnimationNodeStateMachineTransition_irid3"), "crouched_idle", "crouched_walking", SubResource("AnimationNodeStateMachineTransition_34gjw"), "crouched_walking", "crouched_idle", SubResource("AnimationNodeStateMachineTransition_5wtnk"), "crouched_idle", "crouch_walk_strafe_left", SubResource("AnimationNodeStateMachineTransition_r5f8v"), "crouch_walk_strafe_left", "crouched_idle", SubResource("AnimationNodeStateMachineTransition_wrj3d"), "crouched_walking", "Custom_crouch_walk_strafe_right", SubResource("AnimationNodeStateMachineTransition_acdx1"), "Custom_crouch_walk_strafe_right", "crouched_walking", SubResource("AnimationNodeStateMachineTransition_bhafs"), "crouch_walk_strafe_left", "Custom_crouch_walk_strafe_right", SubResource("AnimationNodeStateMachineTransition_7x1yu"), "Custom_crouch_walk_strafe_right", "crouch_walk_strafe_left", SubResource("AnimationNodeStateMachineTransition_en8v6"), "Custom_crouch_walk_strafe_right", "crouched_idle", SubResource("AnimationNodeStateMachineTransition_xav6i"), "crouched_idle", "Custom_crouch_walk_strafe_right", SubResource("AnimationNodeStateMachineTransition_0slwj"), "crouch_walk_strafe_left", "crouched_walking", SubResource("AnimationNodeStateMachineTransition_yws1p"), "crouched_walking", "crouch_walk_strafe_left", SubResource("AnimationNodeStateMachineTransition_2l0de")]
-graph_offset = Vector2(24.180109, 48.810078)
+graph_offset = Vector2(24.180109, 30.18008)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o8bff"]
 animation = &"Custom/Idle"
@@ -323,12 +329,12 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cr4th"]
 states/End/position = Vector2(672, 99.234375)
 states/Falling/node = SubResource("AnimationNodeAnimation_v0qw6")
-states/Falling/position = Vector2(347.5, 99.80469)
+states/Falling/position = Vector2(347.5, 100.1875)
 states/Landed/node = SubResource("AnimationNodeAnimation_sgepu")
 states/Landed/position = Vector2(514, 100.375)
 states/Start/position = Vector2(171.5, 98.28125)
 transitions = ["Start", "Falling", SubResource("AnimationNodeStateMachineTransition_3ekh4"), "Falling", "Landed", SubResource("AnimationNodeStateMachineTransition_vm7nk"), "Landed", "End", SubResource("AnimationNodeStateMachineTransition_7vkx8")]
-graph_offset = Vector2(111.54753, 11.317502)
+graph_offset = Vector2(177.12, 18.8625)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_irid3"]
 animation = &"Custom/sprinting"
@@ -343,7 +349,6 @@ states/Start/position = Vector2(200.5, 100.4375)
 states/sprinting/node = SubResource("AnimationNodeAnimation_irid3")
 states/sprinting/position = Vector2(431, 100.65625)
 transitions = ["Start", "sprinting", SubResource("AnimationNodeStateMachineTransition_pjq3a")]
-graph_offset = Vector2(122.93252, 18.630001)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hyaxk"]
 animation = &"Custom/left_strafe_walking"
@@ -394,20 +399,20 @@ advance_condition = &"walking"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_h3b6s"]
 states/End/position = Vector2(421.5, 115.5)
-states/Start/position = Vector2(166.05566, 100.25)
+states/Start/position = Vector2(166.28125, 100.25)
 states/left_strafe_walking/node = SubResource("AnimationNodeAnimation_hyaxk")
 states/left_strafe_walking/position = Vector2(455.9375, 344.5)
 states/right_strafe_walking/node = SubResource("AnimationNodeAnimation_joq1o")
 states/right_strafe_walking/position = Vector2(534.0625, 225.4375)
 states/walking/node = SubResource("AnimationNodeAnimation_7vkx8")
-states/walking/position = Vector2(166.33008, 225.67969)
+states/walking/position = Vector2(166.47656, 225.92188)
 states/walking_backwards/node = SubResource("AnimationNodeAnimation_wb7fw")
 states/walking_backwards/position = Vector2(166.3789, 355.5)
 transitions = ["Start", "walking", SubResource("AnimationNodeStateMachineTransition_2jwc5"), "walking", "right_strafe_walking", SubResource("AnimationNodeStateMachineTransition_6555i"), "walking", "left_strafe_walking", SubResource("AnimationNodeStateMachineTransition_x1mcr"), "walking", "walking_backwards", SubResource("AnimationNodeStateMachineTransition_q503i"), "right_strafe_walking", "walking", SubResource("AnimationNodeStateMachineTransition_v0qw6"), "left_strafe_walking", "walking", SubResource("AnimationNodeStateMachineTransition_sgepu"), "walking_backwards", "walking", SubResource("AnimationNodeStateMachineTransition_aginp")]
-graph_offset = Vector2(42.91497, 69.20986)
+graph_offset = Vector2(75.44999, 3.772451)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aginp"]
-animation = &"Custom/melee"
+animation = &"Custom/hurricane_kick"
 use_custom_timeline = true
 timeline_length = 0.5
 stretch_time_scale = false
@@ -543,18 +548,18 @@ states/Crawling/position = Vector2(707.7998, 289.9411)
 states/Crouching/node = SubResource("AnimationNodeStateMachine_34gjw")
 states/Crouching/position = Vector2(490.92813, 181.35)
 states/Idle/node = SubResource("AnimationNodeAnimation_o8bff")
-states/Idle/position = Vector2(241.86002, 27.21875)
+states/Idle/position = Vector2(241.5, 27.5)
 states/Jump/node = SubResource("AnimationNodeStateMachine_cr4th")
-states/Jump/position = Vector2(241.98001, 181.45657)
+states/Jump/position = Vector2(242.46002, 181.2025)
 states/Sprinting/node = SubResource("AnimationNodeStateMachine_lwyly")
 states/Sprinting/position = Vector2(740.5498, 27.125)
 states/Start/position = Vector2(61.5, 27.625)
 states/Walking/node = SubResource("AnimationNodeStateMachine_h3b6s")
-states/Walking/position = Vector2(490.23175, 27.3125)
-states/melee/node = SubResource("AnimationNodeAnimation_aginp")
-states/melee/position = Vector2(247.49042, -93.15042)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_rd2ci"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_ayuge"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_o8bff"), "Walking", "Crouching", SubResource("AnimationNodeStateMachineTransition_pgysb"), "Idle", "Crouching", SubResource("AnimationNodeStateMachineTransition_h3b6s"), "Crouching", "Walking", SubResource("AnimationNodeStateMachineTransition_iu26k"), "Crouching", "Idle", SubResource("AnimationNodeStateMachineTransition_pe8is"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_hyaxk"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_joq1o"), "Walking", "Jump", SubResource("AnimationNodeStateMachineTransition_wb7fw"), "Jump", "Walking", SubResource("AnimationNodeStateMachineTransition_klptk"), "Jump", "Crouching", SubResource("AnimationNodeStateMachineTransition_cr4th"), "Crouching", "Jump", SubResource("AnimationNodeStateMachineTransition_qil8a"), "Walking", "Sprinting", SubResource("AnimationNodeStateMachineTransition_m4v7x"), "Sprinting", "Walking", SubResource("AnimationNodeStateMachineTransition_63via"), "Crouching", "Sprinting", SubResource("AnimationNodeStateMachineTransition_pt8r8"), "Sprinting", "Crouching", SubResource("AnimationNodeStateMachineTransition_p4453"), "Crouching", "Crawling", SubResource("AnimationNodeStateMachineTransition_sj6nh"), "Crawling", "Crouching", SubResource("AnimationNodeStateMachineTransition_lwyly"), "Crouching", "Crawl_Idle", SubResource("AnimationNodeStateMachineTransition_udnd2"), "Crawl_Idle", "Crouching", SubResource("AnimationNodeStateMachineTransition_ljj6e"), "Crawl_Idle", "Crawling", SubResource("AnimationNodeStateMachineTransition_eww57"), "Crawling", "Crawl_Idle", SubResource("AnimationNodeStateMachineTransition_gqmek"), "melee", "Idle", SubResource("AnimationNodeStateMachineTransition_n3iwf")]
-graph_offset = Vector2(244.30093, -56.713783)
+states/Walking/position = Vector2(489.53534, 26.75)
+states/hurricane/node = SubResource("AnimationNodeAnimation_aginp")
+states/hurricane/position = Vector2(247.49042, -93.15042)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_rd2ci"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_ayuge"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_o8bff"), "Walking", "Crouching", SubResource("AnimationNodeStateMachineTransition_pgysb"), "Idle", "Crouching", SubResource("AnimationNodeStateMachineTransition_h3b6s"), "Crouching", "Walking", SubResource("AnimationNodeStateMachineTransition_iu26k"), "Crouching", "Idle", SubResource("AnimationNodeStateMachineTransition_pe8is"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_hyaxk"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_joq1o"), "Walking", "Jump", SubResource("AnimationNodeStateMachineTransition_wb7fw"), "Jump", "Walking", SubResource("AnimationNodeStateMachineTransition_klptk"), "Jump", "Crouching", SubResource("AnimationNodeStateMachineTransition_cr4th"), "Crouching", "Jump", SubResource("AnimationNodeStateMachineTransition_qil8a"), "Walking", "Sprinting", SubResource("AnimationNodeStateMachineTransition_m4v7x"), "Sprinting", "Walking", SubResource("AnimationNodeStateMachineTransition_63via"), "Crouching", "Sprinting", SubResource("AnimationNodeStateMachineTransition_pt8r8"), "Sprinting", "Crouching", SubResource("AnimationNodeStateMachineTransition_p4453"), "Crouching", "Crawling", SubResource("AnimationNodeStateMachineTransition_sj6nh"), "Crawling", "Crouching", SubResource("AnimationNodeStateMachineTransition_lwyly"), "Crouching", "Crawl_Idle", SubResource("AnimationNodeStateMachineTransition_udnd2"), "Crawl_Idle", "Crouching", SubResource("AnimationNodeStateMachineTransition_ljj6e"), "Crawl_Idle", "Crawling", SubResource("AnimationNodeStateMachineTransition_eww57"), "Crawling", "Crawl_Idle", SubResource("AnimationNodeStateMachineTransition_gqmek"), "hurricane", "Idle", SubResource("AnimationNodeStateMachineTransition_n3iwf")]
+graph_offset = Vector2(375.36328, 73.89869)
 
 [node name="MainScene" type="Node3D" unique_id=1982697563]
 
@@ -732,6 +737,7 @@ visible = false
 [node name="Guard" type="Node3D" parent="." unique_id=1766542214]
 
 [node name="Path3D" type="Path3D" parent="Guard" unique_id=1890104716]
+curve = SubResource("Curve3D_onjth")
 
 [node name="Guard" parent="Guard" unique_id=1404609476 instance=ExtResource("4_pu3yx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
@@ -1015,14 +1021,14 @@ tint_under = Color(1, 1, 1, 0.752941)
 script = ExtResource("19_pgk25")
 custom_model_path = "res://models/archer.fbx"
 
-[node name="Model" type="Node3D" parent="Player" unique_id=343335349]
-transform = Transform3D(-0.5984601, 0, -0.80115265, 0, 1, 0, 0.80115265, 0, -0.5984601, 0, 0, 0)
+[node name="Model" type="Node3D" parent="Player" unique_id=2087721078]
+transform = Transform3D(-0.99608785, 0, 0.088368684, 0, 1, 0, -0.088368684, 0, -0.99608785, 0, 0, 0)
 
 [node name="archer" type="Node3D" parent="Player/Model" unique_id=373335276 instance=ExtResource("28_womr8")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Model/archer" unique_id=207583476]
 libraries/ = SubResource("AnimationLibrary_q5ltc")
-libraries/Custom = SubResource("AnimationLibrary_xa0eo")
+libraries/Custom = SubResource("AnimationLibrary_onjth")
 
 [node name="AnimationTree" type="AnimationTree" parent="Player/Model/archer" unique_id=862536454 instance=ExtResource("30_pgk25")]
 tree_root = SubResource("AnimationNodeStateMachine_o8bff")

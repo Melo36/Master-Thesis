@@ -20,11 +20,10 @@ func _load_model() -> void:
 	# 1. Get or create the Model container node
 	var model_root := parent_node.get_node_or_null("Model") as Node3D
 	if not model_root:
-		print("creating new model")
 		model_root = Node3D.new()
 		model_root.name = "Model"
 		parent_node.add_child(model_root)
-		model_root.rotate_y(180)
+		model_root.rotate_y(135)
 		
 		if Engine.is_editor_hint() and get_tree().edited_scene_root:
 			model_root.owner = get_tree().edited_scene_root
@@ -39,7 +38,6 @@ func _load_model() -> void:
 
 	# 3. Determine resource path to load
 	var path_to_load
-	print("Parent name: ", parent_node.name)
 	if parent_node.name == "Player":
 		path_to_load = custom_model_path if custom_model_path != "" else DEFAULT_PLAYER_PATH
 	elif parent_node.name == "Guard":
@@ -52,24 +50,24 @@ func _load_model() -> void:
 
 		var instance = model_scene.instantiate()
 
-		var animationTree = instance.find_child("AnimationTree", true, false)
+		var animationTree : AnimationTree = instance.find_child("AnimationTree", true, false)
 		# Ensure AnimationTree exists inside the instantiated scene
 		if not animationTree:
 			print("Adding animation tree")
-			var source_tree: AnimationTree = preload(DEFAULT_ANIMATION_TREE).instantiate()
-			source_tree.name = "AnimationTree"
-			instance.add_child(source_tree)
-
+			animationTree = preload(DEFAULT_ANIMATION_TREE).instantiate()
+			animationTree.name = "AnimationTree"
+			instance.add_child(animationTree)
+			
 		# Add to the tree synchronously
 		model_root.add_child(instance)
 		
 		# 4. Set owner ONLY on the instance root to keep scene file size small
 		if Engine.is_editor_hint() and edited_scene:
 			if parent_node.name == "Player":
-				print("In player thingy")
 				instance.owner = edited_scene
-				instance.find_child("AnimationPlayer", true, false).owner = edited_scene
-				instance.find_child("AnimationTree", true, false).owner = edited_scene
+				var animationPlayer = instance.find_child("AnimationPlayer", true, false)
+				animationPlayer.owner = edited_scene
+				animationTree.owner = edited_scene
 			else:
 				_set_owner_recursive(model_root, edited_scene, 2)
 			# Do NOT recurse through sub-children! Keeping sub-children owner as null

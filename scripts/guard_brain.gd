@@ -62,7 +62,9 @@ func _ready() -> void:
 	chase_solver.chase_destination_ready.connect(_on_search_destination_ready)
 	chase_solver.chase_failed.connect(_on_search_failed)
 	animationTree = find_child("AnimationTree", true)
-	state_machine = animationTree.get("parameters/playback")
+	if animationTree:
+		state_machine = animationTree.get("parameters/playback")
+		animationTree.anim_player = animationTree.get_path_to(find_child("AnimationPlayer", true))
 
 
 func _physics_process(delta):

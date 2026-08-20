@@ -249,6 +249,8 @@ func _replace_animations(agent: Node, animationList: Array):
 	for button in animationList:
 		if button.resourcePath:
 			var node = find_state(state_machine, button.name)
+			if !node:
+				continue
 			node.animation = lib_name + "/" + button.name
 			var animation: Animation = load(button.resourcePath)
 			library.add_animation(button.name, animation)
