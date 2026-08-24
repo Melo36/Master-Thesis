@@ -210,6 +210,7 @@ script = ExtResource("1_47hjw")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.fbx", "*.glb", "*.tscn")
 

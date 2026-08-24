@@ -65,10 +65,8 @@ func _ready() -> void:
 	if animationTree:
 		state_machine = animationTree.get("parameters/playback")
 		var animationPlayer = find_child("AnimationPlayer", true)
-		print("Found animplayer ", animationPlayer)
 		animationTree.anim_player = animationTree.get_path_to(animationPlayer)
-
-
+		
 func _physics_process(delta):
 	if dead:
 		return
@@ -340,7 +338,7 @@ func die():
 	state_indicator.queue_free()
 	vision_cone.queue_free()
 	guard_movement.queue_free()
-	state_machine.travel("Death")
+	state_machine.travel("death")
 	dead = true
 	set_targeted(false)
 	

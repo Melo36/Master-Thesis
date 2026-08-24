@@ -58,14 +58,14 @@ func _physics_process(delta: float) -> void:
 		var destination = navigation_agent_3d.get_next_path_position()
 		var direction = (destination - guard.global_position).normalized()
 		
-		# Movement
-		guard.velocity = direction * speed
-		guard.move_and_slide()
-		
-		# Rotation
+				# Rotation
 		if direction.length() > 0.01:
 			var target_rotation = atan2(direction.x, direction.z) + PI
 			guard.rotation.y = lerp_angle(guard.rotation.y, target_rotation, 5 * delta)
+		
+		# Movement
+		guard.velocity = direction * speed
+		guard.move_and_slide()
 			
 	elif state == State.INVESTIGATE:
 		move_along_nav(delta, speed)
@@ -84,10 +84,12 @@ func get_next_patrol_point() -> Vector3:
 	if !patrol_points:
 		return Vector3.ZERO
 	var point = patrol_points.get_point_position(current_index)
-	current_index = (current_index + 1) % patrol_points.point_count + 1
+	print("Index ", current_index, " position ", point)
+	current_index = (current_index + 1) % (patrol_points.point_count + 1)
 	return point
 
 func move_along_nav(delta: float, move_speed: float = speed):
+	print("Mover alnog anoev")
 	navigation_agent_3d.set_target_position(target_position)
 	var next = navigation_agent_3d.get_next_path_position()
 	var direction = (next - guard.global_position).normalized()

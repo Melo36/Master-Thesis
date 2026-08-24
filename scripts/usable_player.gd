@@ -184,7 +184,7 @@ func _input(event):
 		is_aiming = false
 		if trajectory_line: trajectory_line.hide()
 
-	if event.is_action_pressed("cancel"): 
+	if event.is_action_pressed("ui_cancel"): 
 		if is_aiming:
 			throw_cancelled = true
 			is_aiming = false

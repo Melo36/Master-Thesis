@@ -120,6 +120,8 @@ func _get_or_create_single_player(scene: Node) -> Node:
 
 	# IMPORTANT: ownership must be recursive for saving
 	_set_owner_recursive(player, scene)
+	
+	print("Created new player")
 
 	return player
 	
