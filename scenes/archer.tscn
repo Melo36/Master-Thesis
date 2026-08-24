@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://citj32eiy4xax"]
 
-[ext_resource type="PackedScene" uid="uid://bnime8fac8jxd" path="res://models/archer.fbx" id="1_jggnj"]
+[ext_resource type="PackedScene" uid="uid://bnime8fac8jxd" path="res://models/archer/archer.fbx" id="1_jggnj"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_34gjw"]
 animation = &"Custom/crawl_idle"

@@ -5,6 +5,12 @@ extends EditorPlugin
 @onready var apply_button_guard: Button
 var model_selection: GridContainer
 
+var default_player_animations = ["res://animations/clips/walking.res", "res://animations/clips/idle.res", "res://animations/clips/crouched_walking.res", "res://animations/clips/crouch_idle.res", 
+"res://animations/clips/sprint.res", "res://animations/clips/low_crawl.res", "res://animations/clips/crawl_idle.res", 
+"res://animations/clips/hurricane_kick.res", "res://animations/clips/falling.res", "res://animations/clips/left_strafe_walking.res", 
+"res://animations/clips/right_strafe_walking.res", "res://animations/clips/walking_backwards.res", "res://animations/clips/crouch_walk_strafe_left.res",
+"res://animations/clips/crouch_walk_strafe_right.res", "res://animations/clips/landing.res"]
+
 var wizard: Control
 var guard_wizard: Control
 
@@ -66,12 +72,11 @@ func _on_apply_button_pressed() -> void:
 
 	_apply_inputs_to_player(player)
 
-	model_selection = wizard.find_child("ModelSelection", true)
 	_replace_model(player, assign_3D_button)
 	_replace_indicator_image(player, "LightLevel", assign_ill_image_button)
 	
 	var animationButtonList = get_tree().get_nodes_in_group("PlayerAnimation")
-	_replace_animations(player, animationButtonList)
+	_replace_animations(player, animationButtonList, assign_3D_button, "res://animations/default_player/")
 
 func _on_apply_button_guard_pressed() -> void:
 	var scene := get_editor_interface().get_edited_scene_root()
@@ -87,7 +92,7 @@ func _on_apply_button_guard_pressed() -> void:
 	_replace_model(guard, assign_3D_button_guard)
 	
 	var guardAnimationButtonList = get_tree().get_nodes_in_group("GuardAnimation")
-	_replace_animations(guard, guardAnimationButtonList)
+	_replace_animations(guard, guardAnimationButtonList, assign_3D_button_guard, "res://animations/default_guard/")
 	
 
 # ------------------------------------------------------------
@@ -236,25 +241,28 @@ func _replace_indicator_image(agent: Node, child: String, button: Button) -> voi
 	if state_indicator && resourcePath:
 		state_indicator.texture = load(resourcePath)
 		
-func _replace_animations(agent: Node, animationList: Array):
+func _replace_animations(agent: Node, animationList: Array, model_button : Button, default_anim_path: String):
 	var lib_name : String = "Custom"
-	var animationTree = agent.find_child("AnimationTree", true)
+	var animationTree = agent.find_child("AnimationTree", true, false)
 	var animationPlayer : AnimationPlayer = agent.find_child("AnimationPlayer", true)
 	animationTree.anim_player = animationPlayer.get_path()
 	var state_machine = animationTree.tree_root
 	
 	var library := AnimationLibrary.new()
-	print("Length ", len(animationList))
-	
+	var has_custom_model : bool = model_button.resourcePath != ""
 	for button in animationList:
-		if button.resourcePath:
-			var node = find_state(state_machine, button.name)
-			if !node:
-				continue
-			node.animation = lib_name + "/" + button.name
-			var animation: Animation = load(button.resourcePath)
-			library.add_animation(button.name, animation)
-			
+		var node = find_state(state_machine, button.name)
+		if !node:
+			continue
+		node.animation = lib_name + "/" + button.name
+		var resourcePath : String
+		var animation: Animation
+		if has_custom_model:
+			if button.resourcePath:
+				animation = load(button.resourcePath)
+		else:
+			animation = load(default_anim_path + button.name + ".tres")
+		library.add_animation(button.name, animation)
 	animationPlayer.add_animation_library(lib_name, library)
 			
 func find_state(machine: AnimationNodeStateMachine,state_name: String) -> AnimationNodeAnimation:

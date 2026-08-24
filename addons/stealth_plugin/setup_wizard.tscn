@@ -158,7 +158,7 @@ tooltip_text = "Animation that plays when the character is idle."
 mouse_filter = 0
 text = "Idle"
 
-[node name="Idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1665096016 groups=["PlayerAnimation"]]
+[node name="idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1665096016 groups=["PlayerAnimation"]]
 layout_mode = 2
 text = "Assign animation"
 script = ExtResource("1_fmwjj")
@@ -234,7 +234,7 @@ tooltip_text = "Animation that plays when the character is crawling."
 mouse_filter = 0
 text = "Crawl"
 
-[node name="Crawling" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1966698724 groups=["PlayerAnimation"]]
+[node name="crawling" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1966698724 groups=["PlayerAnimation"]]
 layout_mode = 2
 text = "Assign animation"
 script = ExtResource("1_fmwjj")
@@ -253,7 +253,7 @@ tooltip_text = "Animation that plays when the character is idle while crawling."
 mouse_filter = 0
 text = "Crawl Idle"
 
-[node name="Crawl_Idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=221615236 groups=["PlayerAnimation"]]
+[node name="crawl_idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=221615236 groups=["PlayerAnimation"]]
 layout_mode = 2
 text = "Assign animation"
 script = ExtResource("1_fmwjj")
@@ -291,7 +291,7 @@ tooltip_text = "Animation that plays when the character is jumping (in the air).
 mouse_filter = 0
 text = "Jump"
 
-[node name="Falling" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=166390917 groups=["PlayerAnimation"]]
+[node name="falling" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=166390917 groups=["PlayerAnimation"]]
 layout_mode = 2
 text = "Assign animation"
 script = ExtResource("1_fmwjj")
@@ -402,25 +402,6 @@ text = "Assign animation"
 script = ExtResource("1_fmwjj")
 
 [node name="ModelFileDialog13" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=375592559]
-oversampling_override = 1.0
-title = "Open a File"
-position = Vector2i(0, 36)
-size = Vector2i(1440, 1080)
-file_mode = 0
-filters = PackedStringArray("*.res", "*.tres")
-
-[node name="Label15" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=928678860]
-layout_mode = 2
-tooltip_text = "Animation that plays when the character is walking backwards while being crouched."
-mouse_filter = 0
-text = "Crouching Backwards"
-
-[node name="crouching_backwards" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1908758973 groups=["PlayerAnimation"]]
-layout_mode = 2
-text = "Assign animation"
-script = ExtResource("1_fmwjj")
-
-[node name="ModelFileDialog14" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1159285077]
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)

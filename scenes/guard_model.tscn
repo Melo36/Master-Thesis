@@ -1,29 +1,122 @@
 [gd_scene format=3 uid="uid://d3elvbasyc0b"]
 
-[ext_resource type="PackedScene" uid="uid://1y57q75bqm6" path="res://models/guard.fbx" id="1_c22s3"]
-[ext_resource type="Animation" uid="uid://bv4dngmdffjx0" path="res://animations/clips/alerted_walking.tres" id="2_435jh"]
+[ext_resource type="PackedScene" uid="uid://1y57q75bqm6" path="res://models/default_guard/guard.fbx" id="1_c22s3"]
 [ext_resource type="PackedScene" uid="uid://uwh0oya8cqll" path="res://models/gun_model.fbx" id="2_srqkm"]
 [ext_resource type="PackedScene" uid="uid://cnmpo1kw2n4xe" path="res://scenes/night_vision_goggles.tscn" id="3_j0ode"]
-[ext_resource type="Animation" uid="uid://dus7ggng77tdp" path="res://animations/clips/guard_death.tres" id="3_ycvn0"]
-[ext_resource type="Animation" uid="uid://bh554gp342qtv" path="res://animations/clips/guard_shooting.tres" id="4_bm0th"]
-[ext_resource type="Animation" uid="uid://b1inovds8oc" path="res://animations/clips/guard_idle.tres" id="4_ycvn0"]
-[ext_resource type="Animation" uid="uid://nbdpxfesk6u1" path="res://animations/clips/guard_run.tres" id="5_bm0th"]
-[ext_resource type="Animation" uid="uid://ddbc6ek2rqbr5" path="res://animations/clips/guard_walking.tres" id="5_coa1f"]
-[ext_resource type="PackedScene" uid="uid://dxew0n20w1p23" path="res://scenes/animation_tree_guard.tscn" id="10_qn31l"]
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_n73en"]
-_data = {
-&"alerted_walking": ExtResource("2_435jh"),
-&"guard_death": ExtResource("3_ycvn0"),
-&"guard_idle": ExtResource("4_ycvn0"),
-&"guard_run": ExtResource("5_bm0th"),
-&"guard_shooting": ExtResource("4_bm0th"),
-&"guard_walking": ExtResource("5_coa1f")
-}
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ycvn0"]
+animation = &"Default/alerted_walking"
 
-[node name="guard" unique_id=904658031 instance=ExtResource("1_c22s3")]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v2277"]
+animation = &"Default/guard_run"
 
-[node name="Skeleton3D" parent="." index="0" unique_id=1436949237]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bm0th"]
+animation = &"Default/dying"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_coa1f"]
+animation = &"Default/guard_idle"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = false
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n73en"]
+animation = &"Default/guard_shooting"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4o35p"]
+animation = &"Default/guard_walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v2277"]
+xfade_time = 0.2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q0fjp"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ky6ul"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"chasing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ew2xw"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "!get(\"parameters/conditions/alerted\") && get(\"parameters/conditions/chasing\")"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d8nmi"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "get(\"parameters/conditions/alerted\") && !get(\"parameters/conditions/chasing\")"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bm0th"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"alerted"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_coa1f"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"chasing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c8dxn"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "!get(\"parameters/conditions/alerted\") && get(\"parameters/conditions/walking\")"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u5ry0"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "!get(\"parameters/conditions/chasing\") && get(\"parameters/conditions/walking\")"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_brf1g"]
+xfade_time = 0.5
+advance_mode = 2
+advance_condition = &"shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_srqkm"]
+xfade_time = 0.5
+advance_mode = 2
+advance_condition = &"shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j0ode"]
+xfade_time = 0.5
+advance_mode = 2
+advance_condition = &"shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qn31l"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "!get(\"parameters/conditions/shooting\")"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s2x3p"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"alerted"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ycvn0"]
+states/End/position = Vector2(1087, 102.26982)
+states/Start/position = Vector2(201.5, 102.88059)
+states/alerted_walking/node = SubResource("AnimationNodeAnimation_ycvn0")
+states/alerted_walking/position = Vector2(373.14493, 274.5383)
+states/chasing/node = SubResource("AnimationNodeAnimation_v2277")
+states/chasing/position = Vector2(718.4598, 275.5835)
+states/death/node = SubResource("AnimationNodeAnimation_bm0th")
+states/death/position = Vector2(373.43616, -21.629982)
+states/idle/node = SubResource("AnimationNodeAnimation_coa1f")
+states/idle/position = Vector2(354.2177, 101.10846)
+states/shooting/node = SubResource("AnimationNodeAnimation_n73en")
+states/shooting/position = Vector2(772.8699, 99.947105)
+states/walking/node = SubResource("AnimationNodeAnimation_4o35p")
+states/walking/position = Vector2(552.5868, 101.491974)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_v2277"), "idle", "walking", SubResource("AnimationNodeStateMachineTransition_q0fjp"), "walking", "chasing", SubResource("AnimationNodeStateMachineTransition_ky6ul"), "alerted_walking", "chasing", SubResource("AnimationNodeStateMachineTransition_ew2xw"), "chasing", "alerted_walking", SubResource("AnimationNodeStateMachineTransition_d8nmi"), "idle", "alerted_walking", SubResource("AnimationNodeStateMachineTransition_bm0th"), "idle", "chasing", SubResource("AnimationNodeStateMachineTransition_coa1f"), "alerted_walking", "idle", SubResource("AnimationNodeStateMachineTransition_c8dxn"), "chasing", "idle", SubResource("AnimationNodeStateMachineTransition_u5ry0"), "walking", "shooting", SubResource("AnimationNodeStateMachineTransition_brf1g"), "chasing", "shooting", SubResource("AnimationNodeStateMachineTransition_srqkm"), "alerted_walking", "shooting", SubResource("AnimationNodeStateMachineTransition_j0ode"), "shooting", "walking", SubResource("AnimationNodeStateMachineTransition_qn31l"), "walking", "idle", SubResource("AnimationNodeStateMachineTransition_s2x3p")]
+graph_offset = Vector2(132.4091, -34.169735)
+
+[node name="guard" unique_id=2024213232 instance=ExtResource("1_c22s3")]
+
+[node name="Skeleton3D" parent="." index="0" unique_id=1410280336]
 bones/0/position = Vector3(0.008004328, 0.96295816, 0.0076733204)
 bones/0/rotation = Quaternion(-0.024393823, -0.0016421708, -0.01891227, 0.99952227)
 bones/1/rotation = Quaternion(-0.04943428, 0.00092053565, -0.0025734806, 0.99877363)
@@ -106,7 +199,12 @@ light_color = Color(0, 1.353256, 0.19639485, 1)
 light_energy = 0.2
 omni_range = 0.075
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=203577603]
-libraries/Custom = SubResource("AnimationLibrary_n73en")
-
-[node name="AnimationTree" parent="." index="2" unique_id=1940328752 instance=ExtResource("10_qn31l")]
+[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=1940328752]
+unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/..")
+tree_root = SubResource("AnimationNodeStateMachine_ycvn0")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/alerted = false
+parameters/conditions/chasing = false
+parameters/conditions/shooting = false
+parameters/conditions/walking = false

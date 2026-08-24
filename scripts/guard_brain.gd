@@ -61,10 +61,12 @@ func _ready() -> void:
 	chase_solver.navigation_map = nav_agent.get_navigation_map()
 	chase_solver.chase_destination_ready.connect(_on_search_destination_ready)
 	chase_solver.chase_failed.connect(_on_search_failed)
-	animationTree = find_child("AnimationTree", true)
+	animationTree = find_child("AnimationTree", true, false)
 	if animationTree:
 		state_machine = animationTree.get("parameters/playback")
-		animationTree.anim_player = animationTree.get_path_to(find_child("AnimationPlayer", true))
+		var animationPlayer = find_child("AnimationPlayer", true)
+		print("Found animplayer ", animationPlayer)
+		animationTree.anim_player = animationTree.get_path_to(animationPlayer)
 
 
 func _physics_process(delta):

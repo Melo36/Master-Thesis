@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cnyloppek8r84" path="res://resources/bell.png" id="8_fulsm"]
 [ext_resource type="Script" uid="uid://6cjxmevy1c0i" path="res://scripts/inventory.gd" id="9_4r5pv"]
 [ext_resource type="Texture2D" uid="uid://dairqkv1rcfbp" path="res://scenes/light-yt/player/assets/light_meter_ui.svg" id="10_60mlk"]
-[ext_resource type="Script" uid="uid://dwhisyu7pd11j" path="res://scenes/model_handler.gd" id="11_i4ail"]
+[ext_resource type="Script" uid="uid://dwhisyu7pd11j" path="res://scripts/model_handler.gd" id="11_i4ail"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7nt27"]
 

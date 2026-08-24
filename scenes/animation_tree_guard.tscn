@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://dxew0n20w1p23"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ycvn0"]
-animation = &"Custom/alerted_walking"
+animation = &"Custom/Alerted Walking"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v2277"]
-animation = &"Custom/guard_run"
+animation = &"Custom/Chasing"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bm0th"]
-animation = &"Custom/guard_death"
+animation = &"Custom/Death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_coa1f"]
-animation = &"Custom/guard_idle"
+animation = &"Custom/Idle"
 use_custom_timeline = true
 timeline_length = 1.0
 stretch_time_scale = false
@@ -18,10 +18,10 @@ start_offset = 0.0
 loop_mode = 0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n73en"]
-animation = &"Custom/guard_shooting"
+animation = &"Custom/Shooting"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4o35p"]
-animation = &"Custom/guard_walking"
+animation = &"Custom/Walking"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v2277"]
 xfade_time = 0.2
@@ -93,22 +93,22 @@ advance_mode = 2
 advance_condition = &"alerted"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ycvn0"]
-"states/Alerted Walking/node" = SubResource("AnimationNodeAnimation_ycvn0")
-"states/Alerted Walking/position" = Vector2(373.14493, 274.5383)
-states/Chasing/node = SubResource("AnimationNodeAnimation_v2277")
-states/Chasing/position = Vector2(718.4598, 275.5835)
-states/Death/node = SubResource("AnimationNodeAnimation_bm0th")
-states/Death/position = Vector2(373.43616, -21.629982)
 states/End/position = Vector2(1087, 102.26982)
-states/Idle/node = SubResource("AnimationNodeAnimation_coa1f")
-states/Idle/position = Vector2(354.2177, 101.10846)
-states/Shooting/node = SubResource("AnimationNodeAnimation_n73en")
-states/Shooting/position = Vector2(772.8699, 99.947105)
 states/Start/position = Vector2(201.5, 102.88059)
-states/Walking/node = SubResource("AnimationNodeAnimation_4o35p")
-states/Walking/position = Vector2(552.5868, 101.491974)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_v2277"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_q0fjp"), "Walking", "Chasing", SubResource("AnimationNodeStateMachineTransition_ky6ul"), "Alerted Walking", "Chasing", SubResource("AnimationNodeStateMachineTransition_ew2xw"), "Chasing", "Alerted Walking", SubResource("AnimationNodeStateMachineTransition_d8nmi"), "Idle", "Alerted Walking", SubResource("AnimationNodeStateMachineTransition_bm0th"), "Idle", "Chasing", SubResource("AnimationNodeStateMachineTransition_coa1f"), "Alerted Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_c8dxn"), "Chasing", "Idle", SubResource("AnimationNodeStateMachineTransition_u5ry0"), "Walking", "Shooting", SubResource("AnimationNodeStateMachineTransition_brf1g"), "Chasing", "Shooting", SubResource("AnimationNodeStateMachineTransition_srqkm"), "Alerted Walking", "Shooting", SubResource("AnimationNodeStateMachineTransition_j0ode"), "Shooting", "Walking", SubResource("AnimationNodeStateMachineTransition_qn31l"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_s2x3p")]
-graph_offset = Vector2(132.4091, 53.761322)
+states/alerted_walking/node = SubResource("AnimationNodeAnimation_ycvn0")
+states/alerted_walking/position = Vector2(373.14493, 274.5383)
+states/chasing/node = SubResource("AnimationNodeAnimation_v2277")
+states/chasing/position = Vector2(718.4598, 275.5835)
+states/death/node = SubResource("AnimationNodeAnimation_bm0th")
+states/death/position = Vector2(356.32693, -4.629982)
+states/idle/node = SubResource("AnimationNodeAnimation_coa1f")
+states/idle/position = Vector2(354.2177, 101.10846)
+states/shooting/node = SubResource("AnimationNodeAnimation_n73en")
+states/shooting/position = Vector2(772.8699, 99.947105)
+states/walking/node = SubResource("AnimationNodeAnimation_4o35p")
+states/walking/position = Vector2(552.5868, 101.491974)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_v2277"), "idle", "walking", SubResource("AnimationNodeStateMachineTransition_q0fjp"), "walking", "chasing", SubResource("AnimationNodeStateMachineTransition_ky6ul"), "alerted_walking", "chasing", SubResource("AnimationNodeStateMachineTransition_ew2xw"), "chasing", "alerted_walking", SubResource("AnimationNodeStateMachineTransition_d8nmi"), "idle", "alerted_walking", SubResource("AnimationNodeStateMachineTransition_bm0th"), "idle", "chasing", SubResource("AnimationNodeStateMachineTransition_coa1f"), "alerted_walking", "idle", SubResource("AnimationNodeStateMachineTransition_c8dxn"), "chasing", "idle", SubResource("AnimationNodeStateMachineTransition_u5ry0"), "walking", "shooting", SubResource("AnimationNodeStateMachineTransition_brf1g"), "chasing", "shooting", SubResource("AnimationNodeStateMachineTransition_srqkm"), "alerted_walking", "shooting", SubResource("AnimationNodeStateMachineTransition_j0ode"), "shooting", "walking", SubResource("AnimationNodeStateMachineTransition_qn31l"), "walking", "idle", SubResource("AnimationNodeStateMachineTransition_s2x3p")]
+graph_offset = Vector2(132.4091, -34.169735)
 
 [node name="AnimationTree" type="AnimationTree" unique_id=1940328752]
 tree_root = SubResource("AnimationNodeStateMachine_ycvn0")

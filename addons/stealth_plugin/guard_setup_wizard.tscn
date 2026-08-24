@@ -72,7 +72,7 @@ tooltip_text = "Animation that plays when the character is walking."
 mouse_filter = 0
 text = "Walking"
 
-[node name="walk" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=591659670 groups=["GuardAnimation"]]
+[node name="walking" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=591659670 groups=["GuardAnimation"]]
 layout_mode = 2
 text = "Assign animation"
 script = ExtResource("1_47hjw")
@@ -81,6 +81,7 @@ script = ExtResource("1_47hjw")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -99,6 +100,7 @@ script = ExtResource("1_47hjw")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -108,7 +110,7 @@ tooltip_text = "Animation that plays when the character is walking while crouche
 mouse_filter = 0
 text = "Alerted Walking"
 
-[node name="crouched_walking" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=74174832 groups=["GuardAnimation"]]
+[node name="alerted_walking" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=74174832 groups=["GuardAnimation"]]
 layout_mode = 2
 text = "Assign animation"
 script = ExtResource("1_47hjw")
@@ -117,6 +119,7 @@ script = ExtResource("1_47hjw")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -126,7 +129,7 @@ tooltip_text = "Animation that plays when the character is idle while crouched."
 mouse_filter = 0
 text = "Chasing"
 
-[node name="crouched_idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=113071910 groups=["GuardAnimation"]]
+[node name="chasing" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=113071910 groups=["GuardAnimation"]]
 layout_mode = 2
 text = "Assign animation"
 script = ExtResource("1_47hjw")
@@ -135,6 +138,7 @@ script = ExtResource("1_47hjw")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 
@@ -144,7 +148,7 @@ tooltip_text = "Animation that plays when the character is sprinting."
 mouse_filter = 0
 text = "Shooting"
 
-[node name="sprint" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=986588823 groups=["GuardAnimation"]]
+[node name="shooting" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=986588823 groups=["GuardAnimation"]]
 layout_mode = 2
 text = "Assign animation"
 script = ExtResource("1_47hjw")
@@ -153,6 +157,26 @@ script = ExtResource("1_47hjw")
 oversampling_override = 1.0
 title = "Open a File"
 position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label6" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=2001561998]
+layout_mode = 2
+tooltip_text = "Animation that plays when the character is sprinting."
+mouse_filter = 0
+text = "Death"
+
+[node name="death" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1003969919 groups=["GuardAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_47hjw")
+
+[node name="ModelFileDialog6" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=2131951075]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
 

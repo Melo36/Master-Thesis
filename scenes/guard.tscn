@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://yr7nlygrsaem" path="res://sounds/gun_shot.mp3" id="10_lpkwa"]
 [ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://addons/raytraced_audio/raytraced_audio_player_3d.gd" id="11_17ufb"]
 [ext_resource type="Script" uid="uid://df0g5mycw1xv3" path="res://addons/stealth_plugin/GadgetManager.gd" id="12_17ufb"]
-[ext_resource type="Script" uid="uid://dwhisyu7pd11j" path="res://scenes/model_handler.gd" id="13_nflhy"]
+[ext_resource type="Script" uid="uid://dwhisyu7pd11j" path="res://scripts/model_handler.gd" id="13_nflhy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_17ufb"]
 radius = 0.42626953

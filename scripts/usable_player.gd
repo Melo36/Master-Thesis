@@ -52,10 +52,11 @@ var lastLookAtDirection: Vector3
 # REFERENCES
 # =========================
 var lookat
-var animationTree
+var animationTree : AnimationTree
+var animationPlayer : AnimationPlayer
 var audioPlayer
 var guards = []
-var state_machine
+var state_machine : AnimationNodeStateMachinePlayback
 
 @export var health = 100
 
@@ -105,8 +106,11 @@ func _ready():
 	audioPlayer = $RaytracedAudioPlayer3D
 	guards = get_tree().get_nodes_in_group("Guard")
 	if animationTree:
-		animationTree.anim_player = animationTree.get_path_to(find_child("AnimationPlayer", true))
+		print("Manually setting animation player in animation tree")
+		animationPlayer = find_child("AnimationPlayer", true)
+		animationTree.anim_player = animationTree.get_path_to(animationPlayer)
 		state_machine = animationTree.get("parameters/playback")
+		
 	sub_viewport.debug_draw = 2
 	
 	if trajectory_line:
@@ -118,6 +122,22 @@ func _ready():
 		# Ensure the mesh is initialized
 		if trajectory_line.mesh == null:
 			trajectory_line.mesh = ImmediateMesh.new()
+			
+func find_state(machine: AnimationNodeStateMachine,state_name: String) -> AnimationNodeAnimation:
+	if machine.has_node(state_name):
+		var state := machine.get_node(state_name)
+		if state is AnimationNodeAnimation:
+			return state
+
+	for node_name in machine.get_node_list():
+		var node := machine.get_node(node_name)
+
+		if node is AnimationNodeStateMachine:
+			var result := find_state(node, state_name)
+			if result:
+				return result
+
+	return null
 
 # ==================================================
 # INPUT
@@ -136,7 +156,7 @@ func _input(event):
 		crouch_pressed = false
 		
 	if meele_enabled && state_machine && event.is_action_pressed("punch"):
-		state_machine.travel("hurricane")
+		state_machine.travel("melee")
 		var space_state = get_world_3d().direct_space_state
 	
 		var ray_origin = global_transform.origin
@@ -174,6 +194,16 @@ func _input(event):
 # PHYSICS LOOP
 # ==================================================
 func _physics_process(delta):
+	#var current_state = state_machine.get_current_node()
+	#var animation_node = find_state(animationTree.tree_root, current_state)
+
+	#print("State: ", current_state)
+	#print("Animation node: ", animation_node)
+
+	#if animation_node:
+	#	print("Animation: ", animation_node.animation)
+
+
 	if is_aiming:
 		throw_strength += charge_speed * delta
 		throw_strength = clamp(throw_strength, 0.0, max_charge)
