@@ -106,7 +106,6 @@ func _ready():
 	audioPlayer = $RaytracedAudioPlayer3D
 	guards = get_tree().get_nodes_in_group("Guard")
 	if animationTree:
-		print("Manually setting animation player in animation tree")
 		animationPlayer = find_child("AnimationPlayer", true)
 		animationTree.anim_player = animationTree.get_path_to(animationPlayer)
 		state_machine = animationTree.get("parameters/playback")

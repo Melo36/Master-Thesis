@@ -187,13 +187,13 @@ bone_idx = 5
 [node name="NightVisionGoggles" parent="Skeleton3D/HeadAttachment" index="0" unique_id=686370974 instance=ExtResource("3_j0ode")]
 transform = Transform3D(-3.7252903e-08, 9.313226e-10, 0.90000004, 2.9802322e-08, 0.90000004, 9.313226e-10, -0.90000004, 4.4703484e-08, -4.4703484e-08, 0.004585011, 0.035731077, 0.11967857)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Skeleton3D/HeadAttachment/NightVisionGoggles" index="2" unique_id=1943757034]
+[node name="OmniLight3D3" type="OmniLight3D" parent="Skeleton3D/HeadAttachment/NightVisionGoggles" index="2" unique_id=1943757034]
 transform = Transform3D(1.1111112, -1.3411045e-07, -1.3411045e-07, 7.4505806e-08, 1.1111109, 1.3038516e-08, 1.1920929e-07, -2.0489097e-08, 1.1111113, -0.07185331, 0.021680593, 0.09133279)
 light_color = Color(0, 1.353256, 0.19639485, 1)
 light_energy = 0.2
 omni_range = 0.075
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Skeleton3D/HeadAttachment/NightVisionGoggles" index="3" unique_id=763647722]
+[node name="OmniLight3D4" type="OmniLight3D" parent="Skeleton3D/HeadAttachment/NightVisionGoggles" index="3" unique_id=763647722]
 transform = Transform3D(1.1111112, -1.3411045e-07, -1.4156103e-07, 7.4505806e-08, 1.1111109, 1.6763806e-08, 1.2665987e-07, -2.2351742e-08, 1.1111113, -0.08688897, 0.02346015, -0.06508088)
 light_color = Color(0, 1.353256, 0.19639485, 1)
 light_energy = 0.2

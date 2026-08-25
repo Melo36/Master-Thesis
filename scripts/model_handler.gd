@@ -12,6 +12,7 @@ const DEFAULT_ANIMATION_TREE_GUARD : String = "res://scenes/animation_tree_guard
 		custom_model_path = value
 
 func _load_model() -> void:
+	print("_load_model")
 	var edited_scene = get_tree().edited_scene_root
 	var parent_node := get_parent()
 	if not parent_node or not parent_node.is_inside_tree():

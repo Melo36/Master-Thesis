@@ -463,12 +463,14 @@ file_mode = 0
 filters = PackedStringArray("*.fbx", "*.glb", "*.tscn")
 
 [node name="AssignImageLabel" type="Label" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1202878707]
+visible = false
 layout_mode = 2
 tooltip_text = "Image that appears to represent a guards state. This is empty by default."
 mouse_filter = 0
 text = "Illumination Indicator"
 
 [node name="AssignIllImageButton" type="Button" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1278296597]
+visible = false
 layout_mode = 2
 text = "Assign Image"
 script = ExtResource("1_fmwjj")

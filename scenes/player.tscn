@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bubkruqvhn4k7"]
 
-[ext_resource type="Script" uid="uid://d0u21wkhrp7qu" path="res://scripts/usable_player.gd" id="1_d2wvv"]
+[ext_resource type="Script" uid="uid://d0u21wkhrp7qu" path="res://scripts/player.gd" id="1_d2wvv"]
 [ext_resource type="Script" uid="uid://bjpmu5sklv5h8" path="res://addons/raytraced_audio/raytraced_audio_listener.gd" id="2_3v2ag"]
 [ext_resource type="AudioStream" uid="uid://goyage7rxmg6" path="res://sounds/620340__marb7e__footsteps_sneakers_underbrush_walk04.wav" id="3_jej6c"]
 [ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://addons/raytraced_audio/raytraced_audio_player_3d.gd" id="4_f1ej7"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dpsoct00lvvod" path="res://resources/blade.png" id="7_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://cnyloppek8r84" path="res://resources/bell.png" id="8_fulsm"]
 [ext_resource type="Script" uid="uid://6cjxmevy1c0i" path="res://scripts/inventory.gd" id="9_4r5pv"]
-[ext_resource type="Texture2D" uid="uid://dairqkv1rcfbp" path="res://scenes/light-yt/player/assets/light_meter_ui.svg" id="10_60mlk"]
+[ext_resource type="Texture2D" uid="uid://dairqkv1rcfbp" path="res://resources/light_meter_ui.svg" id="10_60mlk"]
 [ext_resource type="Script" uid="uid://dwhisyu7pd11j" path="res://scripts/model_handler.gd" id="11_i4ail"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7nt27"]

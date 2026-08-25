@@ -5,12 +5,6 @@ extends EditorPlugin
 @onready var apply_button_guard: Button
 var model_selection: GridContainer
 
-var default_player_animations = ["res://animations/clips/walking.res", "res://animations/clips/idle.res", "res://animations/clips/crouched_walking.res", "res://animations/clips/crouch_idle.res", 
-"res://animations/clips/sprint.res", "res://animations/clips/low_crawl.res", "res://animations/clips/crawl_idle.res", 
-"res://animations/clips/hurricane_kick.res", "res://animations/clips/falling.res", "res://animations/clips/left_strafe_walking.res", 
-"res://animations/clips/right_strafe_walking.res", "res://animations/clips/walking_backwards.res", "res://animations/clips/crouch_walk_strafe_left.res",
-"res://animations/clips/crouch_walk_strafe_right.res", "res://animations/clips/landing.res"]
-
 var wizard: Control
 var guard_wizard: Control
 
@@ -22,7 +16,10 @@ var assign_state_ind_button
 var wizard_elements: int = 15
 var guard_wizard_elements: int = 23
 
+signal config_finished
+
 func _enter_tree() -> void:
+	print("Initializing tree")
 	if wizard == null:
 		wizard = preload("res://addons/stealth_plugin/setup_wizard.tscn").instantiate()
 		add_control_to_dock(DOCK_SLOT_LEFT_BL, wizard)
@@ -30,9 +27,6 @@ func _enter_tree() -> void:
 	if guard_wizard == null:
 		guard_wizard = preload("res://addons/stealth_plugin/guard_setup_wizard.tscn").instantiate()
 		add_control_to_dock(DOCK_SLOT_LEFT_BL, guard_wizard)
-		
-	#var animLen = len(animationButtonList)
-	#animationButtonList = animationButtonList.slice(animLen - 16, animLen - 1)
 
 	apply_button = wizard.find_child("ApplyButton", true)
 	apply_button_guard = guard_wizard.find_child("ApplyButton", true)
@@ -84,8 +78,6 @@ func _on_apply_button_guard_pressed() -> void:
 		return
 		
 	var guard = _create_guard(scene)
-		
-	_apply_inputs_to_guard(guard)
 
 	model_selection = guard_wizard.find_child("ImageSelection", true)
 	_replace_indicator_image(guard, "ImageIndicator", assign_state_ind_button)
@@ -93,6 +85,7 @@ func _on_apply_button_guard_pressed() -> void:
 	
 	var guardAnimationButtonList = get_tree().get_nodes_in_group("GuardAnimation")
 	_replace_animations(guard, guardAnimationButtonList, assign_3D_button_guard, "res://animations/default_guard/")
+	_apply_inputs_to_guard(guard)
 	
 
 # ------------------------------------------------------------
@@ -227,6 +220,7 @@ func _apply_inputs_to_guard(guard: Node) -> void:
 # ------------------------------------------------------------
 
 func _replace_model(agent: Node, button: Button) -> void:
+	print("replace_model")
 	# Simply pass the path string to the player. 
 	# The player's setter script will handle the heavy lifting!
 	var model_handler = agent.find_child("ModelHandler")
@@ -244,6 +238,7 @@ func _replace_indicator_image(agent: Node, child: String, button: Button) -> voi
 		state_indicator.texture = load(resourcePath)
 		
 func _replace_animations(agent: Node, animationList: Array, model_button : Button, default_anim_path: String):
+	print("replace_animations")
 	var lib_name : String = "Custom"
 	var animationTree = agent.find_child("AnimationTree", true, false)
 	var animationPlayer : AnimationPlayer = agent.find_child("AnimationPlayer", true)

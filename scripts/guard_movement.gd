@@ -84,12 +84,10 @@ func get_next_patrol_point() -> Vector3:
 	if !patrol_points:
 		return Vector3.ZERO
 	var point = patrol_points.get_point_position(current_index)
-	print("Index ", current_index, " position ", point)
 	current_index = (current_index + 1) % (patrol_points.point_count + 1)
 	return point
 
 func move_along_nav(delta: float, move_speed: float = speed):
-	print("Mover alnog anoev")
 	navigation_agent_3d.set_target_position(target_position)
 	var next = navigation_agent_3d.get_next_path_position()
 	var direction = (next - guard.global_position).normalized()

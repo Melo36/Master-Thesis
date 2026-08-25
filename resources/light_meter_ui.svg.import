@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byppfmbxjl7mb"
-path="res://.godot/imported/brick_wall_orm.png-2d03735bc33e3b97e2173ca8ba6f35ba.ctex"
+uid="uid://dairqkv1rcfbp"
+path="res://.godot/imported/light_meter_ui.svg-f002b266be98ac8043084ed7e78f72fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/light-yt/level/assets/textures/brick_wall_orm.png"
-dest_files=["res://.godot/imported/brick_wall_orm.png-2d03735bc33e3b97e2173ca8ba6f35ba.ctex"]
+source_file="res://resources/light_meter_ui.svg"
+dest_files=["res://.godot/imported/light_meter_ui.svg-f002b266be98ac8043084ed7e78f72fa.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
