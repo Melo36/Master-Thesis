@@ -89,7 +89,7 @@ columns = 2
 
 [node name="HealthLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=1528000275]
 layout_mode = 2
-tooltip_text = "Amount of health the player character has."
+tooltip_text = "Controls the player's maximum health. The player is defeated when their health reaches 0."
 mouse_filter = 0
 text = "Health"
 
@@ -100,7 +100,7 @@ value = 100.0
 
 [node name="ShurikenLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=893880167]
 layout_mode = 2
-tooltip_text = "Number of throwable weapons the player character starts with."
+tooltip_text = "Controls the number of throwable distraction items the player starts with. Higher values give the player more distractions."
 mouse_filter = 0
 text = "Number of Throwables"
 
@@ -110,7 +110,7 @@ value = 3.0
 
 [node name="MeeleLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=329581974]
 layout_mode = 2
-tooltip_text = "Defines whether the player character has a meele attack."
+tooltip_text = "Enables or disables the player's melee attack."
 mouse_filter = 0
 text = "Melee Attack"
 
@@ -135,7 +135,7 @@ columns = 2
 
 [node name="3DModelLabel" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=55952731]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character is walking."
+tooltip_text = "Animation used when the player moves at normal walking speed."
 mouse_filter = 0
 text = "Walk"
 
@@ -154,7 +154,7 @@ filters = PackedStringArray("*.res", "*.tres")
 
 [node name="Label2" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1238218935]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character is idle."
+tooltip_text = "Animation used when the player is standing still."
 mouse_filter = 0
 text = "Idle"
 
@@ -173,7 +173,7 @@ filters = PackedStringArray("*.res", "*.tres")
 
 [node name="Label3" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=740923503]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character is walking while crouched."
+tooltip_text = "Animation used when the player moves while crouching."
 mouse_filter = 0
 text = "Crouched Walking"
 
@@ -192,7 +192,7 @@ filters = PackedStringArray("*.res", "*.tres")
 
 [node name="Label4" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1704538337]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character is idle while crouched."
+tooltip_text = "Animation used when the player is standing still while crouching."
 mouse_filter = 0
 text = "Crouched Idle"
 
@@ -211,7 +211,7 @@ filters = PackedStringArray("*.res", "*.tres")
 
 [node name="Label5" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1361504980]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character is sprinting."
+tooltip_text = "Animation used when the player moves at sprinting speed."
 mouse_filter = 0
 text = "Sprint"
 
@@ -230,7 +230,7 @@ filters = PackedStringArray("*.res", "*.tres")
 
 [node name="Label6" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1312484908]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character is crawling."
+tooltip_text = "Animation used when the player crawls."
 mouse_filter = 0
 text = "Crawl"
 
@@ -249,7 +249,7 @@ filters = PackedStringArray("*.res", "*.tres")
 
 [node name="Label7" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1444855694]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character is idle while crawling."
+tooltip_text = "Animation used when the player is standing still while crawling."
 mouse_filter = 0
 text = "Crawl Idle"
 
@@ -268,7 +268,7 @@ filters = PackedStringArray("*.res", "*.tres")
 
 [node name="Label8" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1046897191]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character uses their melee attack."
+tooltip_text = "Animation used when the player performs a melee attack."
 mouse_filter = 0
 text = "Melee"
 
@@ -287,7 +287,7 @@ filters = PackedStringArray("*.res", "*.tres")
 
 [node name="Label9" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1158590781]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character is jumping (in the air)."
+tooltip_text = "Animation used while the player is airborne after jumping."
 mouse_filter = 0
 text = "Jump"
 
@@ -316,7 +316,7 @@ theme_override_font_sizes/font_size = 19
 
 [node name="Label10" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1818516365]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character is walking left."
+tooltip_text = "Animation used when the player moves sideways to the left."
 mouse_filter = 0
 text = "Left Strafe Walking"
 
@@ -335,7 +335,7 @@ filters = PackedStringArray("*.res", "*.tres")
 
 [node name="Label11" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1103950930]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character is walking right."
+tooltip_text = "Animation used when the player moves sideways to the right."
 mouse_filter = 0
 text = "Right Strafe Walking"
 
@@ -354,7 +354,7 @@ filters = PackedStringArray("*.res", "*.tres")
 
 [node name="Label12" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1863328515]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character is walking backwards."
+tooltip_text = "Animation used when the player moves backwards."
 mouse_filter = 0
 text = "Walking Backwards"
 
@@ -373,7 +373,7 @@ filters = PackedStringArray("*.res", "*.tres")
 
 [node name="Label13" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=799432690]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character is walking left while being crouched."
+tooltip_text = "Animation used when the player moves sideways to the left while crouching."
 mouse_filter = 0
 text = "Crouched Walk Strafe Left"
 
@@ -392,7 +392,7 @@ filters = PackedStringArray("*.res", "*.tres")
 
 [node name="Label14" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=782805911]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character is walking right while being crouched."
+tooltip_text = "Animation used when the player moves sideways to the right while crouching."
 mouse_filter = 0
 text = "Crouched Walk Strafe Right"
 
@@ -411,7 +411,7 @@ filters = PackedStringArray("*.res", "*.tres")
 
 [node name="Label16" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=2021069649]
 layout_mode = 2
-tooltip_text = "Animation that plays when the character lands on the ground after a jump."
+tooltip_text = "Animation used when the player lands on the ground after being airborne."
 mouse_filter = 0
 text = "Landing"
 
@@ -445,7 +445,7 @@ columns = 2
 
 [node name="3DModelLabel" type="Label" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1228930354]
 layout_mode = 2
-tooltip_text = "Amount of health the player character has."
+tooltip_text = "Controls the 3D model used to visually represent the player character."
 mouse_filter = 0
 text = "3D Model"
 
@@ -500,7 +500,13 @@ columns = 2
 
 [node name="WalkingNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1473947919]
 layout_mode = 2
-tooltip_text = "Noise the player character emits in decibels (dB) while walking. Value ranges from -80dB to 80dB."
+tooltip_text = "Controls the noise produced while walking. The value is measured in decibels (dB) relative to the stealth system's reference level. Higher values produce more noise and make the player easier to detect.
+
+Lower dB → quieter → harder to detect
+Higher dB → louder → easier to detect
+
+ -80 dB   -20 dB   -10 dB          0 dB          +10 dB    +20 dB    +80 dB
+ Quieter ──────────────── Reference ────────────────→ Louder"
 mouse_filter = 0
 text = "Walking Noise"
 
@@ -512,7 +518,13 @@ suffix = "dB"
 
 [node name="SprintingNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=2103026815]
 layout_mode = 2
-tooltip_text = "Noise the player character emits in decibels (dB) while sprinting. Value ranges from -80dB to 80dB."
+tooltip_text = "Controls the noise produced while sprinting. The value is measured in decibels (dB) relative to the stealth system's reference level. Higher values produce more noise and make the player easier to detect.
+
+Lower dB → quieter → harder to detect
+Higher dB → louder → easier to detect
+
+ -80 dB   -20 dB   -10 dB          0 dB          +10 dB    +20 dB    +80 dB
+ Quieter ──────────────── Reference ────────────────→ Louder"
 mouse_filter = 0
 text = "Sprinting Noise"
 
@@ -525,7 +537,13 @@ suffix = "dB"
 
 [node name="CrouchedNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1371088982]
 layout_mode = 2
-tooltip_text = "Noise the player character emits in decibels (dB) while crouching. Value ranges from -80dB to 80dB."
+tooltip_text = "Controls the noise produced while crouching. The value is measured in decibels (dB) relative to the stealth system's reference level. Higher values produce more noise and make the player easier to detect.
+
+Lower dB → quieter → harder to detect
+Higher dB → louder → easier to detect
+
+ -80 dB   -20 dB   -10 dB          0 dB          +10 dB    +20 dB    +80 dB
+ Quieter ──────────────── Reference ────────────────→ Louder"
 mouse_filter = 0
 text = "Crouched Noise"
 
@@ -538,7 +556,13 @@ suffix = "dB"
 
 [node name="CrawlingNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=510562986]
 layout_mode = 2
-tooltip_text = "Noise the player character emits in decibels (dB) while crawling. Value ranges from -80dB to 80dB."
+tooltip_text = "Controls the noise produced while crawling. The value is measured in decibels (dB) relative to the stealth system's reference level. Higher values produce more noise and make the player easier to detect.
+
+Lower dB → quieter → harder to detect
+Higher dB → louder → easier to detect
+
+ -80 dB   -20 dB   -10 dB          0 dB          +10 dB    +20 dB    +80 dB
+ Quieter ──────────────── Reference ────────────────→ Louder"
 mouse_filter = 0
 text = "Crawling Noise"
 
@@ -566,7 +590,7 @@ columns = 2
 
 [node name="WalkingSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=863299474]
 layout_mode = 2
-tooltip_text = "The speed with which the player moves while walking. Value ranges from 0 to 20."
+tooltip_text = "Controls the player's movement speed while walking. Higher values make the player move faster."
 mouse_filter = 0
 text = "Walking Speed"
 
@@ -578,7 +602,7 @@ value = 5.0
 
 [node name="SprintingSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=1801691227]
 layout_mode = 2
-tooltip_text = "The speed with which the player moves while sprinting. Value ranges from 0 to 20."
+tooltip_text = "Controls the player's movement speed while sprinting. Higher values make the player move faster."
 mouse_filter = 0
 text = "Sprinting Speed"
 
@@ -590,7 +614,7 @@ value = 7.0
 
 [node name="CrouchedSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=1117649155]
 layout_mode = 2
-tooltip_text = "The speed with which the player moves while crouching. Value ranges from 0 to 20."
+tooltip_text = "Controls the player's movement speed while crouching. Higher values make the player move faster."
 mouse_filter = 0
 text = "Crouched Speed"
 
@@ -602,7 +626,7 @@ value = 2.5
 
 [node name="CrawlingSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=715828613]
 layout_mode = 2
-tooltip_text = "The speed with which the player moves while crawling. Value ranges from 0 to 20."
+tooltip_text = "Controls the player's movement speed while crawling. Higher values make the player move faster."
 mouse_filter = 0
 text = "Crawling Speed"
 
@@ -629,7 +653,7 @@ columns = 2
 
 [node name="BellsLabel" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1283999250]
 layout_mode = 2
-tooltip_text = "The speed with which the throwing object is charged. Value ranges from 0 to 10."
+tooltip_text = "Controls the number of throwable distractions available to the player. Higher values give the player more distractions."
 mouse_filter = 0
 text = "Number of Distractions"
 
@@ -640,7 +664,7 @@ rounded = true
 
 [node name="ChargeSpeedLabel" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=666447834]
 layout_mode = 2
-tooltip_text = "The speed with which the throwing object is charged. Value ranges from 0 to 10."
+tooltip_text = "Controls how quickly a distraction reaches its charge level. Higher values charge the distraction faster."
 mouse_filter = 0
 text = "Charge Speed"
 
@@ -652,7 +676,7 @@ value = 1.5
 
 [node name="MaxChargeLabel" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=242648007]
 layout_mode = 2
-tooltip_text = "Maximum value the throwing object can be charged to. Value ranges from 0 to 10."
+tooltip_text = "Controls the maximum charge level of a distraction. Higher values allow the distraction to be charged further."
 mouse_filter = 0
 text = "Maximum Charge"
 
@@ -664,7 +688,7 @@ value = 2.0
 
 [node name="ShowLinePreview" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1454270983]
 layout_mode = 2
-tooltip_text = "Enable or Disable Trajectory Preview."
+tooltip_text = "Controls whether the predicted trajectory of a thrown distraction is displayed."
 mouse_filter = 0
 text = "Show Trajectory Line"
 
@@ -689,141 +713,141 @@ columns = 2
 
 [node name="Forward" type="LineEdit" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1559467490]
 layout_mode = 2
-tooltip_text = "Action Name"
+tooltip_text = "Name of the input action used by the player controller. This name identifies the action in the game's input system."
 theme_override_styles/normal = SubResource("StyleBoxFlat_3afbj")
 text = "forward"
+editable = false
 expand_to_text_length = true
 
 [node name="ForwardButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=191317695]
 layout_mode = 2
-tooltip_text = "Press to map new input
-"
+tooltip_text = "Assigns the key or mouse button used to trigger this action."
 text = "W"
 script = ExtResource("1_gb3gx")
 
 [node name="Left" type="LineEdit" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=6702585]
 layout_mode = 2
-tooltip_text = "Action Name"
+tooltip_text = "Name of the input action used by the player controller. This name identifies the action in the game's input system."
 theme_override_styles/normal = SubResource("StyleBoxFlat_sds13")
 text = "left"
+editable = false
 expand_to_text_length = true
 
 [node name="LeftButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=920881803]
 layout_mode = 2
-tooltip_text = "Press to map new input
-"
+tooltip_text = "Assigns the key or mouse button used to trigger this action."
 text = "A"
 script = ExtResource("1_gb3gx")
 
 [node name="Right" type="LineEdit" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1094511655]
 layout_mode = 2
-tooltip_text = "Action Name"
+tooltip_text = "Name of the input action used by the player controller. This name identifies the action in the game's input system."
 theme_override_styles/normal = SubResource("StyleBoxFlat_ullcc")
 text = "right"
+editable = false
 expand_to_text_length = true
 
 [node name="RightButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=807266871]
 layout_mode = 2
-tooltip_text = "Press to map new input
-"
+tooltip_text = "Assigns the key or mouse button used to trigger this action."
 text = "D"
 script = ExtResource("1_gb3gx")
 
 [node name="Backward" type="LineEdit" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1015358362]
 layout_mode = 2
-tooltip_text = "Action Name"
+tooltip_text = "Name of the input action used by the player controller. This name identifies the action in the game's input system."
 theme_override_styles/normal = SubResource("StyleBoxFlat_ullcc")
 text = "backward"
+editable = false
 expand_to_text_length = true
 
 [node name="BackwardButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1045710133]
 layout_mode = 2
-tooltip_text = "Press to map new input
-"
+tooltip_text = "Assigns the key or mouse button used to trigger this action."
 text = "S"
 script = ExtResource("1_gb3gx")
 
 [node name="Jump" type="LineEdit" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=164796722]
 layout_mode = 2
-tooltip_text = "Action Name"
+tooltip_text = "Name of the input action used by the player controller. This name identifies the action in the game's input system."
 theme_override_styles/normal = SubResource("StyleBoxFlat_43eo0")
 text = "jump"
+editable = false
 expand_to_text_length = true
 
 [node name="JumpButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=928226849]
 layout_mode = 2
-tooltip_text = "Press to map new input
-"
+tooltip_text = "Assigns the key or mouse button used to trigger this action."
 text = "Space"
 script = ExtResource("1_gb3gx")
 
 [node name="Sprint" type="LineEdit" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=2144045295]
 layout_mode = 2
-tooltip_text = "Action Name"
+tooltip_text = "Name of the input action used by the player controller. This name identifies the action in the game's input system."
 theme_override_styles/normal = SubResource("StyleBoxFlat_43eo0")
 text = "sprint"
+editable = false
 expand_to_text_length = true
 
 [node name="SprintButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=672267088]
 layout_mode = 2
-tooltip_text = "Press to map new input
-"
+tooltip_text = "Assigns the key or mouse button used to trigger this action."
 text = "Shift"
 script = ExtResource("1_gb3gx")
 
 [node name="Crouch" type="LineEdit" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1669825164]
 layout_mode = 2
-tooltip_text = "Action Name"
+tooltip_text = "Name of the input action used by the player controller. This name identifies the action in the game's input system."
 theme_override_styles/normal = SubResource("StyleBoxFlat_43eo0")
 text = "crouch"
+editable = false
 expand_to_text_length = true
 
 [node name="CrouchButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=367287420]
 layout_mode = 2
-tooltip_text = "Press to map new input
-"
+tooltip_text = "Assigns the key or mouse button used to trigger this action."
 text = "C"
 script = ExtResource("1_gb3gx")
 
 [node name="Punch" type="LineEdit" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1109312664]
 layout_mode = 2
-tooltip_text = "Action Name"
+tooltip_text = "Name of the input action used by the player controller. This name identifies the action in the game's input system."
 theme_override_styles/normal = SubResource("StyleBoxFlat_43eo0")
 text = "punch"
+editable = false
 expand_to_text_length = true
 
 [node name="PunchButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1159610251]
 layout_mode = 2
-tooltip_text = "Press to map new input
-"
+tooltip_text = "Assigns the key or mouse button used to trigger this action."
 text = "E"
 script = ExtResource("1_gb3gx")
 
 [node name="ThrowWeapon" type="LineEdit" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1057865699]
 layout_mode = 2
-tooltip_text = "Action Name"
+tooltip_text = "Name of the input action used by the player controller. This name identifies the action in the game's input system."
 theme_override_styles/normal = SubResource("StyleBoxFlat_43eo0")
 text = "throw_weapon"
+editable = false
 expand_to_text_length = true
 
 [node name="ThrowWeaponButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1107933300]
 layout_mode = 2
-tooltip_text = "Press to map new input
-"
+tooltip_text = "Assigns the key or mouse button used to trigger this action."
 text = "Q"
 script = ExtResource("1_gb3gx")
 
 [node name="Shoot" type="LineEdit" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1159435425]
 layout_mode = 2
-tooltip_text = "Action Name"
+tooltip_text = "Name of the input action used by the player controller. This name identifies the action in the game's input system."
 theme_override_styles/normal = SubResource("StyleBoxFlat_43eo0")
 text = "shoot"
+editable = false
 expand_to_text_length = true
 
 [node name="ShootButton" type="Button" parent="VBoxContainer/Controls/MarginContainer/GridContainer" unique_id=1342845967]
 layout_mode = 2
-tooltip_text = "Press to map new input
-"
+tooltip_text = "Assigns the key or mouse button used to trigger this action."
 text = "Left Mouse"
 script = ExtResource("1_gb3gx")
 

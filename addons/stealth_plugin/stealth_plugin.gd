@@ -16,8 +16,6 @@ var assign_state_ind_button
 var wizard_elements: int = 15
 var guard_wizard_elements: int = 23
 
-signal config_finished
-
 func _enter_tree() -> void:
 	print("Initializing tree")
 	if wizard == null:
@@ -87,7 +85,6 @@ func _on_apply_button_guard_pressed() -> void:
 	_replace_animations(guard, guardAnimationButtonList, assign_3D_button_guard, "res://animations/default_guard/")
 	_apply_inputs_to_guard(guard)
 	
-
 # ------------------------------------------------------------
 # PLAYER (STRICT SINGLE INSTANCE GUARANTEE)
 # ------------------------------------------------------------
@@ -112,7 +109,8 @@ func _get_or_create_single_player(scene: Node) -> Node:
 	scene.add_child(player)
 
 	# IMPORTANT: ownership must be recursive for saving
-	_set_owner_recursive(player, scene)
+	#_set_owner_recursive(player, scene)
+	player.owner = scene
 	
 	print("Created new player")
 

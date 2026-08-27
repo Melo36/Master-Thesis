@@ -64,7 +64,7 @@ func _load_model() -> void:
 			animationTree = preload(DEFAULT_ANIMATION_TREE_GUARD).instantiate()
 		animationTree.name = "AnimationTree"
 		instance.add_child(animationTree)
-			
+		
 		# Add to the tree synchronously
 		model_root.add_child(instance)
 		
@@ -72,8 +72,8 @@ func _load_model() -> void:
 		if Engine.is_editor_hint() and edited_scene:
 			instance.owner = edited_scene
 			var animationPlayer = instance.find_child("AnimationPlayer", true, false)
-			animationPlayer.owner = edited_scene
 			animationTree.owner = edited_scene
+			animationPlayer.owner = edited_scene
 			# Do NOT recurse through sub-children! Keeping sub-children owner as null
 			# preserves the external scene path link to res:// scenes instead of
 			# baking raw 20MB 3D binary data directly into main_scene.tscn.
