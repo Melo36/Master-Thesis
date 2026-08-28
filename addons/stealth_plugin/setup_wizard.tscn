@@ -118,10 +118,223 @@ text = "Melee Attack"
 layout_mode = 2
 button_pressed = true
 
+[node name="MovementNoise" type="FoldableContainer" parent="VBoxContainer" unique_id=814324212]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Movement Noise"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MovementNoise" unique_id=949261826]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MovementNoise/MarginContainer" unique_id=1968351446]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="WalkingNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1473947919]
+layout_mode = 2
+tooltip_text = "Controls the noise produced while walking. The value is measured in decibels (dB) relative to the stealth system's reference level. Higher values produce more noise and make the player easier to detect.
+
+Lower dB → quieter → harder to detect
+Higher dB → louder → easier to detect
+
+ -80 dB   -20 dB   -10 dB          0 dB          +10 dB    +20 dB    +80 dB
+ Quieter ──────────────── Reference ────────────────→ Louder"
+mouse_filter = 0
+text = "Walking Noise"
+
+[node name="walking_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=335852804 groups=["PlayerInput"]]
+layout_mode = 2
+min_value = -80.0
+max_value = 80.0
+suffix = "dB"
+
+[node name="SprintingNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=2103026815]
+layout_mode = 2
+tooltip_text = "Controls the noise produced while sprinting. The value is measured in decibels (dB) relative to the stealth system's reference level. Higher values produce more noise and make the player easier to detect.
+
+Lower dB → quieter → harder to detect
+Higher dB → louder → easier to detect
+
+ -80 dB   -20 dB   -10 dB          0 dB          +10 dB    +20 dB    +80 dB
+ Quieter ──────────────── Reference ────────────────→ Louder"
+mouse_filter = 0
+text = "Sprinting Noise"
+
+[node name="sprinting_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1429585090 groups=["PlayerInput"]]
+layout_mode = 2
+min_value = -80.0
+max_value = 80.0
+value = 5.0
+suffix = "dB"
+
+[node name="CrouchedNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1371088982]
+layout_mode = 2
+tooltip_text = "Controls the noise produced while crouching. The value is measured in decibels (dB) relative to the stealth system's reference level. Higher values produce more noise and make the player easier to detect.
+
+Lower dB → quieter → harder to detect
+Higher dB → louder → easier to detect
+
+ -80 dB   -20 dB   -10 dB          0 dB          +10 dB    +20 dB    +80 dB
+ Quieter ──────────────── Reference ────────────────→ Louder"
+mouse_filter = 0
+text = "Crouched Noise"
+
+[node name="crouched_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1300906032 groups=["PlayerInput"]]
+layout_mode = 2
+min_value = -80.0
+max_value = 80.0
+value = -10.0
+suffix = "dB"
+
+[node name="CrawlingNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=510562986]
+layout_mode = 2
+tooltip_text = "Controls the noise produced while crawling. The value is measured in decibels (dB) relative to the stealth system's reference level. Higher values produce more noise and make the player easier to detect.
+
+Lower dB → quieter → harder to detect
+Higher dB → louder → easier to detect
+
+ -80 dB   -20 dB   -10 dB          0 dB          +10 dB    +20 dB    +80 dB
+ Quieter ──────────────── Reference ────────────────→ Louder"
+mouse_filter = 0
+text = "Crawling Noise"
+
+[node name="crawling_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=889972734 groups=["PlayerInput"]]
+layout_mode = 2
+min_value = -80.0
+max_value = 80.0
+value = -20.0
+suffix = "dB"
+
+[node name="MovementSpeed" type="FoldableContainer" parent="VBoxContainer" unique_id=1392575558]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Movement Speed"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MovementSpeed" unique_id=1540155675]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MovementSpeed/MarginContainer" unique_id=1091124452]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="WalkingSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=863299474]
+layout_mode = 2
+tooltip_text = "Controls the player's movement speed while walking. Higher values make the player move faster."
+mouse_filter = 0
+text = "Walking Speed"
+
+[node name="walk_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=436236399 groups=["PlayerInput"]]
+layout_mode = 2
+max_value = 20.0
+step = 0.5
+value = 5.0
+
+[node name="SprintingSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=1801691227]
+layout_mode = 2
+tooltip_text = "Controls the player's movement speed while sprinting. Higher values make the player move faster."
+mouse_filter = 0
+text = "Sprinting Speed"
+
+[node name="sprint_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=115496417 groups=["PlayerInput"]]
+layout_mode = 2
+max_value = 20.0
+step = 0.5
+value = 7.0
+
+[node name="CrouchedSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=1117649155]
+layout_mode = 2
+tooltip_text = "Controls the player's movement speed while crouching. Higher values make the player move faster."
+mouse_filter = 0
+text = "Crouched Speed"
+
+[node name="crouch_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=248304569 groups=["PlayerInput"]]
+layout_mode = 2
+max_value = 20.0
+step = 0.5
+value = 2.5
+
+[node name="CrawlingSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=715828613]
+layout_mode = 2
+tooltip_text = "Controls the player's movement speed while crawling. Higher values make the player move faster."
+mouse_filter = 0
+text = "Crawling Speed"
+
+[node name="crawl_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=384076248 groups=["PlayerInput"]]
+layout_mode = 2
+max_value = 20.0
+step = 0.5
+value = 1.5
+
+[node name="Throw Distraction" type="FoldableContainer" parent="VBoxContainer" unique_id=345854359]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Throw Distraction"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Throw Distraction" unique_id=562768369]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Throw Distraction/MarginContainer" unique_id=1784788512]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="BellsLabel" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1283999250]
+layout_mode = 2
+tooltip_text = "Controls the number of throwable distractions available to the player. Higher values give the player more distractions."
+mouse_filter = 0
+text = "Number of Distractions"
+
+[node name="bells" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=643857856 groups=["PlayerInput"]]
+layout_mode = 2
+value = 3.0
+rounded = true
+
+[node name="ChargeSpeedLabel" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=666447834]
+layout_mode = 2
+tooltip_text = "Controls how quickly a distraction reaches its charge level. Higher values charge the distraction faster."
+mouse_filter = 0
+text = "Charge Speed"
+
+[node name="charge_speed" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=674970070 groups=["PlayerInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+value = 1.5
+
+[node name="MaxChargeLabel" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=242648007]
+layout_mode = 2
+tooltip_text = "Controls the maximum charge level of a distraction. Higher values allow the distraction to be charged further."
+mouse_filter = 0
+text = "Maximum Charge"
+
+[node name="max_charge" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1749360306 groups=["PlayerInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+value = 2.0
+
+[node name="ShowLinePreview" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1454270983]
+layout_mode = 2
+tooltip_text = "Controls whether the predicted trajectory of a thrown distraction is displayed."
+mouse_filter = 0
+text = "Show Trajectory Line"
+
+[node name="show_trajectory_line" type="CheckBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1074855287 groups=["PlayerInput"]]
+layout_mode = 2
+button_pressed = true
+
 [node name="Animations" type="FoldableContainer" parent="VBoxContainer" unique_id=1307598262]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-title = "Animations"
+title = "Model & Animations"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Animations" unique_id=1725511204]
 layout_mode = 2
@@ -132,6 +345,35 @@ layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 2
+
+[node name="3DModelLabel2" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1228930354]
+layout_mode = 2
+tooltip_text = "Controls the 3D model used to visually represent the player character."
+mouse_filter = 0
+text = "3D Model"
+
+[node name="3DModelAssignButton" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1796844957]
+layout_mode = 2
+text = "Assign 3D Model"
+script = ExtResource("1_fmwjj")
+
+[node name="ModelFileDialog14" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=222069450]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.fbx", "*.glb", "*.tscn")
+
+[node name="Placeholder2" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=711191626]
+layout_mode = 2
+tooltip_text = "Controls the 3D model used to visually represent the player character."
+mouse_filter = 0
+
+[node name="Placeholder3" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1837221537]
+layout_mode = 2
+tooltip_text = "Controls the 3D model used to visually represent the player character."
+mouse_filter = 0
 
 [node name="3DModelLabel" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=55952731]
 layout_mode = 2
@@ -427,274 +669,6 @@ position = Vector2i(0, 36)
 size = Vector2i(1440, 1080)
 file_mode = 0
 filters = PackedStringArray("*.res", "*.tres")
-
-[node name="Cosmetic" type="FoldableContainer" parent="VBoxContainer" unique_id=410102604]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-title = "Cosmetic"
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Cosmetic" unique_id=817877467]
-layout_mode = 2
-theme_override_constants/margin_left = 18
-
-[node name="ModelSelection" type="GridContainer" parent="VBoxContainer/Cosmetic/MarginContainer" unique_id=684222690]
-layout_mode = 2
-theme_override_constants/h_separation = 15
-theme_override_constants/v_separation = 15
-columns = 2
-
-[node name="3DModelLabel" type="Label" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1228930354]
-layout_mode = 2
-tooltip_text = "Controls the 3D model used to visually represent the player character."
-mouse_filter = 0
-text = "3D Model"
-
-[node name="3DModelAssignButton" type="Button" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1796844957]
-layout_mode = 2
-text = "Assign 3D Model"
-script = ExtResource("1_fmwjj")
-
-[node name="ModelFileDialog" type="FileDialog" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=222069450]
-oversampling_override = 1.0
-title = "Open a File"
-position = Vector2i(0, 36)
-size = Vector2i(1440, 1080)
-file_mode = 0
-filters = PackedStringArray("*.fbx", "*.glb", "*.tscn")
-
-[node name="AssignImageLabel" type="Label" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1202878707]
-visible = false
-layout_mode = 2
-tooltip_text = "Image that appears to represent a guards state. This is empty by default."
-mouse_filter = 0
-text = "Illumination Indicator"
-
-[node name="AssignIllImageButton" type="Button" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1278296597]
-visible = false
-layout_mode = 2
-text = "Assign Image"
-script = ExtResource("1_fmwjj")
-
-[node name="ModelFileDialog2" type="FileDialog" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=960207456]
-oversampling_override = 1.0
-title = "Open a File"
-position = Vector2i(0, 36)
-size = Vector2i(1440, 1080)
-file_mode = 0
-filters = PackedStringArray("*.jpeg", "*.jpg", "*.png")
-
-[node name="MovementNoise" type="FoldableContainer" parent="VBoxContainer" unique_id=814324212]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-title = "Movement Noise"
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MovementNoise" unique_id=949261826]
-layout_mode = 2
-theme_override_constants/margin_left = 18
-
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MovementNoise/MarginContainer" unique_id=1968351446]
-layout_mode = 2
-theme_override_constants/h_separation = 15
-theme_override_constants/v_separation = 15
-columns = 2
-
-[node name="WalkingNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1473947919]
-layout_mode = 2
-tooltip_text = "Controls the noise produced while walking. The value is measured in decibels (dB) relative to the stealth system's reference level. Higher values produce more noise and make the player easier to detect.
-
-Lower dB → quieter → harder to detect
-Higher dB → louder → easier to detect
-
- -80 dB   -20 dB   -10 dB          0 dB          +10 dB    +20 dB    +80 dB
- Quieter ──────────────── Reference ────────────────→ Louder"
-mouse_filter = 0
-text = "Walking Noise"
-
-[node name="walking_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=335852804 groups=["PlayerInput"]]
-layout_mode = 2
-min_value = -80.0
-max_value = 80.0
-suffix = "dB"
-
-[node name="SprintingNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=2103026815]
-layout_mode = 2
-tooltip_text = "Controls the noise produced while sprinting. The value is measured in decibels (dB) relative to the stealth system's reference level. Higher values produce more noise and make the player easier to detect.
-
-Lower dB → quieter → harder to detect
-Higher dB → louder → easier to detect
-
- -80 dB   -20 dB   -10 dB          0 dB          +10 dB    +20 dB    +80 dB
- Quieter ──────────────── Reference ────────────────→ Louder"
-mouse_filter = 0
-text = "Sprinting Noise"
-
-[node name="sprinting_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1429585090 groups=["PlayerInput"]]
-layout_mode = 2
-min_value = -80.0
-max_value = 80.0
-value = 5.0
-suffix = "dB"
-
-[node name="CrouchedNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1371088982]
-layout_mode = 2
-tooltip_text = "Controls the noise produced while crouching. The value is measured in decibels (dB) relative to the stealth system's reference level. Higher values produce more noise and make the player easier to detect.
-
-Lower dB → quieter → harder to detect
-Higher dB → louder → easier to detect
-
- -80 dB   -20 dB   -10 dB          0 dB          +10 dB    +20 dB    +80 dB
- Quieter ──────────────── Reference ────────────────→ Louder"
-mouse_filter = 0
-text = "Crouched Noise"
-
-[node name="crouched_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=1300906032 groups=["PlayerInput"]]
-layout_mode = 2
-min_value = -80.0
-max_value = 80.0
-value = -10.0
-suffix = "dB"
-
-[node name="CrawlingNoiseLabel" type="Label" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=510562986]
-layout_mode = 2
-tooltip_text = "Controls the noise produced while crawling. The value is measured in decibels (dB) relative to the stealth system's reference level. Higher values produce more noise and make the player easier to detect.
-
-Lower dB → quieter → harder to detect
-Higher dB → louder → easier to detect
-
- -80 dB   -20 dB   -10 dB          0 dB          +10 dB    +20 dB    +80 dB
- Quieter ──────────────── Reference ────────────────→ Louder"
-mouse_filter = 0
-text = "Crawling Noise"
-
-[node name="crawling_noise" type="SpinBox" parent="VBoxContainer/MovementNoise/MarginContainer/GridContainer" unique_id=889972734 groups=["PlayerInput"]]
-layout_mode = 2
-min_value = -80.0
-max_value = 80.0
-value = -20.0
-suffix = "dB"
-
-[node name="MovementSpeed" type="FoldableContainer" parent="VBoxContainer" unique_id=1392575558]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-title = "Movement Speed"
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MovementSpeed" unique_id=1540155675]
-layout_mode = 2
-theme_override_constants/margin_left = 18
-
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MovementSpeed/MarginContainer" unique_id=1091124452]
-layout_mode = 2
-theme_override_constants/h_separation = 15
-theme_override_constants/v_separation = 15
-columns = 2
-
-[node name="WalkingSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=863299474]
-layout_mode = 2
-tooltip_text = "Controls the player's movement speed while walking. Higher values make the player move faster."
-mouse_filter = 0
-text = "Walking Speed"
-
-[node name="walk_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=436236399 groups=["PlayerInput"]]
-layout_mode = 2
-max_value = 20.0
-step = 0.5
-value = 5.0
-
-[node name="SprintingSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=1801691227]
-layout_mode = 2
-tooltip_text = "Controls the player's movement speed while sprinting. Higher values make the player move faster."
-mouse_filter = 0
-text = "Sprinting Speed"
-
-[node name="sprint_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=115496417 groups=["PlayerInput"]]
-layout_mode = 2
-max_value = 20.0
-step = 0.5
-value = 7.0
-
-[node name="CrouchedSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=1117649155]
-layout_mode = 2
-tooltip_text = "Controls the player's movement speed while crouching. Higher values make the player move faster."
-mouse_filter = 0
-text = "Crouched Speed"
-
-[node name="crouch_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=248304569 groups=["PlayerInput"]]
-layout_mode = 2
-max_value = 20.0
-step = 0.5
-value = 2.5
-
-[node name="CrawlingSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=715828613]
-layout_mode = 2
-tooltip_text = "Controls the player's movement speed while crawling. Higher values make the player move faster."
-mouse_filter = 0
-text = "Crawling Speed"
-
-[node name="crawl_speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=384076248 groups=["PlayerInput"]]
-layout_mode = 2
-max_value = 20.0
-step = 0.5
-value = 1.5
-
-[node name="Throw Distraction" type="FoldableContainer" parent="VBoxContainer" unique_id=345854359]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-title = "Throw Distraction"
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Throw Distraction" unique_id=562768369]
-layout_mode = 2
-theme_override_constants/margin_left = 18
-
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Throw Distraction/MarginContainer" unique_id=1784788512]
-layout_mode = 2
-theme_override_constants/h_separation = 15
-theme_override_constants/v_separation = 15
-columns = 2
-
-[node name="BellsLabel" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1283999250]
-layout_mode = 2
-tooltip_text = "Controls the number of throwable distractions available to the player. Higher values give the player more distractions."
-mouse_filter = 0
-text = "Number of Distractions"
-
-[node name="bells" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=643857856 groups=["PlayerInput"]]
-layout_mode = 2
-value = 3.0
-rounded = true
-
-[node name="ChargeSpeedLabel" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=666447834]
-layout_mode = 2
-tooltip_text = "Controls how quickly a distraction reaches its charge level. Higher values charge the distraction faster."
-mouse_filter = 0
-text = "Charge Speed"
-
-[node name="charge_speed" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=674970070 groups=["PlayerInput"]]
-layout_mode = 2
-max_value = 10.0
-step = 0.5
-value = 1.5
-
-[node name="MaxChargeLabel" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=242648007]
-layout_mode = 2
-tooltip_text = "Controls the maximum charge level of a distraction. Higher values allow the distraction to be charged further."
-mouse_filter = 0
-text = "Maximum Charge"
-
-[node name="max_charge" type="SpinBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1749360306 groups=["PlayerInput"]]
-layout_mode = 2
-max_value = 10.0
-step = 0.5
-value = 2.0
-
-[node name="ShowLinePreview" type="Label" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1454270983]
-layout_mode = 2
-tooltip_text = "Controls whether the predicted trajectory of a thrown distraction is displayed."
-mouse_filter = 0
-text = "Show Trajectory Line"
-
-[node name="show_trajectory_line" type="CheckBox" parent="VBoxContainer/Throw Distraction/MarginContainer/GridContainer" unique_id=1074855287 groups=["PlayerInput"]]
-layout_mode = 2
-button_pressed = true
 
 [node name="Controls" type="FoldableContainer" parent="VBoxContainer" unique_id=811492186]
 layout_mode = 2

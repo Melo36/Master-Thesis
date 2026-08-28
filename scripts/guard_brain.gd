@@ -53,6 +53,8 @@ var _fire_timer: float = 0.0
 # --- INVESTIGATE CONFIGURATION ---
 @export var investigate_arrival_tolerance: float = 1.0  # Distance to consider destination reached
 
+@export var hearing_threshold : int = 0
+
 func _ready() -> void:
 	# Defer one physics frame so the navigation map is fully synced.
 	await get_tree().physics_frame

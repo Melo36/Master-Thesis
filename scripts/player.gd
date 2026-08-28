@@ -395,7 +395,7 @@ func emit_footsteps():
 	if not audioPlayer.is_playing() and is_on_floor():
 		audioPlayer.play()
 		for g in guards:
-			if audioPlayer.get_volume_db_from_pos(g.global_position) > footstep_threshold:
+			if audioPlayer.get_volume_db_from_pos(g.global_position) > g.hearing_threshold:
 				g.investigate_sound(global_position)
 				
 				

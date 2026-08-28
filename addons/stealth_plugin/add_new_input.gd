@@ -9,6 +9,7 @@ func _pressed():
 	var index = get_index()
 	
 	copyLine.text = ""
+	copyLine.editable = true
 	copyLine.placeholder_text = "New action name..."
 	
 	copyButton.text = ""

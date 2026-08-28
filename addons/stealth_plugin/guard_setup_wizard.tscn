@@ -51,169 +51,6 @@ layout_mode = 2
 text = "Guard Configurator"
 label_settings = SubResource("LabelSettings_kcgiy")
 
-[node name="Animations" type="FoldableContainer" parent="VBoxContainer" unique_id=1454897237]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-title = "Animations"
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Animations" unique_id=736264867]
-layout_mode = 2
-theme_override_constants/margin_left = 18
-
-[node name="ModelSelection" type="GridContainer" parent="VBoxContainer/Animations/MarginContainer" unique_id=1142171480]
-layout_mode = 2
-theme_override_constants/h_separation = 15
-theme_override_constants/v_separation = 15
-columns = 2
-
-[node name="3DModelLabel" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=539984486]
-layout_mode = 2
-tooltip_text = "Animation used when the guard moves at normal walking speed."
-mouse_filter = 0
-text = "Walking"
-
-[node name="walking" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=591659670 groups=["GuardAnimation"]]
-layout_mode = 2
-text = "Assign animation"
-script = ExtResource("1_47hjw")
-
-[node name="ModelFileDialog" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1609151042]
-oversampling_override = 1.0
-title = "Open a File"
-position = Vector2i(0, 36)
-size = Vector2i(1440, 1080)
-file_mode = 0
-filters = PackedStringArray("*.res", "*.tres")
-
-[node name="Label2" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1749519854]
-layout_mode = 2
-tooltip_text = "Animation used when the guard is standing still."
-mouse_filter = 0
-text = "Idle"
-
-[node name="idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1609319363 groups=["GuardAnimation"]]
-layout_mode = 2
-text = "Assign animation"
-script = ExtResource("1_47hjw")
-
-[node name="ModelFileDialog3" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=973723018]
-oversampling_override = 1.0
-title = "Open a File"
-position = Vector2i(0, 36)
-size = Vector2i(1440, 1080)
-file_mode = 0
-filters = PackedStringArray("*.res", "*.tres")
-
-[node name="Label3" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1907547233]
-layout_mode = 2
-tooltip_text = "Animation used when the guard moves while alerted."
-mouse_filter = 0
-text = "Alerted Walking"
-
-[node name="alerted_walking" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=74174832 groups=["GuardAnimation"]]
-layout_mode = 2
-text = "Assign animation"
-script = ExtResource("1_47hjw")
-
-[node name="ModelFileDialog2" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1847325357]
-oversampling_override = 1.0
-title = "Open a File"
-position = Vector2i(0, 36)
-size = Vector2i(1440, 1080)
-file_mode = 0
-filters = PackedStringArray("*.res", "*.tres")
-
-[node name="Label4" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1512518941]
-layout_mode = 2
-tooltip_text = "Animation used when the guard is chasing the player."
-mouse_filter = 0
-text = "Chasing"
-
-[node name="chasing" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=113071910 groups=["GuardAnimation"]]
-layout_mode = 2
-text = "Assign animation"
-script = ExtResource("1_47hjw")
-
-[node name="ModelFileDialog5" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1810298389]
-oversampling_override = 1.0
-title = "Open a File"
-position = Vector2i(0, 36)
-size = Vector2i(1440, 1080)
-file_mode = 0
-filters = PackedStringArray("*.res", "*.tres")
-
-[node name="Label5" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=799828488]
-layout_mode = 2
-tooltip_text = "Animation used when the guard attacks the player with a ranged weapon."
-mouse_filter = 0
-text = "Shooting"
-
-[node name="shooting" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=986588823 groups=["GuardAnimation"]]
-layout_mode = 2
-text = "Assign animation"
-script = ExtResource("1_47hjw")
-
-[node name="ModelFileDialog4" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1995232917]
-oversampling_override = 1.0
-title = "Open a File"
-position = Vector2i(0, 36)
-size = Vector2i(1440, 1080)
-file_mode = 0
-filters = PackedStringArray("*.res", "*.tres")
-
-[node name="Label6" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=2001561998]
-layout_mode = 2
-tooltip_text = "Animation used when the guard is defeated."
-mouse_filter = 0
-text = "Death"
-
-[node name="death" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1003969919 groups=["GuardAnimation"]]
-layout_mode = 2
-text = "Assign animation"
-script = ExtResource("1_47hjw")
-
-[node name="ModelFileDialog6" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=2131951075]
-oversampling_override = 1.0
-title = "Open a File"
-position = Vector2i(0, 36)
-size = Vector2i(1440, 1080)
-file_mode = 0
-filters = PackedStringArray("*.res", "*.tres")
-
-[node name="Cosmetic" type="FoldableContainer" parent="VBoxContainer" unique_id=1777073467]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-title = "Cosmetic"
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Cosmetic" unique_id=1302586003]
-layout_mode = 2
-theme_override_constants/margin_left = 18
-
-[node name="ModelSelection" type="GridContainer" parent="VBoxContainer/Cosmetic/MarginContainer" unique_id=29176043]
-layout_mode = 2
-theme_override_constants/h_separation = 15
-theme_override_constants/v_separation = 15
-columns = 2
-
-[node name="3DModelLabel" type="Label" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=415486134]
-layout_mode = 2
-tooltip_text = "Controls the 3D model used to visually represent the guard."
-mouse_filter = 0
-text = "3D Model"
-
-[node name="3DModelAssignButton" type="Button" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1523708234]
-layout_mode = 2
-text = "Assign 3D Model"
-script = ExtResource("1_47hjw")
-
-[node name="ModelFileDialog" type="FileDialog" parent="VBoxContainer/Cosmetic/MarginContainer/ModelSelection" unique_id=1069172843]
-oversampling_override = 1.0
-title = "Open a File"
-position = Vector2i(0, 36)
-size = Vector2i(1440, 1080)
-file_mode = 0
-filters = PackedStringArray("*.fbx", "*.glb", "*.tscn")
-
 [node name="Combat" type="FoldableContainer" parent="VBoxContainer" unique_id=2144026021]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -343,7 +180,13 @@ suffix = "m"
 
 [node name="NoiseInteruptLabel" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=214747593]
 layout_mode = 2
-tooltip_text = "Controls the noise level required to interrupt a lost-player search and start investigating the noise. Higher values require louder noise to trigger an investigation."
+tooltip_text = "Controls the noise level required to interrupt a lost-player search and start investigating the noise. Higher values require louder noise to trigger an investigation.
+
+Lower dB → quieter → harder to detect
+Higher dB → louder → easier to detect
+
+ -80 dB   -20 dB   -10 dB          0 dB          +10 dB    +20 dB    +80 dB
+ Quieter ──────────────── Reference ────────────────→ Louder"
 mouse_filter = 0
 text = "Search Noise Interrupt"
 
@@ -372,7 +215,7 @@ suffix = "s"
 layout_mode = 2
 tooltip_text = "Controls how long the guard remembers the player's exact position after losing sight of them. Higher values allow the guard to remember the position for longer."
 mouse_filter = 0
-text = "Search Wall Hacks"
+text = "Last Known Position"
 
 [node name="wall_hacks" type="SpinBox" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=510602869 groups=["GuardInput"]]
 layout_mode = 2
@@ -459,6 +302,18 @@ max_value = 5.0
 step = 0.5
 value = 0.5
 
+[node name="HearingLabel" type="Label" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=1214627310]
+layout_mode = 2
+tooltip_text = "Controls how loud a noise has to be for a guard to hear. Higher values will make it so sounds need to be louder to be heard by a guard."
+mouse_filter = 0
+text = "Hearing Threshold"
+
+[node name="hearing_threshold" type="SpinBox" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=1377617307 groups=["GuardInput"]]
+layout_mode = 2
+min_value = -80.0
+max_value = 80.0
+suffix = "dB"
+
 [node name="Vision" type="FoldableContainer" parent="VBoxContainer" unique_id=734484888]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -543,6 +398,164 @@ text = "Show Debug Cone"
 [node name="show_debug_cone" type="CheckBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=23515736 groups=["GuardInput"]]
 layout_mode = 2
 button_pressed = true
+
+[node name="Animations" type="FoldableContainer" parent="VBoxContainer" unique_id=1454897237]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Model & Animations"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Animations" unique_id=736264867]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="ModelSelection" type="GridContainer" parent="VBoxContainer/Animations/MarginContainer" unique_id=1142171480]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="3DModelLabel2" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=415486134]
+layout_mode = 2
+tooltip_text = "Controls the 3D model used to visually represent the guard."
+mouse_filter = 0
+text = "3D Model"
+
+[node name="3DModelAssignButton" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1523708234]
+layout_mode = 2
+text = "Assign 3D Model"
+script = ExtResource("1_47hjw")
+
+[node name="ModelFileDialog7" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1069172843]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.fbx", "*.glb", "*.tscn")
+
+[node name="Placeholder" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=980093235]
+layout_mode = 2
+tooltip_text = "Controls the 3D model used to visually represent the guard."
+mouse_filter = 0
+
+[node name="Placeholder2" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1080700168]
+layout_mode = 2
+tooltip_text = "Controls the 3D model used to visually represent the guard."
+mouse_filter = 0
+
+[node name="3DModelLabel" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=539984486]
+layout_mode = 2
+tooltip_text = "Animation used when the guard moves at normal walking speed."
+mouse_filter = 0
+text = "Walking"
+
+[node name="walking" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=591659670 groups=["GuardAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_47hjw")
+
+[node name="ModelFileDialog" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1609151042]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label2" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1749519854]
+layout_mode = 2
+tooltip_text = "Animation used when the guard is standing still."
+mouse_filter = 0
+text = "Idle"
+
+[node name="idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1609319363 groups=["GuardAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_47hjw")
+
+[node name="ModelFileDialog3" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=973723018]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label3" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1907547233]
+layout_mode = 2
+tooltip_text = "Animation used when the guard moves while alerted."
+mouse_filter = 0
+text = "Alerted Walking"
+
+[node name="alerted_walking" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=74174832 groups=["GuardAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_47hjw")
+
+[node name="ModelFileDialog2" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1847325357]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label4" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1512518941]
+layout_mode = 2
+tooltip_text = "Animation used when the guard is chasing the player."
+mouse_filter = 0
+text = "Chasing"
+
+[node name="chasing" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=113071910 groups=["GuardAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_47hjw")
+
+[node name="ModelFileDialog5" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1810298389]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label5" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=799828488]
+layout_mode = 2
+tooltip_text = "Animation used when the guard attacks the player with a ranged weapon."
+mouse_filter = 0
+text = "Shooting"
+
+[node name="shooting" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=986588823 groups=["GuardAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_47hjw")
+
+[node name="ModelFileDialog4" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1995232917]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label6" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=2001561998]
+layout_mode = 2
+tooltip_text = "Animation used when the guard is defeated."
+mouse_filter = 0
+text = "Death"
+
+[node name="death" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1003969919 groups=["GuardAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_47hjw")
+
+[node name="ModelFileDialog6" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=2131951075]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
 
 [node name="StateIndicator" type="FoldableContainer" parent="VBoxContainer" unique_id=1805796452]
 layout_mode = 2

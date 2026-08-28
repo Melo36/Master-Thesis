@@ -14,7 +14,7 @@ var assign_ill_image_button
 var assign_state_ind_button
 
 var wizard_elements: int = 15
-var guard_wizard_elements: int = 23
+var guard_wizard_elements: int = 24
 
 func _enter_tree() -> void:
 	print("Initializing tree")
