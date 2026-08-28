@@ -331,6 +331,8 @@ func update_guard_wizard(guard: Node):
 		if parent == "MovementSpeed":
 			script = movement
 		elif parent == "Noise":
+			if input.name == "hearing_threshold":
+				continue
 			script = noise
 		elif parent == "Vision":
 			script = vision

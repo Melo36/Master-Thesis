@@ -201,18 +201,21 @@ xfade_time = 0.2
 advance_mode = 2
 advance_expression = "get(\"parameters/Walking/conditions/strafeLeft\")"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_beobj"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_34gjw"]
-states/Start/position = Vector2(192.5, 100.375)
+states/Start/position = Vector2(125, 221.1875)
 states/crouched_idle/node = SubResource("AnimationNodeAnimation_2jwc5")
-states/crouched_idle/position = Vector2(334.5, 99.875)
+states/crouched_idle/position = Vector2(307.5, 99.9375)
 states/crouched_walk_strafe_left/node = SubResource("AnimationNodeAnimation_x1mcr")
 states/crouched_walk_strafe_left/position = Vector2(291.63, 297.5875)
 states/crouched_walk_strafe_right/node = SubResource("AnimationNodeAnimation_6555i")
 states/crouched_walk_strafe_right/position = Vector2(648.63, 298.8375)
 states/crouched_walking/node = SubResource("AnimationNodeAnimation_q503i")
 states/crouched_walking/position = Vector2(624, 99.75)
-transitions = ["Start", "crouched_idle", SubResource("AnimationNodeStateMachineTransition_irid3"), "crouched_idle", "crouched_walking", SubResource("AnimationNodeStateMachineTransition_34gjw"), "crouched_walking", "crouched_idle", SubResource("AnimationNodeStateMachineTransition_5wtnk"), "crouched_idle", "crouched_walk_strafe_left", SubResource("AnimationNodeStateMachineTransition_r5f8v"), "crouched_walk_strafe_left", "crouched_idle", SubResource("AnimationNodeStateMachineTransition_wrj3d"), "crouched_walking", "crouched_walk_strafe_right", SubResource("AnimationNodeStateMachineTransition_acdx1"), "crouched_walk_strafe_right", "crouched_walking", SubResource("AnimationNodeStateMachineTransition_bhafs"), "crouched_walk_strafe_left", "crouched_walk_strafe_right", SubResource("AnimationNodeStateMachineTransition_7x1yu"), "crouched_walk_strafe_right", "crouched_walk_strafe_left", SubResource("AnimationNodeStateMachineTransition_en8v6"), "crouched_walk_strafe_right", "crouched_idle", SubResource("AnimationNodeStateMachineTransition_xav6i"), "crouched_idle", "crouched_walk_strafe_right", SubResource("AnimationNodeStateMachineTransition_0slwj"), "crouched_walk_strafe_left", "crouched_walking", SubResource("AnimationNodeStateMachineTransition_yws1p"), "crouched_walking", "crouched_walk_strafe_left", SubResource("AnimationNodeStateMachineTransition_2l0de")]
-graph_offset = Vector2(199.56412, 30.18008)
+transitions = ["Start", "crouched_idle", SubResource("AnimationNodeStateMachineTransition_irid3"), "crouched_idle", "crouched_walking", SubResource("AnimationNodeStateMachineTransition_34gjw"), "crouched_walking", "crouched_idle", SubResource("AnimationNodeStateMachineTransition_5wtnk"), "crouched_idle", "crouched_walk_strafe_left", SubResource("AnimationNodeStateMachineTransition_r5f8v"), "crouched_walk_strafe_left", "crouched_idle", SubResource("AnimationNodeStateMachineTransition_wrj3d"), "crouched_walking", "crouched_walk_strafe_right", SubResource("AnimationNodeStateMachineTransition_acdx1"), "crouched_walk_strafe_right", "crouched_walking", SubResource("AnimationNodeStateMachineTransition_bhafs"), "crouched_walk_strafe_left", "crouched_walk_strafe_right", SubResource("AnimationNodeStateMachineTransition_7x1yu"), "crouched_walk_strafe_right", "crouched_walk_strafe_left", SubResource("AnimationNodeStateMachineTransition_en8v6"), "crouched_walk_strafe_right", "crouched_idle", SubResource("AnimationNodeStateMachineTransition_xav6i"), "crouched_idle", "crouched_walk_strafe_right", SubResource("AnimationNodeStateMachineTransition_0slwj"), "crouched_walk_strafe_left", "crouched_walking", SubResource("AnimationNodeStateMachineTransition_yws1p"), "crouched_walking", "crouched_walk_strafe_left", SubResource("AnimationNodeStateMachineTransition_2l0de"), "Start", "crouched_walking", SubResource("AnimationNodeStateMachineTransition_beobj")]
+graph_offset = Vector2(-13.189961, 30.18008)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v0qw6"]
 animation = &"Custom/falling"
@@ -419,7 +422,7 @@ advance_condition = &"sprinting"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p4453"]
 xfade_time = 0.2
 advance_mode = 2
-advance_expression = "!get(\"parameters/conditions/sprinting\")"
+advance_expression = "!get(\"parameters/conditions/sprinting\") && get(\"parameters/conditions/crouching\")"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sj6nh"]
 xfade_time = 0.2
