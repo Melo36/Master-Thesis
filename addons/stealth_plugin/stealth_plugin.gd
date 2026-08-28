@@ -111,6 +111,7 @@ func _get_or_create_single_player(scene: Node) -> Node:
 	# IMPORTANT: ownership must be recursive for saving
 	#_set_owner_recursive(player, scene)
 	player.owner = scene
+	place_character_on_ground(player)
 	
 	print("Created new player")
 
@@ -147,9 +148,24 @@ func _create_guard(scene: Node) -> Node:
 	guard.owner = scene
 	patrolRoute.owner = scene
 	_set_owner_recursive(parent, scene, 3)
+	place_character_on_ground(guard)
 
 	# Return this because we dont need the parent
 	return guard
+	
+func place_character_on_ground(character: CharacterBody3D):
+	var space_state = character.get_world_3d().direct_space_state
+
+	var start = character.global_position + Vector3.UP * 10.0
+	var end = character.global_position + Vector3.DOWN * 100.0
+
+	var query = PhysicsRayQueryParameters3D.create(start, end)
+	query.exclude = [character]
+
+	var result = space_state.intersect_ray(query)
+
+	if result:
+		character.global_position.y = result.position.y
 
 
 # ------------------------------------------------------------
