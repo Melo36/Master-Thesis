@@ -299,7 +299,7 @@ text = "Decay Rate"
 [node name="decay_rate" type="SpinBox" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=1042045107 groups=["GuardInput"]]
 layout_mode = 2
 max_value = 5.0
-step = 0.5
+step = 0.1
 value = 0.5
 
 [node name="HearingLabel" type="Label" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=1214627310]

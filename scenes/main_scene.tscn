@@ -23,21 +23,11 @@
 [ext_resource type="Animation" uid="uid://b5aygkuubmk41" path="res://animations/default_player/melee.tres" id="20_womr8"]
 [ext_resource type="Script" uid="uid://djtt4pet86qqh" path="res://scripts/guard_brain.gd" id="21_cn4eu"]
 [ext_resource type="Animation" uid="uid://k160gs1c23ab" path="res://animations/default_player/right_strafe_walking.tres" id="21_onjth"]
-[ext_resource type="Script" uid="uid://bjpmu5sklv5h8" path="res://addons/raytraced_audio/raytraced_audio_listener.gd" id="22_0wyf6"]
 [ext_resource type="Animation" uid="uid://cw6c4vlopk7r8" path="res://animations/default_player/sprinting.tres" id="22_xa0eo"]
 [ext_resource type="Animation" uid="uid://cygude7k61kaw" path="res://animations/default_player/walking.tres" id="23_3mjum"]
-[ext_resource type="Script" uid="uid://bx7gmts57qet5" path="res://scripts/guard_noise_behavior.gd" id="23_xp01v"]
-[ext_resource type="Script" uid="uid://bpajbi2wk1nxv" path="res://scripts/guard_vision_behavior.gd" id="24_jix7a"]
 [ext_resource type="Animation" uid="uid://c07fw6kidosf8" path="res://animations/default_player/walking_backwards.tres" id="24_p27gv"]
-[ext_resource type="Script" uid="uid://4dkpyhsv7o23" path="res://scripts/guard_movement.gd" id="25_segjr"]
-[ext_resource type="Script" uid="uid://bw366snicme0g" path="res://scripts/chase_influence_map.gd" id="26_beobj"]
-[ext_resource type="Texture2D" uid="uid://dpsoct00lvvod" path="res://resources/blade.png" id="27_267kh"]
-[ext_resource type="AudioStream" uid="uid://yr7nlygrsaem" path="res://sounds/gun_shot.mp3" id="28_86meh"]
-[ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://addons/raytraced_audio/raytraced_audio_player_3d.gd" id="29_duuju"]
-[ext_resource type="Script" uid="uid://df0g5mycw1xv3" path="res://addons/stealth_plugin/GadgetManager.gd" id="30_8dxha"]
 [ext_resource type="PackedScene" uid="uid://dnwuisyfcxppo" path="res://scenes/animation_tree.tscn" id="30_pgk25"]
 [ext_resource type="Script" uid="uid://b1qirgxs5mc4t" path="res://scripts/guard_state_indicator.gd" id="31_j4epa"]
-[ext_resource type="Script" uid="uid://dwhisyu7pd11j" path="res://scripts/model_handler.gd" id="32_ruju6"]
 [ext_resource type="PackedScene" uid="uid://1y57q75bqm6" path="res://models/default_guard/guard.fbx" id="33_5nybl"]
 [ext_resource type="Animation" path="res://animations/default_guard/alerted_walking.tres" id="34_cq0lk"]
 [ext_resource type="Animation" uid="uid://dus7ggng77tdp" path="res://animations/default_guard/death.tres" id="36_8pjrr"]
@@ -481,20 +471,6 @@ states/melee/position = Vector2(247.49042, -93.15042)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_rd2ci"), "idle", "Walking", SubResource("AnimationNodeStateMachineTransition_ayuge"), "Walking", "idle", SubResource("AnimationNodeStateMachineTransition_o8bff"), "Walking", "Crouching", SubResource("AnimationNodeStateMachineTransition_pgysb"), "idle", "Crouching", SubResource("AnimationNodeStateMachineTransition_h3b6s"), "Crouching", "Walking", SubResource("AnimationNodeStateMachineTransition_iu26k"), "Crouching", "idle", SubResource("AnimationNodeStateMachineTransition_pe8is"), "idle", "Jump", SubResource("AnimationNodeStateMachineTransition_hyaxk"), "Jump", "idle", SubResource("AnimationNodeStateMachineTransition_joq1o"), "Walking", "Jump", SubResource("AnimationNodeStateMachineTransition_wb7fw"), "Jump", "Walking", SubResource("AnimationNodeStateMachineTransition_klptk"), "Jump", "Crouching", SubResource("AnimationNodeStateMachineTransition_cr4th"), "Crouching", "Jump", SubResource("AnimationNodeStateMachineTransition_qil8a"), "Walking", "Sprinting", SubResource("AnimationNodeStateMachineTransition_m4v7x"), "Sprinting", "Walking", SubResource("AnimationNodeStateMachineTransition_63via"), "Crouching", "Sprinting", SubResource("AnimationNodeStateMachineTransition_pt8r8"), "Sprinting", "Crouching", SubResource("AnimationNodeStateMachineTransition_p4453"), "Crouching", "crawling", SubResource("AnimationNodeStateMachineTransition_sj6nh"), "crawling", "Crouching", SubResource("AnimationNodeStateMachineTransition_lwyly"), "Crouching", "crawl_idle", SubResource("AnimationNodeStateMachineTransition_udnd2"), "crawl_idle", "Crouching", SubResource("AnimationNodeStateMachineTransition_ljj6e"), "crawl_idle", "crawling", SubResource("AnimationNodeStateMachineTransition_eww57"), "crawling", "crawl_idle", SubResource("AnimationNodeStateMachineTransition_gqmek"), "melee", "idle", SubResource("AnimationNodeStateMachineTransition_n3iwf")]
 graph_offset = Vector2(83.5814, -18.531607)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_17ufb"]
-radius = 0.3
-height = 2.107495
-
-[sub_resource type="GDScript" id="GDScript_k3g67"]
-script/source = "extends NavigationAgent3D
-"
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_4bgka"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02d50"]
-transparency = 1
-shading_mode = 0
-
 [sub_resource type="Animation" id="Animation_xxvxr"]
 resource_name = "Take 001"
 length = 1.6666666
@@ -504,7 +480,7 @@ _data = {
 &"Take 001": SubResource("Animation_xxvxr")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_267kh"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_womr8"]
 _data = {
 &"alerted_walking": ExtResource("34_cq0lk"),
 &"chasing": ExtResource("41_beobj"),
@@ -826,71 +802,13 @@ parameters/Walking/conditions/strafeLeft = false
 parameters/Walking/conditions/strafeRight = false
 parameters/Walking/conditions/walking = false
 
-[node name="Guard" type="Node3D" parent="." unique_id=1861190701]
+[node name="Guard" type="Node3D" parent="." unique_id=1816101024]
 
-[node name="Path3D" type="Path3D" parent="Guard" unique_id=1821145639]
+[node name="Path3D" type="Path3D" parent="Guard" unique_id=902761972]
 
 [node name="Guard" type="CharacterBody3D" parent="Guard" unique_id=1404609476 groups=["Guard"] instance=ExtResource("20_p27gv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7683716e-06, 0)
 script = ExtResource("21_cn4eu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Guard/Guard" unique_id=937642194]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_17ufb")
-
-[node name="RaytracedAudioListener" type="AudioListener3D" parent="Guard/Guard" unique_id=955631534]
-script = ExtResource("22_0wyf6")
-metadata/_custom_type_script = "uid://bjpmu5sklv5h8"
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Guard/Guard" unique_id=823578958]
-debug_enabled = true
-script = SubResource("GDScript_k3g67")
-
-[node name="NoiseSensor" type="Node3D" parent="Guard/Guard" unique_id=115091329]
-script = ExtResource("23_xp01v")
-
-[node name="VisionSensor" type="Node3D" parent="Guard/Guard" unique_id=1941893463 node_paths=PackedStringArray("cone_mesh_instance")]
-script = ExtResource("24_jix7a")
-cone_mesh_instance = NodePath("../VisionCone")
-view_angle_deg = 165.0
-
-[node name="GuardMovement" type="Node3D" parent="Guard/Guard" unique_id=1159603037]
-script = ExtResource("25_segjr")
-chase_speed_multiplier = 1.2
-tolerance = 2
-
-[node name="VisionCone" type="MeshInstance3D" parent="Guard/Guard" unique_id=1479462717]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -2.887258)
-visible = false
-layers = 2
-mesh = SubResource("CylinderMesh_4bgka")
-surface_material_override/0 = SubResource("StandardMaterial3D_02d50")
-
-[node name="ChaseInfluenceMap" type="Node" parent="Guard/Guard" unique_id=2057481093]
-script = ExtResource("26_beobj")
-
-[node name="ShurikenIndicator" type="Sprite3D" parent="Guard/Guard" unique_id=191564752]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.7853942, -0.4983739)
-visible = false
-billboard = 1
-texture = ExtResource("27_267kh")
-
-[node name="MuzzleRaycast" type="RayCast3D" parent="Guard/Guard" unique_id=22760305]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1872306, -0.64227575)
-debug_shape_custom_color = Color(0.30344206, 0.0006543857, 0.7874915, 1)
-
-[node name="GunSoundPlayer" type="AudioStreamPlayer3D" parent="Guard/Guard" unique_id=308494499]
-stream = ExtResource("28_86meh")
-attenuation_model = 1
-volume_db = -10.0
-unit_size = 7.0
-max_db = 2.0
-pitch_scale = 2.0
-script = ExtResource("29_duuju")
-metadata/_custom_type_script = "uid://dkb8ltjc6067n"
-
-[node name="GadgetManager" type="Node3D" parent="Guard/Guard" unique_id=646820054]
-script = ExtResource("30_8dxha")
 
 [node name="StateIndicator" type="Node3D" parent="Guard/Guard" unique_id=223584119]
 script = ExtResource("31_j4epa")
@@ -907,17 +825,14 @@ outline_size = 24
 [node name="ImageIndicator" type="Sprite3D" parent="Guard/Guard/StateIndicator" unique_id=1702826809]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 3.1441321, 0)
 
-[node name="ModelHandler" type="Node3D" parent="Guard/Guard" unique_id=1999072873]
-script = ExtResource("32_ruju6")
-
-[node name="Model" type="Node3D" parent="Guard/Guard" unique_id=1134350534]
+[node name="Model" type="Node3D" parent="Guard/Guard" unique_id=1620662779]
 transform = Transform3D(-0.99608785, 0, 0.088368684, 0, 1, 0, -0.088368684, 0, -0.99608785, 0, 0, 0)
 
 [node name="guard" type="Node3D" parent="Guard/Guard/Model" unique_id=2024213232 instance=ExtResource("33_5nybl")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Guard/Guard/Model/guard" unique_id=505636100]
 libraries/ = SubResource("AnimationLibrary_vxum3")
-libraries/Custom = SubResource("AnimationLibrary_267kh")
+libraries/Custom = SubResource("AnimationLibrary_womr8")
 
 [node name="AnimationTree" type="AnimationTree" parent="Guard/Guard/Model/guard" unique_id=1940328752 instance=ExtResource("40_wacd7")]
 tree_root = SubResource("AnimationNodeStateMachine_ycvn0")

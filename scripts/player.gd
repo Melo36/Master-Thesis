@@ -154,7 +154,7 @@ func _input(event):
 		elif stance == Stance.CRAWL: stance = Stance.CROUCH
 		crouch_pressed = false
 		
-	if meele_enabled && state_machine && event.is_action_pressed("punch"):
+	if meele_enabled && state_machine && event.is_action_pressed("melee"):
 		state_machine.travel("melee")
 		var space_state = get_world_3d().direct_space_state
 	

@@ -57,7 +57,7 @@ func has_clear_line_of_sight(target: Node3D) -> bool:
 	return false
 
 func _unhandled_input(event):
-	if event.is_action_pressed("throw_weapon") and current_target and player.shuriken > 0:
+	if event.is_action_pressed("throw weapon") and current_target and player.shuriken > 0:
 		throw_shuriken()
 
 func throw_shuriken():

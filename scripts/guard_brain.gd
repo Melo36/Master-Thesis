@@ -21,7 +21,7 @@ enum State {
 	PATROL,
 	INVESTIGATE,
 	CHASE,
-	SHOOT,                # NEW: Combat shooting state
+	SHOOT,                # Combat shooting state
 	SEARCH_LOST    # Pursuing the player after losing sight, using the influence-map flood
 }
 

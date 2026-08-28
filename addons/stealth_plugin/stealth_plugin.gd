@@ -147,7 +147,7 @@ func _create_guard(scene: Node) -> Node:
 	parent.owner = scene
 	guard.owner = scene
 	patrolRoute.owner = scene
-	_set_owner_recursive(parent, scene, 3)
+	#_set_owner_recursive(parent, scene, 3)
 	place_character_on_ground(guard)
 
 	# Return this because we dont need the parent
