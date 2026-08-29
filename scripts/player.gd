@@ -30,6 +30,8 @@ var crouch_press_time := 0.0
 @onready var floor_detector: RayCast3D = $FloorDetector
 @onready var progress_bar: ProgressBar = $CanvasLayer/ProgressBar
 
+var last_footstep_played := 0
+
 # =========================
 # VISIBILITY
 # =========================
@@ -121,22 +123,6 @@ func _ready():
 		# Ensure the mesh is initialized
 		if trajectory_line.mesh == null:
 			trajectory_line.mesh = ImmediateMesh.new()
-			
-func find_state(machine: AnimationNodeStateMachine,state_name: String) -> AnimationNodeAnimation:
-	if machine.has_node(state_name):
-		var state := machine.get_node(state_name)
-		if state is AnimationNodeAnimation:
-			return state
-
-	for node_name in machine.get_node_list():
-		var node := machine.get_node(node_name)
-
-		if node is AnimationNodeStateMachine:
-			var result := find_state(node, state_name)
-			if result:
-				return result
-
-	return null
 
 # ==================================================
 # INPUT
@@ -193,16 +179,6 @@ func _input(event):
 # PHYSICS LOOP
 # ==================================================
 func _physics_process(delta):
-	#var current_state = state_machine.get_current_node()
-	#var animation_node = find_state(animationTree.tree_root, current_state)
-
-	#print("State: ", current_state)
-	#print("Animation node: ", animation_node)
-
-	#if animation_node:
-	#	print("Animation: ", animation_node.animation)
-
-
 	if is_aiming:
 		throw_strength += charge_speed * delta
 		throw_strength = clamp(throw_strength, 0.0, max_charge)
@@ -227,8 +203,18 @@ func _physics_process(delta):
 		animationTree.set("parameters/playback_speed", 1.0 if direction != Vector3.ZERO else 0.0)
 	elif animationTree:
 		animationTree.set("parameters/playback_speed", 1.0)
+		
+	var elapsed := Time.get_ticks_msec()
+	var interval = 500
+	if sprinting:
+		var multiplier = sprint_speed / walk_speed
+		interval = interval / multiplier
+	elif stance != Stance.STAND:
+		var multiplier = crouch_speed / walk_speed
+		interval = interval  / multiplier
 	
-	if direction != Vector3.ZERO: emit_footsteps()
+	if direction != Vector3.ZERO && stance != Stance.CRAWL: 
+		emit_footsteps(elapsed, interval)
 
 	update_noise()
 	move_and_slide()
@@ -391,9 +377,13 @@ func take_damage(damage):
 	health -= damage
 	progress_bar.value = health
 
-func emit_footsteps():
-	if not audioPlayer.is_playing() and is_on_floor():
+
+func emit_footsteps(elapsed : int, interval : int):
+	if elapsed - last_footstep_played < interval:
+		return
+	if is_on_floor():
 		audioPlayer.play()
+		last_footstep_played = elapsed
 		for g in guards:
 			if audioPlayer.get_volume_db_from_pos(g.global_position) > g.hearing_threshold:
 				g.investigate_sound(global_position)
