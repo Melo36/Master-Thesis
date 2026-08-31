@@ -194,6 +194,7 @@ func _apply_inputs_to_guard(guard: Node) -> void:
 	var vision = guard.find_child("VisionSensor")
 	var gadget_manager = guard.find_child("GadgetManager")
 	var state_indicator = guard.find_child("StateIndicator")
+	var chase_solver = guard.find_child("ChaseInfluenceMap")
 
 	for input in inputs:
 		if index > guard_wizard_elements:
@@ -211,6 +212,8 @@ func _apply_inputs_to_guard(guard: Node) -> void:
 			script = state_indicator
 		elif parent == "Gadgets":
 			script = gadget_manager
+		elif parent == "SearchAlgorithm":
+			script = chase_solver
 
 		if input is SpinBox:
 			script.set(input.name, input.value)

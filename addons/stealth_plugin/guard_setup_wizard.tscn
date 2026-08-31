@@ -399,12 +399,146 @@ text = "Show Debug Cone"
 layout_mode = 2
 button_pressed = true
 
+[node name="Patrol Route" type="FoldableContainer" parent="VBoxContainer" unique_id=1121098155]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+folded = true
+title = "Patrol Route"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Patrol Route" unique_id=869595644]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="Label" type="Label" parent="VBoxContainer/Patrol Route/MarginContainer" unique_id=1285945763]
+layout_mode = 2
+text = "To specify the patrol route of the guard follow these steps:
+- Click \"Create Guard\" once you are finished with the configuration
+- Find the \"Guard\" node in the scene tree
+- Expand the \"Guard\" Node
+- Click on \"Path3D\"
+- Click \"Create Curve\" in the toolbar above the game screen
+- Select the option \"Add Point\" and place path markers in the scene
+- Tip: Use orthogonal view (7 on the keyboard) to prevent projection issues"
+autowrap_mode = 3
+
+[node name="SearchAlgorithm" type="FoldableContainer" parent="VBoxContainer" unique_id=355038117]
+layout_mode = 2
+tooltip_text = "Controls the search algorithm when sight of player is lost. Do not change these values if you do not know what they do!"
+theme_override_font_sizes/font_size = 30
+folded = true
+title = "Search Algorithm (Advanced)"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SearchAlgorithm" unique_id=2045008542]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/SearchAlgorithm/MarginContainer" unique_id=1256608015]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="HotValueLabel" type="Label" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=266953917]
+layout_mode = 2
+tooltip_text = "Initial heat value assigned to the last known player position. Higher values keep nearby cells warm for longer and give them more influence when calculating the final chase destination."
+mouse_filter = 0
+text = "Hot Value"
+
+[node name="hot_value" type="SpinBox" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=1632545763 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 10.0
+value = 1.0
+suffix = "m"
+
+[node name="MaxHeatedLabel" type="Label" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=1738717181]
+layout_mode = 2
+tooltip_text = "Maximum number of cells allowed in the heat front during one propagation step. If the front becomes larger than this value, the chase calculation stops because the search has spread into a wide area"
+mouse_filter = 0
+text = "Maximum Heat per Step"
+
+[node name="max_heated_per_step" type="SpinBox" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=327540877 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 10.0
+value = 1.0
+suffix = "m"
+
+[node name="MaxStepsLabel" type="Label" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=1207875193]
+layout_mode = 2
+tooltip_text = "Maximum number of propagation steps performed before the chase calculation stops. Higher values allow the search to spread farther and produce a more thorough result, but may increase the calculation time."
+mouse_filter = 0
+text = "Maximum Steps
+"
+
+[node name="max_steps" type="SpinBox" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=395288532 groups=["GuardInput"]]
+layout_mode = 2
+min_value = -10.0
+max_value = 10.0
+step = 0.5
+value = 1.5
+suffix = "dB"
+
+[node name="CellSizeLabel" type="Label" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=1774540280]
+layout_mode = 2
+tooltip_text = "Size of one influence-map grid cell in world units. Smaller values create a finer grid and more precise destinations, but increase the number of cells that must be processed"
+mouse_filter = 0
+text = "Cell Size"
+
+[node name="cell_size" type="SpinBox" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=377238881 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 50.0
+step = 0.5
+value = 5.0
+suffix = "s"
+
+[node name="StepsPerFrameLabel" type="Label" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=866525334]
+layout_mode = 2
+tooltip_text = "Number of influence-map propagation steps processed per frame. Higher values complete the calculation faster, while lower values spread the computation over more frames to reduce per-frame workload"
+mouse_filter = 0
+text = "Steps per Frame"
+
+[node name="steps_per_frame" type="SpinBox" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=2026969556 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+value = 3.0
+suffix = "s"
+
+[node name="BuildRadiusLabel" type="Label" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=428695356]
+layout_mode = 2
+tooltip_text = "Maximum distance in world units around the last known player position in which grid cells are sampled. Larger values allow the guard to search a wider area for a chase destination, but increase the number of cells that must be processed."
+mouse_filter = 0
+text = "Build Radius"
+
+[node name="build_radius" type="SpinBox" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=2086211114 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+value = 3.0
+suffix = "s"
+
+[node name="VerticalBandLabel" type="Label" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=1426618352]
+layout_mode = 2
+tooltip_text = "Number of grid cells above and below the last known player position that can be sampled when building the influence map. Higher values allow the search to span larger height differences, such as multiple floors."
+mouse_filter = 0
+text = "Vertical Band"
+
+[node name="vertical_band" type="SpinBox" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=934600778 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+value = 3.0
+suffix = "s"
+
 [node name="Animations" type="FoldableContainer" parent="VBoxContainer" unique_id=1454897237]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+folded = true
 title = "Model & Animations"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Animations" unique_id=736264867]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 18
 
@@ -560,9 +694,11 @@ filters = PackedStringArray("*.res", "*.tres")
 [node name="StateIndicator" type="FoldableContainer" parent="VBoxContainer" unique_id=1805796452]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+folded = true
 title = "State Indicator"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/StateIndicator" unique_id=126994471]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 18
 

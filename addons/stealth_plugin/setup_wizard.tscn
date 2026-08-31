@@ -335,9 +335,11 @@ button_pressed = true
 layout_mode = 2
 tooltip_text = "Leave these empty if you want to use the default model and animations."
 theme_override_font_sizes/font_size = 30
+folded = true
 title = "Model & Animations (Optional)"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Animations" unique_id=1725511204]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 18
 
@@ -674,9 +676,11 @@ filters = PackedStringArray("*.res", "*.tres")
 [node name="Controls" type="FoldableContainer" parent="VBoxContainer" unique_id=811492186]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+folded = true
 title = "Controls"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Controls" unique_id=1491370306]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 18
 
