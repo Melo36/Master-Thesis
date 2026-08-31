@@ -78,7 +78,7 @@ func _on_apply_button_guard_pressed() -> void:
 	var guard = _create_guard(scene)
 
 	model_selection = guard_wizard.find_child("ImageSelection", true)
-	_replace_indicator_image(guard, "ImageIndicator", assign_state_ind_button)
+	#_replace_indicator_image(guard, "ImageIndicator", assign_state_ind_button)
 	_replace_model(guard, assign_3D_button_guard)
 	
 	var guardAnimationButtonList = get_tree().get_nodes_in_group("GuardAnimation")
