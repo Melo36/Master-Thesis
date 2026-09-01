@@ -65,7 +65,7 @@ func _on_apply_button_pressed() -> void:
 	_apply_inputs_to_player(player)
 
 	_replace_model(player, assign_3D_button)
-	_replace_indicator_image(player, "LightLevel", assign_ill_image_button)
+	#_replace_indicator_image(player, "LightLevel", assign_ill_image_button)
 	
 	var animationButtonList = get_tree().get_nodes_in_group("PlayerAnimation")
 	_replace_animations(player, animationButtonList, assign_3D_button, "res://animations/default_player/")
@@ -108,8 +108,6 @@ func _get_or_create_single_player(scene: Node) -> Node:
 
 	scene.add_child(player)
 
-	# IMPORTANT: ownership must be recursive for saving
-	#_set_owner_recursive(player, scene)
 	player.owner = scene
 	place_character_on_ground(player)
 	
@@ -259,25 +257,44 @@ func _replace_animations(agent: Node, animationList: Array, model_button : Butto
 	var lib_name : String = "Custom"
 	var animationTree = agent.find_child("AnimationTree", true, false)
 	var animationPlayer : AnimationPlayer = agent.find_child("AnimationPlayer", true)
-	animationTree.anim_player = animationPlayer.get_path()
+
+	# 1. Reuse existing library or build a new one
+	var library: AnimationLibrary
+	if animationPlayer.has_animation_library(lib_name):
+		library = animationPlayer.get_animation_library(lib_name)
+	else:
+		library = AnimationLibrary.new()
+
 	var state_machine = animationTree.tree_root
-	
-	var library := AnimationLibrary.new()
 	var has_custom_model : bool = model_button.resourcePath != ""
+
 	for button in animationList:
 		var node = find_state(state_machine, button.name)
 		if !node:
 			continue
 		node.animation = lib_name + "/" + button.name
-		var resourcePath : String
+		
 		var animation: Animation
 		if has_custom_model:
 			if button.resourcePath:
 				animation = load(button.resourcePath)
 		else:
 			animation = load(default_anim_path + button.name + ".tres")
-		library.add_animation(button.name, animation)
-	animationPlayer.add_animation_library(lib_name, library)
+			
+		if animation:
+			library.add_animation(button.name, animation)
+
+	# 2. Save the library resource to disk so it persists permanently
+	var save_path := "res://custom_animation_library.res"
+	ResourceSaver.save(library, save_path)
+
+	# 3. Load the saved resource file into the player
+	var saved_library = load(save_path)
+	if animationPlayer.has_animation_library(lib_name):
+		animationPlayer.remove_animation_library(lib_name)
+	animationPlayer.add_animation_library(lib_name, saved_library)
+
+	animationTree.anim_player = animationPlayer.get_path()
 			
 func find_state(machine: AnimationNodeStateMachine,state_name: String) -> AnimationNodeAnimation:
 	if machine.has_node(state_name):
@@ -340,6 +357,7 @@ func update_guard_wizard(guard: Node):
 	var vision = guard.find_child("VisionSensor")
 	var gadget_manager = guard.find_child("GadgetManager")
 	var state_indicator = guard.find_child("StateIndicator")
+	var chase_solver = guard.find_child("ChaseInfluenceMap")
 
 	for input in inputs:
 		if index > guard_wizard_elements:
@@ -359,8 +377,12 @@ func update_guard_wizard(guard: Node):
 			script = state_indicator
 		elif parent == "Gadgets":
 			script = gadget_manager
+		elif parent == "SearchAlgorithm":
+			script = chase_solver
+			
 
 		if input is SpinBox:
+			print(input.name)
 			input.value = script.get(input.name)
 		elif input is CheckBox:
 			input.button_pressed = script.get(input.name)

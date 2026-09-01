@@ -85,6 +85,9 @@ signal bells_changed(new_amount: int)
 	set(value):
 		bells = value
 		bells_changed.emit(bells)
+		
+@export var lib_path : String = "res://animations/custom_animation_library.res"
+
 
 # =========================
 # LIGHT DETECTION
@@ -108,8 +111,27 @@ func _ready():
 	audioPlayer = $RaytracedAudioPlayer3D
 	guards = get_tree().get_nodes_in_group("Guard")
 	if animationTree:
-		animationPlayer = find_child("AnimationPlayer", true)
+		animationPlayer = find_child("AnimationPlayer", true, false)
+		var lib_name : String = "Custom"
+		# 1. Safely load the saved library resource from disk
+		if ResourceLoader.exists(lib_path):
+			var loaded_library: AnimationLibrary = load(lib_path)
+
+			# 2. Remove any existing library with the same name to avoid duplicate key errors
+			if animationPlayer.has_animation_library(lib_name):
+				animationPlayer.remove_animation_library(lib_name)
+
+			# 3. Add the loaded library to the AnimationPlayer
+			animationPlayer.add_animation_library(lib_name, loaded_library)
+
+			# 4. Re-link the AnimationTree to ensure it recognizes the newly assigned tracks
+			if animationTree:
+				animationTree.anim_player = animationPlayer.get_path()
+				
+		
+		
 		animationTree.anim_player = animationTree.get_path_to(animationPlayer)
+		print(animationTree.get_path_to(animationPlayer))
 		state_machine = animationTree.get("parameters/playback")
 		
 	sub_viewport.debug_draw = 2

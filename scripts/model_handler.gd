@@ -73,7 +73,7 @@ func _load_model() -> void:
 			instance.owner = edited_scene
 			var animationPlayer = instance.find_child("AnimationPlayer", true, false)
 			animationTree.owner = edited_scene
-			animationPlayer.owner = edited_scene
+			#animationPlayer.owner = edited_scene
 			# Do NOT recurse through sub-children! Keeping sub-children owner as null
 			# preserves the external scene path link to res:// scenes instead of
 			# baking raw 20MB 3D binary data directly into main_scene.tscn.
