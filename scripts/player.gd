@@ -86,8 +86,7 @@ signal bells_changed(new_amount: int)
 		bells = value
 		bells_changed.emit(bells)
 		
-@export var lib_path : String = "res://animations/custom_animation_library.res"
-
+@export var lib_path : String = "res://animations/player_animation_library.res"
 
 # =========================
 # LIGHT DETECTION

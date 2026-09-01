@@ -55,6 +55,9 @@ var _fire_timer: float = 0.0
 
 @export var hearing_threshold : int = 0
 
+@export var lib_path : String = "res://animations/guard_animation_library.res"
+
+
 func _ready() -> void:
 	# Defer one physics frame so the navigation map is fully synced.
 	await get_tree().physics_frame

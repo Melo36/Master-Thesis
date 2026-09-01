@@ -285,7 +285,7 @@ func _replace_animations(agent: Node, animationList: Array, model_button : Butto
 			library.add_animation(button.name, animation)
 
 	# 2. Save the library resource to disk so it persists permanently
-	var save_path := "res://custom_animation_library.res"
+	var save_path : String = agent.lib_path
 	ResourceSaver.save(library, save_path)
 
 	# 3. Load the saved resource file into the player

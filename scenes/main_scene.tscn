@@ -581,7 +581,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8146973e-06, 0)
 script = ExtResource("8_6wevv")
 crawl_speed = 1.5
 
-[node name="Model" type="Node3D" parent="Player" unique_id=202558544]
+[node name="Model" type="Node3D" parent="Player" unique_id=769271314]
 transform = Transform3D(-0.99608785, 0, 0.088368684, 0, 1, 0, -0.088368684, 0, -0.99608785, 0, 0, 0)
 
 [node name="ninja" type="Node3D" parent="Player/Model" unique_id=564629277 instance=ExtResource("9_u0fll")]
