@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://biqxe12415eql"]
+
+[ext_resource type="PackedScene" uid="uid://j6p3h26a3t8h" path="res://addons/stealth_plugin/test_scene_resources/Cabin 1.fbx" id="1_0vt8o"]
+
+[node name="Cabin 1" unique_id=1598719460 instance=ExtResource("1_0vt8o")]

@@ -1,0 +1,763 @@
+[gd_scene format=3 uid="uid://bjkxkas6lvj5q"]
+
+[ext_resource type="Script" uid="uid://bfsa34s15yf06" path="res://addons/stealth_plugin/scripts/other/model_selection.gd" id="1_43yjf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kcgiy"]
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0s8i"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.38431373, 0.38431373, 0.38431373, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpcx7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.3310191, 0.33101887, 0.3310189, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="GuardSetupWizard" type="ScrollContainer" unique_id=579057488 groups=["GuardInput"]]
+anchors_preset = -1
+anchor_right = 0.65900004
+anchor_bottom = 1.1370001
+offset_right = -308.16803
+offset_bottom = 462.22394
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=611390065]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Title" type="BoxContainer" parent="VBoxContainer" unique_id=710120754]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer/Title" unique_id=1874858486]
+layout_mode = 2
+text = "Guard Configurator"
+label_settings = SubResource("LabelSettings_kcgiy")
+
+[node name="Combat" type="FoldableContainer" parent="VBoxContainer" unique_id=2144026021]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Combat"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Combat" unique_id=741960477]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Combat/MarginContainer" unique_id=2120040244]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="AttackRangeLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=2048678001]
+layout_mode = 2
+tooltip_text = "Controls the maximum distance at which the guard can attack the player. Higher values allow the guard to attack from farther away."
+mouse_filter = 0
+text = "Attack Range"
+
+[node name="attack_range" type="SpinBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=1435017260 groups=["GuardInput"]]
+layout_mode = 2
+value = 15.0
+suffix = "m"
+
+[node name="FireRateLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=556122210]
+layout_mode = 2
+tooltip_text = "Controls how frequently the guard can fire. Higher values allow the guard to fire more frequently."
+mouse_filter = 0
+text = "Fire Rate"
+
+[node name="fire_rate" type="SpinBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=1773986018 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+value = 1.5
+
+[node name="AimingWindupLabel" type="Label" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=743890935]
+layout_mode = 2
+tooltip_text = "Controls the delay before the guard starts shooting after deciding to attack. Higher values give the player more time to react."
+mouse_filter = 0
+text = "Aiming Windup"
+
+[node name="aiming_windup" type="SpinBox" parent="VBoxContainer/Combat/MarginContainer/GridContainer" unique_id=114131733 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+value = 0.5
+suffix = "s"
+
+[node name="Gadgets" type="FoldableContainer" parent="VBoxContainer" unique_id=1803102775]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Gadgets"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Gadgets" unique_id=1232887341]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Gadgets/MarginContainer" unique_id=2038630574]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="NightVisionLabel" type="Label" parent="VBoxContainer/Gadgets/MarginContainer/GridContainer" unique_id=134996995]
+layout_mode = 2
+tooltip_text = "nables or disables night vision for the guard. When enabled, the guard can detect the player more effectively in dark areas."
+mouse_filter = 0
+text = "Night Vision Goggles"
+
+[node name="night_vision_enabled" type="CheckBox" parent="VBoxContainer/Gadgets/MarginContainer/GridContainer" unique_id=1774503744 groups=["GuardInput"]]
+layout_mode = 2
+
+[node name="MultiplierLabel" type="Label" parent="VBoxContainer/Gadgets/MarginContainer/GridContainer" unique_id=1104117402]
+layout_mode = 2
+tooltip_text = "Controls how much night vision increases the guard's detection capability. Higher values improve detection in dark areas."
+mouse_filter = 0
+text = "Night Vision Multiplier"
+
+[node name="night_vision_multiplier" type="SpinBox" parent="VBoxContainer/Gadgets/MarginContainer/GridContainer" unique_id=368498146 groups=["GuardInput"]]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+step = 0.1
+value = 1.5
+
+[node name="Search" type="FoldableContainer" parent="VBoxContainer" unique_id=1277403366]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Search"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Search" unique_id=890872978]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Search/MarginContainer" unique_id=628685816]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="SearchArrivalToleranceLabel" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=1482830447]
+layout_mode = 2
+tooltip_text = "Controls how close the guard must get to a search destination before considering it reached. Higher values allow the guard to stop farther from the destination."
+mouse_filter = 0
+text = "Search Arrival Tolerance"
+
+[node name="search_arrival_tolerance" type="SpinBox" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=716571188 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 10.0
+value = 1.0
+suffix = "m"
+
+[node name="InvestigateArrivalToleranceLabel2" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=1952443874]
+layout_mode = 2
+tooltip_text = "Controls how close the guard must get to an investigation destination before considering it reached. Higher values allow the guard to stop farther from the destination."
+mouse_filter = 0
+text = "Investigate Arrival Tolerance"
+
+[node name="investigate_arrival_tolerance" type="SpinBox" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=883718160 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 10.0
+value = 1.0
+suffix = "m"
+
+[node name="NoiseInteruptLabel" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=214747593]
+layout_mode = 2
+tooltip_text = "Controls the noise level required to interrupt a lost-player search and start investigating the noise. Higher values require louder noise to trigger an investigation.
+
+Lower dB → quieter → harder to detect
+Higher dB → louder → easier to detect
+
+ -80 dB   -20 dB   -10 dB          0 dB          +10 dB    +20 dB    +80 dB
+ Quieter ──────────────── Reference ────────────────→ Louder"
+mouse_filter = 0
+text = "Search Noise Interrupt"
+
+[node name="search_noise_interrupt" type="SpinBox" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=800814658 groups=["GuardInput"]]
+layout_mode = 2
+min_value = -10.0
+max_value = 10.0
+step = 0.5
+value = 1.5
+suffix = "dB"
+
+[node name="MinSearchLabel" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=1736392532]
+layout_mode = 2
+tooltip_text = "Controls the minimum time the guard remains in the lost-player search state before it can leave. Higher values make the guard search for longer."
+mouse_filter = 0
+text = "Minimum Search Duration"
+
+[node name="min_search_duration" type="SpinBox" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=945718075 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 50.0
+step = 0.5
+value = 5.0
+suffix = "s"
+
+[node name="WallHacksLabel" type="Label" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=608540060]
+layout_mode = 2
+tooltip_text = "Controls how long the guard remembers the player's exact position after losing sight of them. Higher values allow the guard to remember the position for longer."
+mouse_filter = 0
+text = "Last Known Position"
+
+[node name="wall_hacks" type="SpinBox" parent="VBoxContainer/Search/MarginContainer/GridContainer" unique_id=510602869 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+value = 3.0
+suffix = "s"
+
+[node name="MovementSpeed" type="FoldableContainer" parent="VBoxContainer" unique_id=1782888615]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Movement Speed"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MovementSpeed" unique_id=97859946]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MovementSpeed/MarginContainer" unique_id=635904320]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="WalkingSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=331727210]
+layout_mode = 2
+tooltip_text = "Controls the guard's movement speed during normal movement. Higher values make the guard move faster."
+mouse_filter = 0
+text = "Walking Speed"
+
+[node name="speed" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=589941195 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 20.0
+step = 0.5
+value = 5.0
+
+[node name="ChaseSpeedLabel" type="Label" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=2018991263]
+layout_mode = 2
+tooltip_text = "Controls the guard's movement speed multiplier while chasing the player. Higher values make the guard move faster during a chase."
+mouse_filter = 0
+text = "Chase Speed Multiplier"
+
+[node name="chase_speed_multiplier" type="SpinBox" parent="VBoxContainer/MovementSpeed/MarginContainer/GridContainer" unique_id=1336532143 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.1
+value = 1.2
+
+[node name="Noise" type="FoldableContainer" parent="VBoxContainer" unique_id=866872778]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Noise"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Noise" unique_id=297642499]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Noise/MarginContainer" unique_id=2102302448]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="MaxSoundLabel" type="Label" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=834523341]
+layout_mode = 2
+tooltip_text = "Controls the maximum noise strength the guard can perceive. Higher values allow the guard to perceive stronger or accumulated noise."
+mouse_filter = 0
+text = "Maximum Noise Perception"
+
+[node name="max_strength" type="SpinBox" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=1210714140 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="ChaseSpeedLabel" type="Label" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=1724257673]
+layout_mode = 2
+tooltip_text = "Controls how quickly perceived noise loses strength over time. Higher values make the guard forget noise more quickly."
+mouse_filter = 0
+text = "Decay Rate"
+
+[node name="decay_rate" type="SpinBox" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=1042045107 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 5.0
+step = 0.1
+value = 0.5
+
+[node name="HearingLabel" type="Label" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=1214627310]
+layout_mode = 2
+tooltip_text = "Controls how loud a noise has to be for a guard to hear. Higher values will make it so sounds need to be louder to be heard by a guard."
+mouse_filter = 0
+text = "Hearing Threshold"
+
+[node name="hearing_threshold" type="SpinBox" parent="VBoxContainer/Noise/MarginContainer/GridContainer" unique_id=1377617307 groups=["GuardInput"]]
+layout_mode = 2
+min_value = -80.0
+max_value = 80.0
+suffix = "dB"
+
+[node name="Vision" type="FoldableContainer" parent="VBoxContainer" unique_id=734484888]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+title = "Vision"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Vision" unique_id=1908089359]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Vision/MarginContainer" unique_id=428153561]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="ViewDistanceLabel" type="Label" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=235335615]
+layout_mode = 2
+tooltip_text = "Controls the maximum distance at which the guard can detect the player. Higher values allow the guard to see farther."
+mouse_filter = 0
+text = "Viewing Distance"
+
+[node name="view_distance" type="SpinBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=1571021010 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 50.0
+value = 12.0
+suffix = "m"
+
+[node name="ViewAngleLabel" type="Label" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=104008441]
+layout_mode = 2
+tooltip_text = "Controls the guard's field of view in degrees. Higher values give the guard a wider field of view."
+mouse_filter = 0
+text = "Viewing Angle"
+
+[node name="view_angle_deg" type="SpinBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=518024755 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 360.0
+value = 165.0
+suffix = "°"
+
+[node name="DetectionSpeedLabel" type="Label" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=905038258]
+layout_mode = 2
+tooltip_text = "Controls how quickly the guard detects the player after seeing them. Higher values allow the guard to detect the player faster."
+mouse_filter = 0
+text = "Detection Speed"
+
+[node name="detection_speed" type="SpinBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=1697439631 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 20.0
+step = 0.5
+value = 2.5
+
+[node name="MemoryDurationLabel" type="Label" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=819231496]
+layout_mode = 2
+tooltip_text = "Controls how long the guard remembers the player after losing sight of them. Higher values allow the guard to remember the player for longer."
+mouse_filter = 0
+text = "Memory Duration"
+
+[node name="memory_duration" type="SpinBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=1147218355 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 50.0
+step = 0.5
+value = 2.0
+
+[node name="FalloffMinLabel" type="Label" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=485639770]
+layout_mode = 2
+tooltip_text = "Controls the minimum detection strength at the edge of the guard's viewing distance. Higher values make detection remain stronger at greater distances."
+mouse_filter = 0
+text = "Detection Falloff Minimum"
+
+[node name="detection_falloff_min" type="SpinBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=1086639605 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.1
+
+[node name="DebugLabel" type="Label" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=1181900971]
+layout_mode = 2
+tooltip_text = "Enables or disables the visual representation of the guard's field of view."
+mouse_filter = 0
+text = "Show Debug Cone"
+
+[node name="show_debug_cone" type="CheckBox" parent="VBoxContainer/Vision/MarginContainer/GridContainer" unique_id=23515736 groups=["GuardInput"]]
+layout_mode = 2
+button_pressed = true
+
+[node name="Patrol Route" type="FoldableContainer" parent="VBoxContainer" unique_id=1121098155]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+folded = true
+title = "Patrol Route"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Patrol Route" unique_id=869595644]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="Label" type="Label" parent="VBoxContainer/Patrol Route/MarginContainer" unique_id=1285945763]
+layout_mode = 2
+text = "To specify the patrol route of the guard follow these steps:
+- Click \"Create Guard\" once you are finished with the configuration
+- Find the \"Guard\" node in the scene tree
+- Expand the \"Guard\" Node
+- Click on \"Path3D\"
+- Click \"Create Curve\" in the toolbar above the game screen
+- Select the option \"Add Point\" and place path markers in the scene
+- Tip: Use orthogonal view (7 on the keyboard) to prevent projection issues"
+autowrap_mode = 3
+
+[node name="Animations" type="FoldableContainer" parent="VBoxContainer" unique_id=1454897237]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+folded = true
+title = "Model & Animations"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Animations" unique_id=736264867]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="ModelSelection" type="GridContainer" parent="VBoxContainer/Animations/MarginContainer" unique_id=1142171480]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="3DModelLabel2" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=415486134]
+layout_mode = 2
+tooltip_text = "Controls the 3D model used to visually represent the guard."
+mouse_filter = 0
+text = "3D Model"
+
+[node name="3DModelAssignButton" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1523708234]
+layout_mode = 2
+text = "Assign 3D Model"
+script = ExtResource("1_43yjf")
+
+[node name="ModelFileDialog7" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1069172843]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.fbx", "*.glb", "*.tscn")
+
+[node name="Placeholder" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=980093235]
+layout_mode = 2
+tooltip_text = "Controls the 3D model used to visually represent the guard."
+mouse_filter = 0
+
+[node name="Placeholder2" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1080700168]
+layout_mode = 2
+tooltip_text = "Controls the 3D model used to visually represent the guard."
+mouse_filter = 0
+
+[node name="3DModelLabel" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=539984486]
+layout_mode = 2
+tooltip_text = "Animation used when the guard moves at normal walking speed."
+mouse_filter = 0
+text = "Walking"
+
+[node name="walking" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=591659670 groups=["GuardAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_43yjf")
+
+[node name="ModelFileDialog" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1609151042]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label2" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1749519854]
+layout_mode = 2
+tooltip_text = "Animation used when the guard is standing still."
+mouse_filter = 0
+text = "Idle"
+
+[node name="idle" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1609319363 groups=["GuardAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_43yjf")
+
+[node name="ModelFileDialog3" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=973723018]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label3" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1907547233]
+layout_mode = 2
+tooltip_text = "Animation used when the guard moves while alerted."
+mouse_filter = 0
+text = "Alerted Walking"
+
+[node name="alerted_walking" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=74174832 groups=["GuardAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_43yjf")
+
+[node name="ModelFileDialog2" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1847325357]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label4" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1512518941]
+layout_mode = 2
+tooltip_text = "Animation used when the guard is chasing the player."
+mouse_filter = 0
+text = "Chasing"
+
+[node name="chasing" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=113071910 groups=["GuardAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_43yjf")
+
+[node name="ModelFileDialog5" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1810298389]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label5" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=799828488]
+layout_mode = 2
+tooltip_text = "Animation used when the guard attacks the player with a ranged weapon."
+mouse_filter = 0
+text = "Shooting"
+
+[node name="shooting" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=986588823 groups=["GuardAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_43yjf")
+
+[node name="ModelFileDialog4" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1995232917]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="Label6" type="Label" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=2001561998]
+layout_mode = 2
+tooltip_text = "Animation used when the guard is defeated."
+mouse_filter = 0
+text = "Death"
+
+[node name="death" type="Button" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=1003969919 groups=["GuardAnimation"]]
+layout_mode = 2
+text = "Assign animation"
+script = ExtResource("1_43yjf")
+
+[node name="ModelFileDialog6" type="FileDialog" parent="VBoxContainer/Animations/MarginContainer/ModelSelection" unique_id=2131951075]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(1440, 1080)
+file_mode = 0
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="StateIndicator" type="FoldableContainer" parent="VBoxContainer" unique_id=1805796452]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+folded = true
+title = "State Indicator"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/StateIndicator" unique_id=126994471]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="ImageSelection" type="GridContainer" parent="VBoxContainer/StateIndicator/MarginContainer" unique_id=286826441]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="AssignImageLabel" type="Label" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1560769248]
+layout_mode = 2
+tooltip_text = "Image displayed to represent the guard's current state. This is empty by default."
+mouse_filter = 0
+text = "Indicator Image"
+
+[node name="AssignStateIndButton" type="Button" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1731270850]
+layout_mode = 2
+text = "Assign Image"
+script = ExtResource("1_43yjf")
+
+[node name="ModelFileDialog" type="FileDialog" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=329880753]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+filters = PackedStringArray("*.jpeg", "*.jpg", "*.png")
+
+[node name="AssignTextLabel" type="Label" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1158913554]
+layout_mode = 2
+tooltip_text = "Text displayed to represent the guard's current state."
+mouse_filter = 0
+text = "Indicator Text"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1238475633 groups=["GuardInput"]]
+layout_mode = 2
+text = "!"
+
+[node name="ChaseColorLabel" type="Label" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1613782483]
+layout_mode = 2
+tooltip_text = "Controls the color of the state indicator while the guard is chasing the player."
+mouse_filter = 0
+text = "Chase Color"
+
+[node name="color_chase" type="ColorPickerButton" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=2091617398 groups=["GuardInput"]]
+layout_mode = 2
+text = "AA"
+color = Color(1, 0.15, 0.15, 1)
+
+[node name="InvestigateColorLabel" type="Label" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1909427515]
+layout_mode = 2
+tooltip_text = "Controls the color of the state indicator while the guard is investigating the player or a noise."
+mouse_filter = 0
+text = "Investigate Color"
+
+[node name="color_investigate" type="ColorPickerButton" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=179204247 groups=["GuardInput"]]
+layout_mode = 2
+text = "AA"
+color = Color(1, 0.9, 0.15, 1)
+
+[node name="DetectingColorLabel" type="Label" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=1460176148]
+layout_mode = 2
+tooltip_text = "Controls the color of the state indicator while the guard is detecting the player."
+mouse_filter = 0
+text = "Detecting Color"
+
+[node name="color_detecting" type="ColorPickerButton" parent="VBoxContainer/StateIndicator/MarginContainer/ImageSelection" unique_id=532448901 groups=["GuardInput"]]
+layout_mode = 2
+text = "AA"
+color = Color(1, 1, 1, 1)
+
+[node name="SearchAlgorithm" type="FoldableContainer" parent="VBoxContainer" unique_id=355038117]
+layout_mode = 2
+tooltip_text = "Controls the search algorithm when sight of player is lost. Do not change these values if you do not know what they do!"
+theme_override_font_sizes/font_size = 30
+folded = true
+title = "Search Algorithm (Advanced)"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SearchAlgorithm" unique_id=2045008542]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/SearchAlgorithm/MarginContainer" unique_id=1256608015]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="HotValueLabel" type="Label" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=266953917]
+layout_mode = 2
+tooltip_text = "Initial heat value assigned to the last known player position. Higher values keep nearby cells warm for longer and give them more influence when calculating the final chase destination."
+mouse_filter = 0
+text = "Hot Value"
+
+[node name="hot_value" type="SpinBox" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=1632545763 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 50.0
+value = 20.0
+
+[node name="MaxHeatedLabel" type="Label" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=1738717181]
+layout_mode = 2
+tooltip_text = "Maximum number of cells allowed in the heat front during one propagation step. If the front becomes larger than this value, the chase calculation stops because the search has spread into a wide area"
+mouse_filter = 0
+text = "Maximum Heat per Step"
+
+[node name="max_heated_per_step" type="SpinBox" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=327540877 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 25.0
+value = 10.0
+
+[node name="MaxStepsLabel" type="Label" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=1207875193]
+layout_mode = 2
+tooltip_text = "Maximum number of propagation steps performed before the chase calculation stops. Higher values allow the search to spread farther and produce a more thorough result, but may increase the calculation time."
+mouse_filter = 0
+text = "Maximum Steps"
+
+[node name="max_steps" type="SpinBox" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=395288532 groups=["GuardInput"]]
+layout_mode = 2
+value = 30.0
+
+[node name="CellSizeLabel" type="Label" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=1774540280]
+layout_mode = 2
+tooltip_text = "Size of one influence-map grid cell in world units. Smaller values create a finer grid and more precise destinations, but increase the number of cells that must be processed"
+mouse_filter = 0
+text = "Cell Size"
+
+[node name="cell_size" type="SpinBox" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=377238881 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 10.0
+step = 0.05
+value = 0.75
+
+[node name="StepsPerFrameLabel" type="Label" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=866525334]
+layout_mode = 2
+tooltip_text = "Number of influence-map propagation steps processed per frame. Higher values complete the calculation faster, while lower values spread the computation over more frames to reduce per-frame workload"
+mouse_filter = 0
+text = "Steps per Frame"
+
+[node name="steps_per_frame" type="SpinBox" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=2026969556 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 10.0
+value = 2.0
+
+[node name="BuildRadiusLabel" type="Label" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=428695356]
+layout_mode = 2
+tooltip_text = "Maximum distance in world units around the last known player position in which grid cells are sampled. Larger values allow the guard to search a wider area for a chase destination, but increase the number of cells that must be processed."
+mouse_filter = 0
+text = "Build Radius"
+
+[node name="build_radius" type="SpinBox" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=2086211114 groups=["GuardInput"]]
+layout_mode = 2
+value = 25.0
+
+[node name="VerticalBandLabel" type="Label" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=1426618352]
+layout_mode = 2
+tooltip_text = "Number of grid cells above and below the last known player position that can be sampled when building the influence map. Higher values allow the search to span larger height differences, such as multiple floors."
+mouse_filter = 0
+text = "Vertical Band"
+
+[node name="vertical_band" type="SpinBox" parent="VBoxContainer/SearchAlgorithm/MarginContainer/GridContainer" unique_id=934600778 groups=["GuardInput"]]
+layout_mode = 2
+max_value = 50.0
+value = 3.0
+
+[node name="ApplyButton" type="Button" parent="VBoxContainer" unique_id=1186990833]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_d0s8i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dpcx7")
+text = "Create Guard
+"

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d3elvbasyc0b"]
 
-[ext_resource type="PackedScene" uid="uid://1y57q75bqm6" path="res://models/default_guard/guard.fbx" id="1_c22s3"]
-[ext_resource type="PackedScene" uid="uid://uwh0oya8cqll" path="res://models/gun_model.fbx" id="2_srqkm"]
-[ext_resource type="PackedScene" uid="uid://cnmpo1kw2n4xe" path="res://scenes/night_vision_goggles.tscn" id="3_j0ode"]
+[ext_resource type="PackedScene" uid="uid://1y57q75bqm6" path="res://addons/stealth_plugin/models/default_guard/guard.fbx" id="1_c22s3"]
+[ext_resource type="PackedScene" uid="uid://uwh0oya8cqll" path="res://addons/stealth_plugin/models/gun_model.fbx" id="2_srqkm"]
+[ext_resource type="PackedScene" uid="uid://cnmpo1kw2n4xe" path="res://addons/stealth_plugin/scenes/night_vision_goggles.tscn" id="3_j0ode"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ycvn0"]
 animation = &"Default/alerted_walking"
@@ -114,9 +114,9 @@ states/walking/position = Vector2(552.5868, 101.491974)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_v2277"), "idle", "walking", SubResource("AnimationNodeStateMachineTransition_q0fjp"), "walking", "chasing", SubResource("AnimationNodeStateMachineTransition_ky6ul"), "alerted_walking", "chasing", SubResource("AnimationNodeStateMachineTransition_ew2xw"), "chasing", "alerted_walking", SubResource("AnimationNodeStateMachineTransition_d8nmi"), "idle", "alerted_walking", SubResource("AnimationNodeStateMachineTransition_bm0th"), "idle", "chasing", SubResource("AnimationNodeStateMachineTransition_coa1f"), "alerted_walking", "idle", SubResource("AnimationNodeStateMachineTransition_c8dxn"), "chasing", "idle", SubResource("AnimationNodeStateMachineTransition_u5ry0"), "walking", "shooting", SubResource("AnimationNodeStateMachineTransition_brf1g"), "chasing", "shooting", SubResource("AnimationNodeStateMachineTransition_srqkm"), "alerted_walking", "shooting", SubResource("AnimationNodeStateMachineTransition_j0ode"), "shooting", "walking", SubResource("AnimationNodeStateMachineTransition_qn31l"), "walking", "idle", SubResource("AnimationNodeStateMachineTransition_s2x3p")]
 graph_offset = Vector2(132.4091, -34.169735)
 
-[node name="guard" unique_id=2024213232 instance=ExtResource("1_c22s3")]
+[node name="guard" unique_id=1344657277 instance=ExtResource("1_c22s3")]
 
-[node name="Skeleton3D" parent="." index="0" unique_id=1410280336]
+[node name="Skeleton3D" parent="." index="0" unique_id=212088509]
 bones/0/position = Vector3(0.008004328, 0.96295816, 0.0076733204)
 bones/0/rotation = Quaternion(-0.024393823, -0.0016421708, -0.01891227, 0.99952227)
 bones/1/rotation = Quaternion(-0.04943428, 0.00092053565, -0.0025734806, 0.99877363)
@@ -176,7 +176,7 @@ transform = Transform3D(0.51059353, -0.16316675, 0.8441983, 0.19163415, -0.93553
 bone_name = "mixamorig_RightHand"
 bone_idx = 34
 
-[node name="gun" parent="Skeleton3D/HandAttachment" index="0" unique_id=1858501248 instance=ExtResource("2_srqkm")]
+[node name="gun" parent="Skeleton3D/HandAttachment" index="0" unique_id=1402469744 instance=ExtResource("2_srqkm")]
 transform = Transform3D(-7.6494935e-08, 1.7499999, 7.649493e-08, 0, -7.649493e-08, 1.75, 1.7500001, 7.649493e-08, 3.3436996e-15, -0.02218151, 0.17506129, 0.05046612)
 
 [node name="HeadAttachment" type="BoneAttachment3D" parent="Skeleton3D" index="3" unique_id=2091243096]

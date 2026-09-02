@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cnmpo1kw2n4xe"]
+
+[ext_resource type="PackedScene" uid="uid://dn4ywphfhromi" path="res://addons/stealth_plugin/models/night_vision_goggles/night_vision_goggles.glb" id="1_5ev4b"]
+
+[node name="NightVisionGoggles" unique_id=686370974 instance=ExtResource("1_5ev4b")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2" unique_id=779820339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120545775, 0.027618363, 0.06893225)
+light_color = Color(0.21380231, 0.5438233, 0.22958332, 1)
+light_energy = 1.676
+light_indirect_energy = 0.0
+light_specular = 0.0
+omni_range = 0.1
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="3" unique_id=1825473405]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120545775, 0.027618363, -0.07047553)
+light_color = Color(0.21380231, 0.5438233, 0.22958332, 1)
+light_energy = 1.676
+light_indirect_energy = 0.0
+light_specular = 0.0
+omni_range = 0.1

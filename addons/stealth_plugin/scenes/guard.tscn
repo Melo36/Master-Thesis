@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://ir335gkyusmm"]
+
+[ext_resource type="Script" uid="uid://dsuwbumyvlyj6" path="res://addons/stealth_plugin/scripts/guard/guard_brain.gd" id="1_jckj1"]
+[ext_resource type="Script" uid="uid://bjpmu5sklv5h8" path="res://addons/raytraced_audio/raytraced_audio_listener.gd" id="2_sgmfw"]
+[ext_resource type="Script" uid="uid://b7dg0fabljqhw" path="res://addons/stealth_plugin/scripts/guard/guard_noise_behavior.gd" id="3_jckj1"]
+[ext_resource type="Script" uid="uid://b5brnj3qc2vxi" path="res://addons/stealth_plugin/scripts/guard/guard_vision_behavior.gd" id="4_jckj1"]
+[ext_resource type="Script" uid="uid://1qy3jchmwnjn" path="res://addons/stealth_plugin/scripts/guard/guard_movement.gd" id="5_jckj1"]
+[ext_resource type="Script" uid="uid://c8g6v5q74e0kg" path="res://addons/stealth_plugin/scripts/guard/chase_influence_map.gd" id="6_jckj1"]
+[ext_resource type="Texture2D" uid="uid://dpsoct00lvvod" path="res://addons/stealth_plugin/resources/blade.png" id="7_nrghk"]
+[ext_resource type="AudioStream" uid="uid://yr7nlygrsaem" path="res://addons/stealth_plugin/sounds/gun_shot.mp3" id="8_71va2"]
+[ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://addons/raytraced_audio/raytraced_audio_player_3d.gd" id="9_jkuds"]
+[ext_resource type="Script" uid="uid://df0g5mycw1xv3" path="res://addons/stealth_plugin/scripts/guard/GadgetManager.gd" id="10_kob8w"]
+[ext_resource type="Script" uid="uid://48leq28er5f5" path="res://addons/stealth_plugin/scripts/guard/guard_state_indicator.gd" id="11_jckj1"]
+[ext_resource type="Script" uid="uid://rrsn6p2662hc" path="res://addons/stealth_plugin/scripts/other/model_handler.gd" id="12_jckj1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_17ufb"]
+radius = 0.42626953
+height = 2.107495
+
+[sub_resource type="GDScript" id="GDScript_k3g67"]
+script/source = "extends NavigationAgent3D
+"
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4bgka"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02d50"]
+transparency = 1
+shading_mode = 0
+
+[node name="Guard" type="CharacterBody3D" unique_id=1404609476 groups=["Guard"]]
+script = ExtResource("1_jckj1")
+search_noise_interrupt = 0.8
+min_search_duration = 20.0
+lib_path = "res://addons/stealth_plugin/animations/guard_animation_library"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=937642194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_17ufb")
+
+[node name="RaytracedAudioListener" type="AudioListener3D" parent="." unique_id=955631534]
+script = ExtResource("2_sgmfw")
+metadata/_custom_type_script = "uid://bjpmu5sklv5h8"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=823578958]
+debug_enabled = true
+script = SubResource("GDScript_k3g67")
+
+[node name="NoiseSensor" type="Node3D" parent="." unique_id=115091329]
+script = ExtResource("3_jckj1")
+decay_rate = 0.2
+
+[node name="VisionSensor" type="Node3D" parent="." unique_id=1941893463 node_paths=PackedStringArray("cone_mesh_instance")]
+script = ExtResource("4_jckj1")
+cone_mesh_instance = NodePath("../VisionCone")
+view_distance = 40.0
+view_angle_deg = 165.0
+memory_duration = 50.0
+detection_speed = 2.0
+show_debug_cone = false
+
+[node name="GuardMovement" type="Node3D" parent="." unique_id=1159603037]
+script = ExtResource("5_jckj1")
+speed = 3
+tolerance = 2
+
+[node name="VisionCone" type="MeshInstance3D" parent="." unique_id=1479462717]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -2.887258)
+visible = false
+layers = 2
+mesh = SubResource("CylinderMesh_4bgka")
+surface_material_override/0 = SubResource("StandardMaterial3D_02d50")
+
+[node name="ChaseInfluenceMap" type="Node" parent="." unique_id=2057481093]
+script = ExtResource("6_jckj1")
+
+[node name="ShurikenIndicator" type="Sprite3D" parent="." unique_id=191564752]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.7853942, -0.4983739)
+visible = false
+billboard = 1
+texture = ExtResource("7_nrghk")
+
+[node name="MuzzleRaycast" type="RayCast3D" parent="." unique_id=22760305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1872306, -0.64227575)
+debug_shape_custom_color = Color(0.30344206, 0.0006543857, 0.7874915, 1)
+
+[node name="GunSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=308494499]
+stream = ExtResource("8_71va2")
+attenuation_model = 1
+volume_db = -10.0
+unit_size = 7.0
+max_db = 2.0
+pitch_scale = 2.0
+script = ExtResource("9_jkuds")
+metadata/_custom_type_script = "uid://dkb8ltjc6067n"
+
+[node name="GadgetManager" type="Node3D" parent="." unique_id=646820054]
+script = ExtResource("10_kob8w")
+
+[node name="StateIndicator" type="Node3D" parent="." unique_id=223584119]
+script = ExtResource("11_jckj1")
+
+[node name="TextIndicator" type="Label3D" parent="StateIndicator" unique_id=1215473676]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 3, 0)
+billboard = 2
+no_depth_test = true
+fixed_size = true
+text = "!"
+font_size = 256
+outline_size = 24
+
+[node name="ImageIndicator" type="Sprite3D" parent="StateIndicator" unique_id=1702826809]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 3.1441321, 0)
+
+[node name="ModelHandler" type="Node3D" parent="." unique_id=1999072873]
+script = ExtResource("12_jckj1")
