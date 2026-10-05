@@ -1,7 +1,7 @@
 @tool
 extends Node3D
 
-const DEFAULT_PLAYER_PATH = "res://addons/stealth_plugin/models/default_player/ninja.fbx"
+const DEFAULT_PLAYER_PATH = "res://addons/stealth_plugin/models/archer/archer.fbx"
 const DEFAULT_GUARD_PATH = "res://addons/stealth_plugin/models/default_guard/guard.fbx"
 
 const DEFAULT_ANIMATION_TREE : String = "res://addons/stealth_plugin/scenes/animation_tree.tscn"

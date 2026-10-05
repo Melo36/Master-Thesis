@@ -31,7 +31,6 @@ shading_mode = 0
 script = ExtResource("1_jckj1")
 search_noise_interrupt = 0.8
 min_search_duration = 20.0
-lib_path = "res://addons/stealth_plugin/animations/guard_animation_library"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=937642194]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -60,7 +59,6 @@ show_debug_cone = false
 
 [node name="GuardMovement" type="Node3D" parent="." unique_id=1159603037]
 script = ExtResource("5_jckj1")
-speed = 3
 tolerance = 2
 
 [node name="VisionCone" type="MeshInstance3D" parent="." unique_id=1479462717]

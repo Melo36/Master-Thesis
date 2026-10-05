@@ -24,7 +24,7 @@ func _enter_tree() -> void:
 		
 	if guard_wizard == null:
 		guard_wizard = preload("res://addons/stealth_plugin/scenes/guard_setup_wizard.tscn").instantiate()
-		add_control_to_dock(DOCK_SLOT_LEFT_BL, guard_wizard)
+		add_control_to_dock(EditorPlugin.DOCK_SLOT_LEFT_BL, guard_wizard)
 
 	apply_button = wizard.find_child("ApplyButton", true)
 	apply_button_guard = guard_wizard.find_child("ApplyButton", true)
@@ -68,7 +68,7 @@ func _on_apply_button_pressed() -> void:
 	#_replace_indicator_image(player, "LightLevel", assign_ill_image_button)
 	
 	var animationButtonList = get_tree().get_nodes_in_group("PlayerAnimation")
-	_replace_animations(player, animationButtonList, assign_3D_button, "res://addons/stealth_plugin/animations/default_player/")
+	_replace_animations(player, animationButtonList, assign_3D_button, "res://addons/stealth_plugin/animations/archer/")
 
 func _on_apply_button_guard_pressed() -> void:
 	var scene := get_editor_interface().get_edited_scene_root()
@@ -112,6 +112,10 @@ func _get_or_create_single_player(scene: Node) -> Node:
 	place_character_on_ground(player)
 	
 	print("Created new player")
+	
+	var playerSpawn : Node3D = scene.get_tree().get_first_node_in_group("PlayerSpawn")
+	if playerSpawn:
+		player.global_position = playerSpawn.global_position
 
 	return player
 	
@@ -298,16 +302,20 @@ func _replace_animations(agent: Node, animationList: Array, model_button : Butto
 	animationTree.anim_player = animationPlayer.get_path()
 	
 	# Connect the cleanup function to trigger when the guard is removed/deleted
+	# 2. In Editor (@tool mode): Only delete if the user manually deleted the node
+	# (Checking if the node's owner was cleared or if the editor scene is active)
+
 	if not agent.tree_exited.is_connected(_on_guard_removed):
-		agent.tree_exited.connect(_on_guard_removed.bind(unique_lib_path))
+		agent.tree_exited.connect(_on_guard_removed.bind(unique_lib_path, agent))
 		
-func _on_guard_removed(file_path: String) -> void:
-	if FileAccess.file_exists(file_path):
-		var err = DirAccess.remove_absolute(file_path)
-		if err == OK:
-			print("Successfully deleted unused library: ", file_path)
-		else:
-			push_warning("Failed to delete library file: ", file_path, " Error code: ", err)
+func _on_guard_removed(file_path: String, agent : Node3D) -> void:
+	if EditorInterface.get_edited_scene_root().name == "TestScene":
+		if FileAccess.file_exists(file_path):
+			var err = DirAccess.remove_absolute(file_path)
+			if err == OK:
+				print("Successfully deleted unused library: ", file_path)
+			else:
+				push_warning("Failed to delete library file: ", file_path, " Error code: ", err)
 			
 func find_state(machine: AnimationNodeStateMachine,state_name: String) -> AnimationNodeAnimation:
 	if machine.has_node(state_name):

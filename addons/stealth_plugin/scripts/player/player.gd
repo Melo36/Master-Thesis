@@ -143,13 +143,9 @@ func _ready():
 		if trajectory_line.mesh == null:
 			trajectory_line.mesh = ImmediateMesh.new()
 			
-func _exit_tree() -> void:
-	var file_path = lib_path + "_" + get_parent().name + ".res"
-	var err = DirAccess.remove_absolute(file_path)
-	if err == OK:
-		print("Successfully deleted unused library: ", file_path)
-	else:
-		push_warning("Failed to delete library file: ", file_path, " Error code: ", err)
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		print("Being deleted")
 
 # ==================================================
 # INPUT

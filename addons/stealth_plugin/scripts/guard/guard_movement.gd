@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var guard: CharacterBody3D = $".."
 @onready var navigation_agent_3d: NavigationAgent3D = $"../NavigationAgent3D"
-@export var speed = 5
+@export var speed = 3
 # Speed multiplier applied while CHASE-ing or SEARCH_LOST-ing (the brain
 # routes SEARCH_LOST through CHASE), to make the guard feel threatening.
 @export var chase_speed_multiplier: float = 1.5
@@ -85,7 +85,6 @@ func get_next_patrol_point() -> Vector3:
 	if !patrol_points:
 		return Vector3.ZERO
 	var point = path.global_transform * patrol_points.get_point_position(current_index)
-	print("Index: ", current_index, " Position ", point)
 	current_index = (current_index + 1) % (patrol_points.point_count + 1)
 	return point
 

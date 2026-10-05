@@ -35,6 +35,7 @@ PlayerInput=""
 GuardInput=""
 PlayerAnimation=""
 GuardAnimation=""
+PlayerSpawn=""
 
 [input]
 

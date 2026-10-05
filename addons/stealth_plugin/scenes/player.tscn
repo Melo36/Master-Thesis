@@ -105,7 +105,6 @@ region = Rect2(0, 0, 256, 128)
 
 [node name="Player" type="CharacterBody3D" unique_id=527582928 groups=["Player"]]
 script = ExtResource("1_uhkns")
-lib_path = "res://addons/stealth_plugin/animations/player_animation_library"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1083905860]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9204389, -0.10208094)
