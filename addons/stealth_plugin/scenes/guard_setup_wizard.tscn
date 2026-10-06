@@ -927,7 +927,7 @@ theme_override_styles/title_collapsed_hover_panel = SubResource("StyleBoxFlat_ev
 theme_override_styles/focus = SubResource("StyleBoxFlat_8btn6")
 theme_override_styles/panel = SubResource("StyleBoxFlat_58ahb")
 folded = true
-title = "Search Algorithm"
+title = "Search Algorithm (Advanced)"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SearchAlgorithm" unique_id=2045008542]
 visible = false

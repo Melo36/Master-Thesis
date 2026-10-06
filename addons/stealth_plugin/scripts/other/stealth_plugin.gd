@@ -16,6 +16,8 @@ var assign_state_ind_button
 var wizard_elements: int = 15
 var guard_wizard_elements: int = 33
 
+var number_of_guards : int = 0
+
 func _enter_tree() -> void:
 	print("Initializing tree")
 	if wizard == null:
@@ -116,6 +118,9 @@ func _get_or_create_single_player(scene: Node) -> Node:
 	var playerSpawn : Node3D = scene.get_tree().get_first_node_in_group("PlayerSpawn")
 	if playerSpawn:
 		player.global_position = playerSpawn.global_position
+		
+	focus_on_node(player)
+	show_creation_notification("Player", player.name)
 
 	return player
 	
@@ -130,9 +135,11 @@ func _create_guard(scene: Node) -> Node:
 		var child = agent.find_child("Guard")
 		if child && child.is_in_group("Guard"):
 			return child
-
+			
+	
+	number_of_guards = len(get_tree().get_nodes_in_group("Guard"))
 	var parent = Node3D.new()
-	parent.name = "Guard"
+	parent.name = "Guard" + str(number_of_guards + 1)
 	var patrolRoute = Path3D.new()
 	patrolRoute.name = "Path3D"
 	parent.add_child(patrolRoute)
@@ -151,6 +158,8 @@ func _create_guard(scene: Node) -> Node:
 	patrolRoute.owner = scene
 	_set_owner_recursive(parent, scene, 3)
 	place_character_on_ground(guard)
+	focus_on_node(guard)
+	show_creation_notification("Guard", parent.name)
 
 	# Return this because we dont need the parent
 	return guard
@@ -169,7 +178,19 @@ func place_character_on_ground(character: CharacterBody3D):
 	if result:
 		character.global_position.y = result.position.y
 
+func focus_on_node(node: Node3D):
+	var viewport := get_editor_interface().get_editor_viewport_3d()
+	var camera := viewport.get_camera_3d()
 
+	var target := node.global_position
+
+	camera.global_position = target + Vector3(5, 3, 5)
+	camera.look_at(target, Vector3.UP)
+	
+func show_creation_notification(type: String, node_name: String) -> void:
+	var toaster := get_editor_interface().get_editor_toaster()
+	toaster.push_toast("%s created: %s" % [type, node_name])
+	
 # ------------------------------------------------------------
 # APPLY INPUT VALUES
 # ------------------------------------------------------------
